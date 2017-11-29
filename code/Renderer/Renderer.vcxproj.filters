@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Resource\VertexBuffer.h">
+      <Filter>Renderer\Resource\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource\Buffer.h">
+      <Filter>Renderer\Resource\Buffer</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="Resource\VertexBuffer.cpp">
+      <Filter>Renderer\Resource\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="Resource\Buffer.cpp">
+      <Filter>Renderer\Resource\Buffer</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Renderer">
+      <UniqueIdentifier>{f6f6b3c9-b88e-45a6-8471-d9da987c2666}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\Resource">
+      <UniqueIdentifier>{b50bbfd1-e20a-4894-80eb-6880d9c57174}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\Resource\Buffer">
+      <UniqueIdentifier>{0c8ba027-b4f6-465e-b83b-945187e273b6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

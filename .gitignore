@@ -15,3 +15,5 @@ lib
 /code/Engine.v12.suo
 /code/Core/t.cpp
 /code/Core/t.h
+/code/Renderer/t.cpp
+/code/Renderer/t.h
