@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="glew">
+      <UniqueIdentifier>{6ac3eab4-1a2f-43a0-9a79-0a4b2f471a98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GLFW">
+      <UniqueIdentifier>{350dbf56-d5f4-4a7a-8e6b-d0784faa58f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="glmmodel">
+      <UniqueIdentifier>{d4ac9a20-a5c7-4fda-a520-e3db0e1af1cc}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="glew.c">
+      <Filter>glew</Filter>
+    </ClCompile>
+    <ClCompile Include="GLFW\window.c">
+      <Filter>GLFW</Filter>
+    </ClCompile>
+    <ClCompile Include="GLFW\context.c">
+      <Filter>GLFW</Filter>
+    </ClCompile>
+    <ClCompile Include="GLFW\egl_context.c">
+      <Filter>GLFW</Filter>
+    </ClCompile>
+    <ClCompile Include="GLFW\init.c">
+      <Filter>GLFW</Filter>
+    </ClCompile>
+    <ClCompile Include="GLFW\input.c">
+      <Filter>GLFW</Filter>
+    </ClCompile>
+    <ClCompile Include="GLFW\monitor.c">
+      <Filter>GLFW</Filter>
+    </ClCompile>
+    <ClCompile Include="GLFW\osmesa_context.c">
+      <Filter>GLFW</Filter>
+    </ClCompile>
+    <ClCompile Include="GLFW\vulkan.c">
+      <Filter>GLFW</Filter>
+    </ClCompile>
+    <ClCompile Include="GLFW\win32_init.c">
+      <Filter>GLFW</Filter>
+    </ClCompile>
+    <ClCompile Include="GLFW\win32_joystick.c">
+      <Filter>GLFW</Filter>
+    </ClCompile>
+    <ClCompile Include="GLFW\win32_monitor.c">
+      <Filter>GLFW</Filter>
+    </ClCompile>
+    <ClCompile Include="GLFW\win32_thread.c">
+      <Filter>GLFW</Filter>
+    </ClCompile>
+    <ClCompile Include="GLFW\win32_time.c">
+      <Filter>GLFW</Filter>
+    </ClCompile>
+    <ClCompile Include="GLFW\win32_window.c">
+      <Filter>GLFW</Filter>
+    </ClCompile>
+    <ClCompile Include="GLFW\wgl_context.c">
+      <Filter>GLFW</Filter>
+    </ClCompile>
+    <ClCompile Include="glmmodel\glmmodel.cpp">
+      <Filter>glmmodel</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GLFW\glfw3.h">
+      <Filter>GLFW</Filter>
+    </ClInclude>
+    <ClInclude Include="GLFW\glfw_config.h">
+      <Filter>GLFW</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

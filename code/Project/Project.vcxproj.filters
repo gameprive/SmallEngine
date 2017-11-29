@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="App.cpp" />
+    <ClCompile Include="Test.cpp">
+      <Filter>temp</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>temp</Filter>
+    </ClCompile>
+    <ClCompile Include="Shaders.cpp">
+      <Filter>temp</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadTexture.cpp">
+      <Filter>temp</Filter>
+    </ClCompile>
+    <ClCompile Include="TestModel.cpp">
+      <Filter>temp</Filter>
+    </ClCompile>
+    <ClCompile Include="PragmaLib.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="temp">
+      <UniqueIdentifier>{4a45ac94-13e7-48f2-b1ab-905565a6ff23}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Global.h" />
+    <ClInclude Include="App.h" />
+    <ClInclude Include="Test.h">
+      <Filter>temp</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>temp</Filter>
+    </ClInclude>
+    <ClInclude Include="Shaders.h">
+      <Filter>temp</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadTexture.h">
+      <Filter>temp</Filter>
+    </ClInclude>
+    <ClInclude Include="TestModel.h">
+      <Filter>temp</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
