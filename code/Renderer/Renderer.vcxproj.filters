@@ -23,6 +23,9 @@
     <ClInclude Include="Resource\Shader.h">
       <Filter>Renderer\Resource\Shaders</Filter>
     </ClInclude>
+    <ClInclude Include="Resource\ShaderProgram.h">
+      <Filter>Renderer\Resource\Shaders</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
@@ -45,6 +48,9 @@
       <Filter>Renderer</Filter>
     </ClCompile>
     <ClCompile Include="Resource\Shader.cpp">
+      <Filter>Renderer\Resource\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Resource\ShaderProgram.cpp">
       <Filter>Renderer\Resource\Shaders</Filter>
     </ClCompile>
   </ItemGroup>

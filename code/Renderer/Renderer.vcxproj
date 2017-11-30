@@ -86,6 +86,7 @@
     <ClInclude Include="Resource\Buffer.h" />
     <ClInclude Include="Resource\ConstantBuffer.h" />
     <ClInclude Include="Resource\IndexBuffer.h" />
+    <ClInclude Include="Resource\ShaderProgram.h" />
     <ClInclude Include="Resource\Shader.h" />
     <ClInclude Include="Resource\VertexBuffer.h" />
     <ClInclude Include="Resource\VertexFormat.h" />
@@ -96,6 +97,7 @@
     <ClCompile Include="Resource\Buffer.cpp" />
     <ClCompile Include="Resource\ConstantBuffer.cpp" />
     <ClCompile Include="Resource\IndexBuffer.cpp" />
+    <ClCompile Include="Resource\ShaderProgram.cpp" />
     <ClCompile Include="Resource\Shader.cpp" />
     <ClCompile Include="Resource\VertexBuffer.cpp" />
     <ClCompile Include="Resource\VertexFormat.cpp" />

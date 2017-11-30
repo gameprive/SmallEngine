@@ -11,12 +11,11 @@ enum class ShaderType : uint8_t
 
 class Shader : Noncopyable
 {
+	friend class ShaderProgram;
 public:
 	Shader(ShaderType type, const std::string &path);
 	~Shader();
-
-	GLuint GetGlIdentifier() const { return m_shader; }
-
+	
 private:
 	void readFromFile(const std::string &path, std::vector<uint8_t> &data);
 	void create(const std::vector<uint8_t> &data);
