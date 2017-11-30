@@ -18,6 +18,7 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include <array>
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -28,3 +29,4 @@
 #include "Core/Debug/DebugNew.h"
 #include "Core/Debug/Log.h"
 #include "Core/Template/Noncopyable.h"
+#include "Core/Files/FileSystem.h"

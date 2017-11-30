@@ -20,6 +20,9 @@
     <ClInclude Include="Format.h">
       <Filter>Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="Resource\Shader.h">
+      <Filter>Renderer\Resource\Shaders</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
@@ -41,6 +44,9 @@
     <ClCompile Include="Format.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="Resource\Shader.cpp">
+      <Filter>Renderer\Resource\Shaders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Renderer">
@@ -51,6 +57,9 @@
     </Filter>
     <Filter Include="Renderer\Resource\Buffers">
       <UniqueIdentifier>{0c8ba027-b4f6-465e-b83b-945187e273b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\Resource\Shaders">
+      <UniqueIdentifier>{a4a18a6f-cb98-46f2-ac76-9108846bbebe}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

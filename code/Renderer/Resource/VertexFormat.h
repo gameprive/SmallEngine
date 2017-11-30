@@ -14,7 +14,7 @@ struct VertexAttribute
 	uint32_t offset = 0;				
 };
 
-class VertexFormat
+class VertexFormat : Noncopyable
 {
 public:
 	VertexFormat();
