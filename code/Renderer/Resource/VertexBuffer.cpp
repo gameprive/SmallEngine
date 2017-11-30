@@ -4,14 +4,14 @@
 #include "VertexBuffer.h"
 
 //-----------------------------------------------------------------------
-VertexBuffer::VertexBuffer(const void *vertices, size_t vertexCount, size_t strideInBytes, BufferUsage bufferUsage)
-	: Buffer(BufferType::Vertex, vertices, vertexCount * strideInBytes, bufferUsage)
+VertexBuffer::VertexBuffer(const void *vertices, size_t vertexCount, size_t sizeInBytes, BufferUsage bufferUsage)
+	: Buffer(BufferType::Vertex, vertices, sizeInBytes, bufferUsage)
 	, m_vertexCount(vertexCount)
 {
 }
 //-----------------------------------------------------------------------
-VertexBuffer::VertexBuffer(size_t vertexCount, size_t strideInBytes, BufferUsage bufferUsage)
-	: Buffer(BufferType::Vertex, nullptr, vertexCount * strideInBytes, bufferUsage)
+VertexBuffer::VertexBuffer(size_t vertexCount, size_t sizeInBytes, BufferUsage bufferUsage)
+	: Buffer(BufferType::Vertex, nullptr, sizeInBytes, bufferUsage)
 	, m_vertexCount(vertexCount)
 {
 }
@@ -20,5 +20,10 @@ void VertexBuffer::Bind()
 {
 	Assert(m_bufferObject);
 	glBindBuffer(m_type, m_bufferObject);
+}
+//-----------------------------------------------------------------------
+size_t VertexBuffer::GetVertexCount() const
+{
+	return m_vertexCount;
 }
 //-----------------------------------------------------------------------

@@ -5,8 +5,8 @@
 class VertexBuffer : public Buffer
 {
 public:
-	VertexBuffer(const void *vertices, size_t vertexCount, size_t strideInBytes, BufferUsage bufferUsage);
-	VertexBuffer(size_t vertexCount, size_t strideInBytes, BufferUsage bufferUsage);
+	VertexBuffer(const void *vertices, size_t vertexCount, size_t sizeInBytes, BufferUsage bufferUsage);
+	VertexBuffer(size_t vertexCount, size_t sizeInBytes, BufferUsage bufferUsage);
 	
 	void Bind();
 

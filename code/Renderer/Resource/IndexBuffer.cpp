@@ -11,7 +11,7 @@ size_t ToIndexElementOffsetBytes(IndexElementSize elementSize)
 	case IndexElementSize::Bit32: return sizeof(int);
 	case IndexElementSize::Bit16: return sizeof(short);
 	};
-	OpenGLParameterFailed("IndexElementOffsetBytes");
+	ParameterFailed("IndexElementOffsetBytes");
 }
 //-----------------------------------------------------------------------
 IndexBuffer::IndexBuffer(IndexElementSize elementSize, const void *indices, size_t indexCount, BufferUsage bufferUsage)

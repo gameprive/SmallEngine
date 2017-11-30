@@ -27,5 +27,3 @@
 #include "Core/Debug/DebugNew.h"
 #include "Core/Debug/Log.h"
 #include "Core/Template/Noncopyable.h"
-
-#include "Core.h"

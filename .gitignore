@@ -17,3 +17,6 @@ lib
 /code/Core/t.h
 /code/Renderer/t.cpp
 /code/Renderer/t.h
+/bin/Test_d.exe
+/bin/Test_d.ilk
+/bin/Test_d.pdb

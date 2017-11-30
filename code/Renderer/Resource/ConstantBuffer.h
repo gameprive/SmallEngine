@@ -5,8 +5,8 @@
 class ConstantBuffer : public Buffer
 {
 public:
-	ConstantBuffer(size_t sizeInBytes, BufferUsage bufferUsage);
-	ConstantBuffer(const void *sourceData, size_t sizeInBytes, BufferUsage bufferUsage);
+	ConstantBuffer(size_t sizeInBytes);
+	ConstantBuffer(const void *sourceData, size_t sizeInBytes);
 
 	void Bind(uint8_t slotIndex);
 

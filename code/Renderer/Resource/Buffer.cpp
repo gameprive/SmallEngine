@@ -14,7 +14,7 @@ GLenum toGLBufferType(BufferType mode)
 	case BufferType::Storage: return GL_SHADER_STORAGE_BUFFER;
 	case BufferType::StreamOutput: return GL_TRANSFORM_FEEDBACK_BUFFER;
 	}
-	OpenGLParameterFailed("BufferType");
+	ParameterFailed("BufferType");
 }
 //-----------------------------------------------------------------------
 GLenum toGLBufferUsage(BufferUsage bufferUsage)
@@ -24,8 +24,9 @@ GLenum toGLBufferUsage(BufferUsage bufferUsage)
 	case BufferUsage::Dynamic: return GL_DYNAMIC_DRAW;
 	case BufferUsage::Immutable: return GL_STATIC_DRAW;
 	}
-	OpenGLParameterFailed("BufferUsage");
+	ParameterFailed("BufferUsage");
 }
+//-----------------------------------------------------------------------
 GLenum toGLBufferAccess(BufferAccess access)
 {
 	switch ( access )
@@ -34,9 +35,8 @@ GLenum toGLBufferAccess(BufferAccess access)
 	case BufferAccess::Write: return GL_WRITE_ONLY;
 	case BufferAccess::ReadWrite: return GL_READ_WRITE;
 	}
-	OpenGLParameterFailed("BufferAccess");
+	ParameterFailed("BufferAccess");
 }
-//-----------------------------------------------------------------------
 //-----------------------------------------------------------------------
 Buffer::Buffer(BufferType type, const void *sourceData, size_t sizeInBytes, BufferUsage bufferUsage)
 {

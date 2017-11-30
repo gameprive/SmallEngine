@@ -4,14 +4,14 @@
 #include "ConstantBuffer.h"
 
 //-----------------------------------------------------------------------
-ConstantBuffer::ConstantBuffer(size_t sizeInBytes, BufferUsage bufferUsage)
-	: Buffer(BufferType::Constant, nullptr, sizeInBytes, bufferUsage)
+ConstantBuffer::ConstantBuffer(size_t sizeInBytes)
+	: Buffer(BufferType::Constant, nullptr, sizeInBytes, BufferUsage::Dynamic)
 	, m_sizeInBytes(sizeInBytes)
 {
 }
 //-----------------------------------------------------------------------
-ConstantBuffer::ConstantBuffer(const void *sourceData, size_t sizeInBytes, BufferUsage bufferUsage)
-	: Buffer(BufferType::Constant, sourceData, sizeInBytes, bufferUsage)
+ConstantBuffer::ConstantBuffer(const void *sourceData, size_t sizeInBytes)
+	: Buffer(BufferType::Constant, sourceData, sizeInBytes, BufferUsage::Dynamic)
 	, m_sizeInBytes(sizeInBytes)
 {
 }

@@ -8,9 +8,6 @@
     <ClInclude Include="Resource\Buffer.h">
       <Filter>Renderer\Resource\Buffers</Filter>
     </ClInclude>
-    <ClInclude Include="Core.h">
-      <Filter>Renderer</Filter>
-    </ClInclude>
     <ClInclude Include="Resource\IndexBuffer.h">
       <Filter>Renderer\Resource\Buffers</Filter>
     </ClInclude>
