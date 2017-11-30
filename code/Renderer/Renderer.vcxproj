@@ -87,6 +87,8 @@
     <ClInclude Include="Resource\ConstantBuffer.h" />
     <ClInclude Include="Resource\IndexBuffer.h" />
     <ClInclude Include="Resource\VertexBuffer.h" />
+    <ClInclude Include="Resource\VertexFormat.h" />
+    <ClInclude Include="Format.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
@@ -94,6 +96,8 @@
     <ClCompile Include="Resource\ConstantBuffer.cpp" />
     <ClCompile Include="Resource\IndexBuffer.cpp" />
     <ClCompile Include="Resource\VertexBuffer.cpp" />
+    <ClCompile Include="Resource\VertexFormat.cpp" />
+    <ClCompile Include="Format.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

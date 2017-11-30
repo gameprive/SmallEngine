@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Renderer/Resource/VertexBuffer.h"
+#include "Renderer/Resource/VertexFormat.h"
 
 class Test
 {
@@ -14,5 +14,6 @@ public:
 
 	bool IsGameDone();
 
-	std::unique_ptr<VertexBuffer> buffer;
+	std::shared_ptr<VertexBuffer> buffer;
+	std::shared_ptr<VertexFormat> format;
 };

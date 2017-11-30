@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Test.h"
+#include "Renderer/Format.h"
 
 GLuint LoadShaders(const char * vertex_file_path, const char * fragment_file_path)
 {
@@ -113,15 +114,10 @@ Test::Test(Window *window)
 		{ 0.0f, 1.0f, 0.0f },
 	};
 
-	buffer = std::make_unique<VertexBuffer>(data, 3, sizeof(data), BufferUsage::Immutable);
-
-	GLuint VertexArrayID;
-	glGenVertexArrays(1, &VertexArrayID);
-	glBindVertexArray(VertexArrayID);
-
-	glEnableVertexAttribArray(0);
-	buffer->Bind();
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0,  (void*)0);
+	buffer = std::make_shared<VertexBuffer>(data, 3, sizeof(data), BufferUsage::Immutable);
+	format = std::make_shared<VertexFormat>();
+	format->PushAttribute({ VectorType::Float3 });
+	format->Build(buffer);
 
 	programID = LoadShaders("data/shaders/test.vert", "data/shaders/test.frag");
 }
@@ -136,6 +132,7 @@ void Test::Update(float dt)
 //-----------------------------------------------------------------------
 void Test::Render()
 {
+	format->Bind();
 	glUseProgram(programID);
 	glDrawArrays(GL_TRIANGLES, 0, buffer->GetVertexCount());
 }

@@ -14,6 +14,12 @@
     <ClInclude Include="Resource\ConstantBuffer.h">
       <Filter>Renderer\Resource\Buffers</Filter>
     </ClInclude>
+    <ClInclude Include="Resource\VertexFormat.h">
+      <Filter>Renderer\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="Format.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
@@ -28,6 +34,12 @@
     </ClCompile>
     <ClCompile Include="Resource\ConstantBuffer.cpp">
       <Filter>Renderer\Resource\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Resource\VertexFormat.cpp">
+      <Filter>Renderer\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="Format.cpp">
+      <Filter>Renderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
