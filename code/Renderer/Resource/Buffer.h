@@ -6,21 +6,36 @@ enum class BufferUsage : uint8_t
 	Dynamic,
 };
 
-enum class BufferBindMode
+enum class BufferType : uint8_t
 {
-	ConstantBuffer,
-	IndexBuffer,
-	VertexBuffer,
+	Vertex,
+	Index,
+	Constant,
+	Storage,
+	StreamOutput
 };
 
-class BufferGL4
+enum class BufferAccess : uint8_t
+{
+	Read,
+	Write,
+	ReadWrite
+};
+
+class Buffer : Noncopyable
 {
 public:
-	BufferGL4(BufferBindMode type, size_t sizeInBytes, BufferUsage bufferUsage, const void *sourceData);
-	~BufferGL4();
+	~Buffer();
 
-	void SetData(size_t offsetInBytes, size_t sizeInBytes, const void *source);
+	void SetData(const void *source, size_t sizeInBytes);
+	void SetData(size_t offsetInBytes, const void *source, size_t sizeInBytes);
 
-	GLuint bufferObject = 0;
-	GLenum type = 0;
+	void* Map(BufferAccess access);
+	bool Unmap();
+
+protected:
+	Buffer(BufferType type, const void *sourceData, size_t sizeInBytes, BufferUsage bufferUsage);
+
+	GLuint m_bufferObject = 0;
+	GLenum m_type = 0;
 };

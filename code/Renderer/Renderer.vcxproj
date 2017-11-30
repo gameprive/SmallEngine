@@ -83,12 +83,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Core.h" />
     <ClInclude Include="Resource\Buffer.h" />
+    <ClInclude Include="Resource\ConstantBuffer.h" />
+    <ClInclude Include="Resource\IndexBuffer.h" />
     <ClInclude Include="Resource\VertexBuffer.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Resource\Buffer.cpp" />
+    <ClCompile Include="Resource\ConstantBuffer.cpp" />
+    <ClCompile Include="Resource\IndexBuffer.cpp" />
     <ClCompile Include="Resource\VertexBuffer.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

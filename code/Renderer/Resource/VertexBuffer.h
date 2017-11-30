@@ -2,16 +2,16 @@
 
 #include "Buffer.h"
 
-class VertexBuffer : Noncopyable
+class VertexBuffer : public Buffer
 {
 public:
-	VertexBuffer(size_t vertexCount, size_t strideInBytes, BufferUsage bufferUsage, const void *vertices);
-
+	VertexBuffer(const void *vertices, size_t vertexCount, size_t strideInBytes, BufferUsage bufferUsage);
+	VertexBuffer(size_t vertexCount, size_t strideInBytes, BufferUsage bufferUsage);
+	
 	void Bind();
 
+	size_t GetVertexCount() const;
+
 private:
-	std::unique_ptr<BufferGL4> m_nativeVertexBuffer;
-	uint32_t m_vertexCount;
-	uint32_t m_strideInBytes;
-	BufferUsage m_bufferUsage;
+	uint32_t m_vertexCount = 0;
 };

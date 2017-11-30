@@ -1,24 +1,24 @@
 ﻿// This is an independent project of an individual developer. Dear PVS-Studio, please check it.
 // PVS-Studio Static Code Analyzer for C, C++ and C#: http://www.viva64.com
 #include "stdafx.h"
-#include "VertexBuffer.h"
+#include "ConstantBuffer.h"
 
 //-----------------------------------------------------------------------
-VertexBuffer::VertexBuffer(const void *vertices, size_t vertexCount, size_t strideInBytes, BufferUsage bufferUsage)
-	: Buffer(BufferType::Vertex, vertices, vertexCount * strideInBytes, bufferUsage)
-	, m_vertexCount(vertexCount)
+ConstantBuffer::ConstantBuffer(size_t sizeInBytes, BufferUsage bufferUsage)
+	: Buffer(BufferType::Constant, nullptr, sizeInBytes, bufferUsage)
+	, m_sizeInBytes(sizeInBytes)
 {
 }
 //-----------------------------------------------------------------------
-VertexBuffer::VertexBuffer(size_t vertexCount, size_t strideInBytes, BufferUsage bufferUsage)
-	: Buffer(BufferType::Vertex, nullptr, vertexCount * strideInBytes, bufferUsage)
-	, m_vertexCount(vertexCount)
+ConstantBuffer::ConstantBuffer(const void *sourceData, size_t sizeInBytes, BufferUsage bufferUsage)
+	: Buffer(BufferType::Constant, sourceData, sizeInBytes, bufferUsage)
+	, m_sizeInBytes(sizeInBytes)
 {
 }
 //-----------------------------------------------------------------------
-void VertexBuffer::Bind()
+void ConstantBuffer::Bind(uint8_t slotIndex)
 {
 	Assert(m_bufferObject);
-	glBindBuffer(m_type, m_bufferObject);
+	glBindBufferBase(GL_UNIFORM_BUFFER, slotIndex, m_bufferObject);
 }
 //-----------------------------------------------------------------------

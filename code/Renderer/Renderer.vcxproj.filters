@@ -3,19 +3,34 @@
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Resource\VertexBuffer.h">
-      <Filter>Renderer\Resource\Buffer</Filter>
+      <Filter>Renderer\Resource\Buffers</Filter>
     </ClInclude>
     <ClInclude Include="Resource\Buffer.h">
-      <Filter>Renderer\Resource\Buffer</Filter>
+      <Filter>Renderer\Resource\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Core.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource\IndexBuffer.h">
+      <Filter>Renderer\Resource\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource\ConstantBuffer.h">
+      <Filter>Renderer\Resource\Buffers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="Resource\VertexBuffer.cpp">
-      <Filter>Renderer\Resource\Buffer</Filter>
+      <Filter>Renderer\Resource\Buffers</Filter>
     </ClCompile>
     <ClCompile Include="Resource\Buffer.cpp">
-      <Filter>Renderer\Resource\Buffer</Filter>
+      <Filter>Renderer\Resource\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Resource\IndexBuffer.cpp">
+      <Filter>Renderer\Resource\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Resource\ConstantBuffer.cpp">
+      <Filter>Renderer\Resource\Buffers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -25,7 +40,7 @@
     <Filter Include="Renderer\Resource">
       <UniqueIdentifier>{b50bbfd1-e20a-4894-80eb-6880d9c57174}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Renderer\Resource\Buffer">
+    <Filter Include="Renderer\Resource\Buffers">
       <UniqueIdentifier>{0c8ba027-b4f6-465e-b83b-945187e273b6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>

@@ -4,15 +4,17 @@
 #include "Buffer.h"
 
 //-----------------------------------------------------------------------
-GLenum toGLBufferType(BufferBindMode mode)
+GLenum toGLBufferType(BufferType mode)
 {
 	switch ( mode )
 	{
-	case BufferBindMode::ConstantBuffer: return GL_UNIFORM_BUFFER;
-	case BufferBindMode::IndexBuffer: return GL_ELEMENT_ARRAY_BUFFER;
-	case BufferBindMode::VertexBuffer: return GL_ARRAY_BUFFER;
+	case BufferType::Vertex: return GL_ARRAY_BUFFER;
+	case BufferType::Index: return GL_ELEMENT_ARRAY_BUFFER;
+	case BufferType::Constant: return GL_UNIFORM_BUFFER;
+	case BufferType::Storage: return GL_SHADER_STORAGE_BUFFER;
+	case BufferType::StreamOutput: return GL_TRANSFORM_FEEDBACK_BUFFER;
 	}
-	return GL_ARRAY_BUFFER;
+	OpenGLParameterFailed("BufferType");
 }
 //-----------------------------------------------------------------------
 GLenum toGLBufferUsage(BufferUsage bufferUsage)
@@ -22,48 +24,71 @@ GLenum toGLBufferUsage(BufferUsage bufferUsage)
 	case BufferUsage::Dynamic: return GL_DYNAMIC_DRAW;
 	case BufferUsage::Immutable: return GL_STATIC_DRAW;
 	}
-	return GL_STATIC_DRAW;
+	OpenGLParameterFailed("BufferUsage");
 }
-//-----------------------------------------------------------------------
-GLenum toGLBufferBind(BufferBindMode mode)
+GLenum toGLBufferAccess(BufferAccess access)
 {
-	switch ( mode )
+	switch ( access )
 	{
-	case BufferBindMode::ConstantBuffer: return GL_UNIFORM_BUFFER_BINDING;
-	case BufferBindMode::IndexBuffer: return GL_ELEMENT_ARRAY_BUFFER_BINDING;
-	case BufferBindMode::VertexBuffer: return GL_ARRAY_BUFFER_BINDING;
+	case BufferAccess::Read: return GL_READ_ONLY;
+	case BufferAccess::Write: return GL_WRITE_ONLY;
+	case BufferAccess::ReadWrite: return GL_READ_WRITE;
 	}
-	return GL_ARRAY_BUFFER_BINDING;
+	OpenGLParameterFailed("BufferAccess");
 }
 //-----------------------------------------------------------------------
-BufferGL4::BufferGL4(BufferBindMode setType, size_t sizeInBytes, BufferUsage bufferUsage, const void *sourceData)
+//-----------------------------------------------------------------------
+Buffer::Buffer(BufferType type, const void *sourceData, size_t sizeInBytes, BufferUsage bufferUsage)
 {
 	Assert(sizeInBytes > 0);
 	if ( !sourceData ) bufferUsage = BufferUsage::Dynamic;
-	type = toGLBufferType(setType);
+	m_type = toGLBufferType(type);
 
-	glGenBuffers(1, &bufferObject);
-	Assert(bufferObject);
-	glBindBuffer(type, bufferObject);
-	glBufferData(type, sizeInBytes, sourceData, toGLBufferUsage(bufferUsage));
-	glBindBuffer(type, 0);
+	glGenBuffers(1, &m_bufferObject);
+	Assert(m_bufferObject);
+	Assert(sizeInBytes > 0);
+	glBindBuffer(m_type, m_bufferObject);
+	glBufferData(m_type, sizeInBytes, sourceData, toGLBufferUsage(bufferUsage));
+	glBindBuffer(m_type, 0);
 }
 //-----------------------------------------------------------------------
-BufferGL4::~BufferGL4()
+Buffer::~Buffer()
 {
-	if ( bufferObject )
+	if ( m_bufferObject )
 	{
-		glBindBuffer(type, 0);
-		glDeleteBuffers(1, &bufferObject);
+		glBindBuffer(m_type, 0);
+		glDeleteBuffers(1, &m_bufferObject);
 	}
 }
 //-----------------------------------------------------------------------
-void BufferGL4::SetData(size_t offsetInBytes, size_t sizeInBytes, const void *source)
+void Buffer::SetData(const void *source, size_t sizeInBytes)
 {
 	Assert(source != nullptr);
 	Assert(sizeInBytes > 0);
-	glBindBuffer(type, bufferObject);
-	glBufferSubData(type, offsetInBytes, sizeInBytes, source);
-	glBindBuffer(type, 0);
+	glBindBuffer(m_type, m_bufferObject);
+	glBufferSubData(m_type, 0, sizeInBytes, source);
+	glBindBuffer(m_type, 0);
+}
+//-----------------------------------------------------------------------
+void Buffer::SetData(size_t offsetInBytes, const void *source, size_t sizeInBytes)
+{
+	Assert(source != nullptr);
+	Assert(sizeInBytes > 0);
+	glBindBuffer(m_type, m_bufferObject);
+	glBufferSubData(m_type, offsetInBytes, sizeInBytes, source);
+	glBindBuffer(m_type, 0);
+}
+//-----------------------------------------------------------------------
+void* Buffer::Map(BufferAccess access)
+{
+	glBindBuffer(m_type, m_bufferObject);
+	return glMapBuffer(m_type, toGLBufferAccess(access));
+}
+//-----------------------------------------------------------------------
+bool Buffer::Unmap()
+{
+	const bool ret = (glUnmapBuffer(m_type) == GL_TRUE);
+	glBindBuffer(m_type, 0);
+	return ret;
 }
 //-----------------------------------------------------------------------
