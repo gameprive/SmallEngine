@@ -41,9 +41,9 @@ VertexFormat::~VertexFormat()
 	glDeleteVertexArrays(1, &m_vao);
 }
 //-----------------------------------------------------------------------
-void VertexFormat::PushAttribute(const VertexAttribute &attrib)
+void VertexFormat::PushAttribute(const VectorType vectorType, uint32_t instanceDivisor)
 {
-	m_attributes.push_back(attrib);
+	m_attributes.push_back( {vectorType, instanceDivisor} );
 	auto &attr = m_attributes.back();
 
 	if ( m_attributes.size() > 1 )
@@ -75,14 +75,14 @@ void VertexFormat::buildVertexAttribute(const VertexAttribute &attribute, uint32
 {
 	glEnableVertexAttribArray(index);
 
-	if ( attribute.instanceDivisor > 0 ) glVertexAttribDivisor(index, attribute.instanceDivisor);
+	if ( attribute.instanceDivisor > 0 ) 
+		glVertexAttribDivisor(index, attribute.instanceDivisor);
 
 	DataType dataType = DataType::Float;
 	uint8_t components = 0;
 	VectorTypeFormat(attribute.vectorType, dataType, components);
 
-	const GLsizeiptr offsetPtrSized = attribute.offset;
-	
+	const GLsizeiptr offsetPtrSized = attribute.offset;	
 	if ( dataType != DataType::Float && dataType != DataType::Double )
 		glVertexAttribIPointer(index, components, toGLDataType(dataType), m_stride, reinterpret_cast<const void*>(offsetPtrSized));
 	else

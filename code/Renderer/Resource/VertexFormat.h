@@ -11,7 +11,6 @@ struct VertexAttribute
 		
 	VectorType vectorType = VectorType::Float4;
 	uint32_t instanceDivisor = 0;
-
 	uint32_t offset = 0;				
 };
 
@@ -21,7 +20,8 @@ public:
 	VertexFormat();
 	~VertexFormat();
 
-	void PushAttribute(const VertexAttribute &attrib);
+	void PushAttribute(const VectorType vectorType, uint32_t instanceDivisor = 0);
+	
 	void Build(std::shared_ptr<VertexBuffer> vb);
 
 	void Bind();

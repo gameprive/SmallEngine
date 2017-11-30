@@ -1,3 +1,3 @@
 ﻿#pragma once
 
-#define FINDMEMORYLEAK 1
+#define FINDMEMORYLEAK 0

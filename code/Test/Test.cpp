@@ -116,7 +116,7 @@ Test::Test(Window *window)
 
 	buffer = std::make_shared<VertexBuffer>(data, 3, sizeof(data), BufferUsage::Immutable);
 	format = std::make_shared<VertexFormat>();
-	format->PushAttribute({ VectorType::Float3 });
+	format->PushAttribute(VectorType::Float3);
 	format->Build(buffer);
 
 	programID = LoadShaders("data/shaders/test.vert", "data/shaders/test.frag");
