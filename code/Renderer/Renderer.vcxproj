@@ -85,6 +85,7 @@
   <ItemGroup>
     <ClInclude Include="Resource\Buffer.h" />
     <ClInclude Include="Resource\ConstantBuffer.h" />
+    <ClInclude Include="Resource\Image.h" />
     <ClInclude Include="Resource\IndexBuffer.h" />
     <ClInclude Include="Resource\ShaderProgram.h" />
     <ClInclude Include="Resource\Shader.h" />
@@ -96,6 +97,7 @@
   <ItemGroup>
     <ClCompile Include="Resource\Buffer.cpp" />
     <ClCompile Include="Resource\ConstantBuffer.cpp" />
+    <ClCompile Include="Resource\Image.cpp" />
     <ClCompile Include="Resource\IndexBuffer.cpp" />
     <ClCompile Include="Resource\ShaderProgram.cpp" />
     <ClCompile Include="Resource\Shader.cpp" />
