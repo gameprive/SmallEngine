@@ -16,10 +16,8 @@ Test::Test(Window *window)
 	format = std::make_shared<VertexFormat>();
 	format->PushAttribute(VectorType::Float3);
 	format->Build(buffer);
-
-	auto vs = std::make_shared<Shader>(ShaderType::Vertex, "data/shaders/test.vert");
-	auto ps = std::make_shared<Shader>(ShaderType::Fragment, "data/shaders/test.frag");	
-	shaders = std::make_shared<ShaderProgram>(std::vector<std::shared_ptr<Shader>>{ vs, ps });
+			
+	shaders = std::make_shared<ShaderProgram>("data/shaders/test.vert", "data/shaders/test.frag");
 }
 //-----------------------------------------------------------------------
 Test::~Test()

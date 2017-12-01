@@ -33,15 +33,14 @@ void printShaderLogInfo(GLuint obj)
 Shader::Shader(ShaderType type, const std::string &path)
 {	
 	std::vector<uint8_t> data;
-	readFromFile(path, data);
-	if ( !data.empty())
+	if ( FileSystem::ReadFile(path, data) && !data.empty() )
 	{
 		m_type = toGLShaderType(type);
 		create(data);
 		checkCompilation(m_shader);
 	}
 	else
-		Log(LevelLog::Error) << "No shader code found on file " << path;
+		Log(LevelLog::Error) << "Cannot open shader file: " << path;
 }
 //-----------------------------------------------------------------------
 Shader::~Shader()
@@ -49,18 +48,12 @@ Shader::~Shader()
 	glDeleteShader(m_shader);
 }
 //-----------------------------------------------------------------------
-void Shader::readFromFile(const std::string &path, std::vector<uint8_t> &data)
-{	
-	if ( !FileSystem::ReadFile(path, data) )
-		Log(LevelLog::Error) << "Cannot open shader file: " << path;
-}
-//-----------------------------------------------------------------------
 void Shader::create(const std::vector<uint8_t> &data)
 {
-	Assert(data.size() < std::numeric_limits<int>::max());
-	
 	const GLchar *shaderSource[] = { reinterpret_cast<const GLchar*>(data.data()) };
+
 	const GLint sourceLength = static_cast<GLint>(data.size());
+	Assert(sourceLength < std::numeric_limits<GLint>::max());
 
 	m_shader = glCreateShader(m_type);
 	glShaderSource(m_shader, 1, shaderSource, &sourceLength);
@@ -69,9 +62,9 @@ void Shader::create(const std::vector<uint8_t> &data)
 //-----------------------------------------------------------------------
 void Shader::checkCompilation(const GLuint shader) const
 {
-	GLint result;
-	glGetShaderiv(shader, GL_COMPILE_STATUS, &result);
-	if ( !result )
+	GLint compileSuccess;
+	glGetShaderiv(shader, GL_COMPILE_STATUS, &compileSuccess);
+	if ( compileSuccess == GL_FALSE )
 	{
 		Log(LevelLog::Error) << "Shaders could not compile shader.";
 		printShaderLogInfo(shader);

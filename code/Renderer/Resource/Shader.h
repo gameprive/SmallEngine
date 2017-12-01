@@ -17,7 +17,6 @@ public:
 	~Shader();
 	
 private:
-	void readFromFile(const std::string &path, std::vector<uint8_t> &data);
 	void create(const std::vector<uint8_t> &data);
 	void checkCompilation(const GLuint shader) const;
 

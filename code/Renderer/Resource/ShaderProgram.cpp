@@ -6,16 +6,17 @@
 //-----------------------------------------------------------------------
 ShaderProgram::ShaderProgram(const std::vector<std::shared_ptr<Shader>> &shaders)
 {
-	m_program = glCreateProgram();
-	
-	for ( auto &s : shaders )
-		glAttachShader(m_program, s->m_shader);
-	
-	glLinkProgram(m_program);
-	checkLinking(m_program);
-	
-	for ( auto &s : shaders )
-		glDetachShader(m_program, s->m_shader);
+	init(shaders);
+}
+//-----------------------------------------------------------------------
+ShaderProgram::ShaderProgram(const std::string &vsPath, const std::string &fsPath)
+{
+	const std::vector<std::shared_ptr<Shader>> shaders =
+	{
+		std::make_shared<Shader>(ShaderType::Vertex, vsPath),
+		std::make_shared<Shader>(ShaderType::Fragment, fsPath),
+	};
+	init(shaders);
 }
 //-----------------------------------------------------------------------
 ShaderProgram::~ShaderProgram()
@@ -26,6 +27,20 @@ ShaderProgram::~ShaderProgram()
 void ShaderProgram::Bind() const
 {
 	glUseProgram(m_program);
+}
+//-----------------------------------------------------------------------
+void ShaderProgram::init(const std::vector<std::shared_ptr<Shader>> &shaders)
+{
+	m_program = glCreateProgram();
+
+	for ( auto &s : shaders )
+		glAttachShader(m_program, s->m_shader);
+
+	glLinkProgram(m_program);
+	checkLinking(m_program);
+
+	for ( auto &s : shaders )
+		glDetachShader(m_program, s->m_shader);
 }
 //-----------------------------------------------------------------------
 void ShaderProgram::checkLinking(const GLuint program) const
