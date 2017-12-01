@@ -30,7 +30,7 @@ void App::Start()
 //-----------------------------------------------------------------------
 void App::prepareOpenGL()
 {
-	glClearColor(0.1f, 0.6f, 1.0f, 1.0f);
+	glClearColor(0.3f, 0.8f, 1.0f, 1.0f);
 }
 //-----------------------------------------------------------------------
 bool App::frame()
@@ -46,13 +46,13 @@ bool App::frame()
 		m_renderAccum -= TARGET_FRAME_INTERVAL;
 		m_smoothFrameTime = (m_smoothFrameTime * FRAME_TIME_ALPHA) + (m_frameTime * (1.0f - FRAME_TIME_ALPHA));
 		m_frameTime = 0.0f;
-
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
+				
 		m_test->Update(m_smoothFrameTime);
-		m_test->Render();
-		m_window.Swap();
 	}
+
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	m_test->Render();
+	m_window.Swap();
 
 	return !m_window.IsQuit();
 }

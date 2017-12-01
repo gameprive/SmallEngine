@@ -15,7 +15,8 @@ public:
 
 	bool IsGameDone();
 	
-	std::shared_ptr<VertexBuffer> buffer;
+	std::shared_ptr<VertexBuffer> vertexbuffer;
+	std::shared_ptr<VertexBuffer> colorbuffer;
 	std::shared_ptr<VertexFormat> format;
 
 	std::shared_ptr<ShaderProgram> shaders;

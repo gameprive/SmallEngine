@@ -62,7 +62,23 @@ void VertexFormat::Build(std::shared_ptr<VertexBuffer> vb)
 	glBindVertexArray(m_vao);
 	vb->Bind();
 	for ( size_t i = 0; i < m_attributes.size(); i++)
-		buildVertexAttribute(m_attributes[i], i);
+		buildVertexAttribute(m_attributes[i], m_attributes[i].offset, m_stride, i);
+	glBindVertexArray(0);
+}
+//-----------------------------------------------------------------------
+void VertexFormat::Build(const std::vector<std::shared_ptr<VertexBuffer>> &vbs)
+{
+	Assert(vbs.size() == m_attributes.size());
+
+	glBindVertexArray(m_vao);
+	size_t i = 0;
+	for ( const auto &it : vbs )
+	{
+		it->Bind();
+		buildVertexAttribute(m_attributes[i], 0, 0, i);
+		i++;
+	}
+
 	glBindVertexArray(0);
 }
 //-----------------------------------------------------------------------
@@ -71,7 +87,7 @@ void VertexFormat::Bind()
 	glBindVertexArray(m_vao);
 }
 //-----------------------------------------------------------------------
-void VertexFormat::buildVertexAttribute(const VertexAttribute &attribute, uint32_t index)
+void VertexFormat::buildVertexAttribute(const VertexAttribute &attribute, GLsizeiptr offsetPtrSized, uint32_t stride, uint32_t index)
 {
 	glEnableVertexAttribArray(index);
 
@@ -82,10 +98,9 @@ void VertexFormat::buildVertexAttribute(const VertexAttribute &attribute, uint32
 	uint8_t components = 0;
 	VectorTypeFormat(attribute.vectorType, dataType, components);
 
-	const GLsizeiptr offsetPtrSized = attribute.offset;	
 	if ( dataType != DataType::Float && dataType != DataType::Double )
-		glVertexAttribIPointer(index, components, toGLDataType(dataType), m_stride, reinterpret_cast<const void*>(offsetPtrSized));
+		glVertexAttribIPointer(index, components, toGLDataType(dataType), stride, reinterpret_cast<const void*>(offsetPtrSized));
 	else
-		glVertexAttribPointer(index, components, toGLDataType(dataType), GL_FALSE, m_stride, reinterpret_cast<const void*>(offsetPtrSized));
+		glVertexAttribPointer(index, components, toGLDataType(dataType), GL_FALSE, stride, reinterpret_cast<const void*>(offsetPtrSized));
 }
 //-----------------------------------------------------------------------

@@ -23,11 +23,12 @@ public:
 	void PushAttribute(const VectorType vectorType, uint32_t instanceDivisor = 0);
 	
 	void Build(std::shared_ptr<VertexBuffer> vb);
+	void Build(const std::vector<std::shared_ptr<VertexBuffer>> &vbs);
 
 	void Bind();
 
 private:
-	void buildVertexAttribute(const VertexAttribute &attribute, uint32_t index);
+	void buildVertexAttribute(const VertexAttribute &attribute, GLsizeiptr offsetPtrSized, uint32_t stride, uint32_t index);
 
 	std::vector<VertexAttribute> m_attributes;
 	uint32_t m_stride = 0;

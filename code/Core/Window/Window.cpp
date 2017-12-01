@@ -113,6 +113,9 @@ bool Window::Init(const WindowConfig &config)
 	glfwMakeContextCurrent(m_window);
 	glfwShowWindow(m_window);
 	
+	TODO("glfwSetInputMode????");
+	glfwSetInputMode(m_window, GLFW_STICKY_KEYS, GL_TRUE);
+	
 	SetPostCreateCallback(m_window);
 	
 	glfwSwapInterval(m_config.vsync ? 1 : 0);
