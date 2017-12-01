@@ -16,6 +16,7 @@ private:
 	void resize(int width, int height);
 	
 	Window m_window;
+	RenderDevice m_renderDevice;
 	
 	float m_dt = 0.0f;
 	float m_currentTime;

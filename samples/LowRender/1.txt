@@ -33,7 +33,7 @@ Init()
 	shaders = std::make_shared<ShaderProgram>("data/shaders/test.vert", "data/shaders/test.frag");
 	
 	
-Run()
+Frame()
 ==>
 	format->Bind();
 	shaders->Bind();

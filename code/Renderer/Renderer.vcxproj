@@ -87,20 +87,27 @@
     <ClInclude Include="Resource\ConstantBuffer.h" />
     <ClInclude Include="Resource\Image.h" />
     <ClInclude Include="Resource\IndexBuffer.h" />
+    <ClInclude Include="Resource\Texture.h" />
+    <ClInclude Include="Resource\SamplerState.h" />
     <ClInclude Include="Resource\ShaderProgram.h" />
     <ClInclude Include="Resource\Shader.h" />
+    <ClInclude Include="Resource\Texture2D.h" />
     <ClInclude Include="Resource\VertexBuffer.h" />
     <ClInclude Include="Resource\VertexFormat.h" />
     <ClInclude Include="Format.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="System\RenderDevice.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Resource\Buffer.cpp" />
     <ClCompile Include="Resource\ConstantBuffer.cpp" />
     <ClCompile Include="Resource\Image.cpp" />
     <ClCompile Include="Resource\IndexBuffer.cpp" />
+    <ClCompile Include="Resource\Texture.cpp" />
+    <ClCompile Include="Resource\SamplerState.cpp" />
     <ClCompile Include="Resource\ShaderProgram.cpp" />
     <ClCompile Include="Resource\Shader.cpp" />
+    <ClCompile Include="Resource\Texture2D.cpp" />
     <ClCompile Include="Resource\VertexBuffer.cpp" />
     <ClCompile Include="Resource\VertexFormat.cpp" />
     <ClCompile Include="Format.cpp" />
@@ -108,6 +115,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="System\RenderDevice.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

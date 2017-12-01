@@ -29,6 +29,18 @@
     <ClInclude Include="Resource\Image.h">
       <Filter>Renderer\Resource</Filter>
     </ClInclude>
+    <ClInclude Include="Resource\SamplerState.h">
+      <Filter>Renderer\Resource\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource\Texture.h">
+      <Filter>Renderer\Resource\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource\Texture2D.h">
+      <Filter>Renderer\Resource\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="System\RenderDevice.h">
+      <Filter>Renderer\System</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
@@ -59,6 +71,18 @@
     <ClCompile Include="Resource\Image.cpp">
       <Filter>Renderer\Resource</Filter>
     </ClCompile>
+    <ClCompile Include="Resource\SamplerState.cpp">
+      <Filter>Renderer\Resource\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Resource\Texture.cpp">
+      <Filter>Renderer\Resource\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Resource\Texture2D.cpp">
+      <Filter>Renderer\Resource\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="System\RenderDevice.cpp">
+      <Filter>Renderer\System</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Renderer">
@@ -72,6 +96,15 @@
     </Filter>
     <Filter Include="Renderer\Resource\Shaders">
       <UniqueIdentifier>{a4a18a6f-cb98-46f2-ac76-9108846bbebe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\Resource\State">
+      <UniqueIdentifier>{cfa74306-7f0d-47d2-aedc-c5ac634d5c4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\Resource\Textures">
+      <UniqueIdentifier>{22ba5b8b-e432-4e5d-9f4e-115d0aa6ec1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\System">
+      <UniqueIdentifier>{1cc497b3-352e-4ce6-80a7-2952bc616065}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -60,10 +60,10 @@ void InitGLDebugger()
 		glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
 		glDebugMessageCallback(openglErrorCallback, NULL);
 		glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0, &unusedIds, true);
-		Log(LevelLog::Info) << "-- GL callback debugging is enabled";
+		Log(LevelLog::Info) << "GL callback debugging is enabled";
 	}
 	else
-		Log(LevelLog::Info) << "-- GL callback debugging is not available";
+		Log(LevelLog::Info) << "GL callback debugging is not available";
 }
 //-----------------------------------------------------------------------
 bool Window::Init(const WindowConfig &config)
@@ -142,38 +142,31 @@ bool Window::Init(const WindowConfig &config)
 	glViewport(0, 0, windowWidth, windowHeight);
 
 	//==========================================================
-	//  Print OpenGL Info
+	//  Set SRGB and Multisample
 	//==========================================================
 	{
-		const auto glVersion = reinterpret_cast<const char*>(glGetString(GL_VERSION));
-		const auto glslVersion = reinterpret_cast<const char*>(glGetString(GL_SHADING_LANGUAGE_VERSION));
-		const auto vendor = reinterpret_cast<const char*>(glGetString(GL_VENDOR));
-		const auto renderer = reinterpret_cast<const char*>(glGetString(GL_RENDERER));
 		Log infoLog(LevelLog::Info);
-		infoLog << "GL version:   " << glVersion;
-		infoLog << "\nGL vendor:    " << vendor;
-		infoLog << "\nGL renderer:  " << renderer;
-		infoLog << "\nGLSL version: " << glslVersion;
-
 		int res;
 		//glBindFramebuffer(GL_FRAMEBUFFER, 0);
 		glGetFramebufferAttachmentParameteriv(GL_FRAMEBUFFER, GL_BACK_LEFT, GL_FRAMEBUFFER_ATTACHMENT_COLOR_ENCODING, &res);
 		if ( res == GL_LINEAR || !m_config.srgb )
-			infoLog << "\nLinear RGB Default Framebuffer.";
+			infoLog << ":\n\tLinear RGB Default Framebuffer.";
 		else if ( res == GL_SRGB )
 		{
-			infoLog << "\nsRGB Default Framebuffer.";
+			infoLog << ":\n\tsRGB Default Framebuffer.";
 			glEnable(GL_FRAMEBUFFER_SRGB);
 		}
 
 		glGetIntegerv(GL_SAMPLES, &res);
 		if ( res > 0 )
 		{
-			infoLog << "\nMultisampled Default Framebuffer. Samples: " << res;
+			infoLog << "\n\tMultisampled Default Framebuffer. Samples: " << res;
 			glEnable(GL_MULTISAMPLE);
 		}
 		else
-			infoLog << "\nNon-Multisampled Default Framebuffer.";
+			infoLog << "\n\tNon-Multisampled Default Framebuffer.";
+
+		infoLog << "\n";
 	}
 				
 	return true;
