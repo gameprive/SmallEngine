@@ -22,11 +22,11 @@ void setPixelDataTexture2DCompressed(uint32_t pixelWidth, uint32_t pixelHeight, 
 	for ( int mipmapLevel = 0; mipmapLevel < levelCount; mipmapLevel++ )
 	{
 		const auto strideBytesPerMipmap = mipmapImageDataBytes(mipMapWidth, mipMapHeight, bytesPerBlock);
+		const uint8_t *data = reinterpret_cast<const uint8_t*>(pixelData)+startOffset;
 
-		glCompressedTexSubImage2D(GL_TEXTURE_2D, mipmapLevel, 0, 0, mipMapWidth, mipMapHeight, internalFormat, strideBytesPerMipmap, reinterpret_cast<const uint8_t*>(pixelData)+startOffset);
+		glCompressedTexSubImage2D(GL_TEXTURE_2D, mipmapLevel, 0, 0, mipMapWidth, mipMapHeight, internalFormat, strideBytesPerMipmap, data);
 
 		startOffset += strideBytesPerMipmap;
-
 		mipMapWidth = std::max((mipMapWidth >> 1), 1);
 		mipMapHeight = std::max((mipMapHeight >> 1), 1);
 	}
@@ -44,11 +44,11 @@ void setPixelDataTexture2D(uint32_t pixelWidth, uint32_t pixelHeight, int32_t le
 	for ( int mipmapLevel = 0; mipmapLevel < levelCount; mipmapLevel++ )
 	{
 		const auto strideBytesPerMipmap = mipmapImageDataBytes(mipMapWidth, mipMapHeight, bytesPerBlock);
+		const uint8_t *data = reinterpret_cast<const uint8_t*>(pixelData)+startOffset;
 
-		glTexSubImage2D(GL_TEXTURE_2D, mipmapLevel, 0, 0, mipMapWidth, mipMapHeight, formatComponents, pixelFundamentalType, reinterpret_cast<const uint8_t*>(pixelData)+startOffset);
+		glTexSubImage2D(GL_TEXTURE_2D, mipmapLevel, 0, 0, mipMapWidth, mipMapHeight, formatComponents, pixelFundamentalType, data);
 
-		startOffset += strideBytesPerMipmap;
-
+		startOffset += strideBytesPerMipmap;		
 		mipMapWidth = std::max((mipMapWidth >> 1), 1);
 		mipMapHeight = std::max((mipMapHeight >> 1), 1);
 	}

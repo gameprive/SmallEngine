@@ -52,8 +52,8 @@ void Shader::create(const std::vector<uint8_t> &data)
 {
 	const GLchar *shaderSource[] = { reinterpret_cast<const GLchar*>(data.data()) };
 
-	const GLint sourceLength = static_cast<GLint>(data.size());
-	Assert(sourceLength < std::numeric_limits<GLint>::max());
+	const int sourceLength = static_cast<int>(data.size());
+	Assert(sourceLength < std::numeric_limits<int>::max());
 
 	m_shader = glCreateShader(m_type);
 	glShaderSource(m_shader, 1, shaderSource, &sourceLength);

@@ -5,7 +5,7 @@
 #include "Core/Base/MinWindows.h"
 
 #pragma warning( push )
-//#pragma warning( disable : 0 )
+#pragma warning( disable : 4201 )
 
 #include <cassert>
 #include <cstdint>

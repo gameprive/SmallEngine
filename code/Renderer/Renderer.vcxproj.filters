@@ -41,6 +41,15 @@
     <ClInclude Include="System\RenderDevice.h">
       <Filter>Renderer\System</Filter>
     </ClInclude>
+    <ClInclude Include="Resource\BlendState.h">
+      <Filter>Renderer\Resource\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource\DepthStencilState.h">
+      <Filter>Renderer\Resource\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource\RasterizerState.h">
+      <Filter>Renderer\Resource\State</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
@@ -82,6 +91,15 @@
     </ClCompile>
     <ClCompile Include="System\RenderDevice.cpp">
       <Filter>Renderer\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Resource\BlendState.cpp">
+      <Filter>Renderer\Resource\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Resource\DepthStencilState.cpp">
+      <Filter>Renderer\Resource\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Resource\RasterizerState.cpp">
+      <Filter>Renderer\Resource\State</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

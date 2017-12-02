@@ -157,7 +157,8 @@ SamplerState::SamplerState(const SamplerDescription &desc)
 		Assert(1 <= desc.MaxAnisotropy);
 		uint32_t deviceMaxAnisotropy = RenderDevice::Get().GetMaxAnisotropy();
 		deviceMaxAnisotropy = std::min(deviceMaxAnisotropy, desc.MaxAnisotropy);
-		glSamplerParameterf(m_samplerObject, GL_TEXTURE_MAX_ANISOTROPY_EXT, deviceMaxAnisotropy);
+		glSamplerParameterf(m_samplerObject, GL_TEXTURE_MAX_ANISOTROPY_EXT, deviceMaxAnisotropy); TODO("glSamplerParameteri!");
+		
 	}
 	
 	glSamplerParameterf(m_samplerObject, GL_TEXTURE_MIN_LOD, desc.MinMipLevel);
@@ -174,8 +175,7 @@ SamplerState::~SamplerState()
 //-----------------------------------------------------------------------
 void SamplerState::Bind(uint32_t index)
 {
-	int i = GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS;
-	Assert(index <= GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS);
+	Assert(index <= 19);
 	Assert(m_samplerObject);
 	glBindSampler(index, m_samplerObject);
 }
