@@ -1,23 +1,5 @@
 ﻿#pragma once
 
-//enum class DataFormat : uint8_t
-//{
-//	A8_UNorm,
-//	R8_UNorm,
-//	R8G8_UNorm,
-//	R8G8B8A8_UNorm,
-//	R10G10B10A2_UNorm,
-//	R11G11B10_Float,
-//	B8G8R8A8_UNorm,
-//	R32_Float,
-//	R32G32B32A32_Float,
-//	R16G16_Float,
-//	R16G16B16A16_Float,
-//	BlockComp1_UNorm,
-//	BlockComp2_UNorm,
-//	BlockComp3_UNorm,
-//};
-
 enum class DataFormat : uint8_t
 {
 	BC1,
@@ -139,10 +121,8 @@ inline GLenum ToInternalType(DataFormat format)
 	case DataFormat::RG32U:
 	case DataFormat::RGB32U:
 	case DataFormat::RGBA32U: return GL_UNSIGNED_INT;
-	
-	default: return GL_UNSIGNED_BYTE;
 	};
-	return 0;
+	return GL_UNSIGNED_BYTE;
 }
 
 inline GLenum toGLMapDataFormat(DataFormat format)
@@ -185,7 +165,36 @@ inline GLenum toGLMapDataFormat(DataFormat format)
 	case DataFormat::D24S8: return GL_DEPTH24_STENCIL8;
 	case DataFormat::D32F: return GL_DEPTH_COMPONENT32F;
 	};
-	return GL_R8;
+	ParameterFailed("MapDataFormat");
+}
+
+inline GLsizei ToInternalStride(DataFormat format)
+{
+	switch ( format )
+	{
+	case DataFormat::R8: return 1;
+	case DataFormat::R16: return 2;
+	case DataFormat::R16F: return 2;
+	case DataFormat::R32I: return 4;
+	case DataFormat::R32U: return 4;
+	case DataFormat::R32F: return 4;
+	case DataFormat::RG8: return 2;
+	case DataFormat::RG16: return 4;
+	case DataFormat::RG16F: return 4;
+	case DataFormat::RG32I: return 8;
+	case DataFormat::RG32U: return 8;
+	case DataFormat::RG32F: return 8;
+	case DataFormat::RGB32I: return 12;
+	case DataFormat::RGB32U: return 12;
+	case DataFormat::RGB32F: return 12;
+	case DataFormat::RGBA8: return 4;
+	case DataFormat::RGBA16: return 8;
+	case DataFormat::RGBA16F: return 8;
+	case DataFormat::RGBA32I: return 16;
+	case DataFormat::RGBA32U: return 16;
+	case DataFormat::RGBA32F: return 16; 
+	}
+	ParameterFailed("InternalStride");
 }
 
 inline uint32_t ComputeMipmapLevelCount(uint32_t width, uint32_t height)
