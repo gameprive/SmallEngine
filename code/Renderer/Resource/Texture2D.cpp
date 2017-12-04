@@ -77,6 +77,15 @@ Texture2D::Texture2D(uint32_t pixelWidth, uint32_t pixelHeight, bool mipMap, Dat
 	init();
 }
 //-----------------------------------------------------------------------
+Texture2D::Texture2D(uint32_t pixelWidth, uint32_t pixelHeight, int32_t levelCount, DataFormat format)
+	: m_pixelWidth(pixelWidth)
+	, m_pixelHeight(pixelHeight)
+	, m_levelCount(levelCount)
+	, m_format(format)
+{
+	init();
+}
+//-----------------------------------------------------------------------
 Texture2D::~Texture2D()
 {
 	if ( m_textureObject ) 

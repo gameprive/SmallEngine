@@ -36,15 +36,15 @@ enum class DataFormat : uint8_t
 	RGBA32F,
 	R11G11B10F,
 
-	Depth,
+	//Depth,
 
-	D16,
-	D24S8,
-	D32F
+	//D16,
+	//D24S8,
+	//D32F
 };
 
 inline bool IsCompressedFormat(DataFormat format) { return format < DataFormat::Compressed; }
-inline bool IsDepthFormat(DataFormat format) { return format > DataFormat::Depth; }
+//inline bool IsDepthFormat(DataFormat format) { return format > DataFormat::Depth; }
 
 inline GLenum ToInternalFormat(DataFormat format)
 {
@@ -89,10 +89,10 @@ inline GLenum ToInternalFormat(DataFormat format)
 	
 	case DataFormat::R11G11B10F: return GL_RGB;
 	
-	case DataFormat::D16:
-	case DataFormat::D32F: return GL_DEPTH_COMPONENT;
-	
-	case DataFormat::D24S8: return GL_DEPTH24_STENCIL8;
+	//case DataFormat::D16:
+	//case DataFormat::D32F: return GL_DEPTH_COMPONENT;
+	//
+	//case DataFormat::D24S8: return GL_DEPTH24_STENCIL8;
 	};
 	ParameterFailed("GetInternalFormat");
 }
@@ -110,7 +110,7 @@ inline GLenum ToInternalType(DataFormat format)
 	case DataFormat::RGBA16F:
 	case DataFormat::RGBA32F:
 	case DataFormat::R11G11B10F:
-	case DataFormat::D32F: return GL_FLOAT;
+	/*case DataFormat::D32F:*/ return GL_FLOAT;
 	
 	case DataFormat::R32I:
 	case DataFormat::RG32I:
@@ -161,9 +161,9 @@ inline GLenum toGLMapDataFormat(DataFormat format)
 	case DataFormat::RGBA32F: return GL_RGBA32F;
 	case DataFormat::R11G11B10F: return GL_R11F_G11F_B10F;
 
-	case DataFormat::D16: return GL_DEPTH_COMPONENT16;
-	case DataFormat::D24S8: return GL_DEPTH24_STENCIL8;
-	case DataFormat::D32F: return GL_DEPTH_COMPONENT32F;
+	//case DataFormat::D16: return GL_DEPTH_COMPONENT16;
+	//case DataFormat::D24S8: return GL_DEPTH24_STENCIL8;
+	//case DataFormat::D32F: return GL_DEPTH_COMPONENT32F;
 	};
 	ParameterFailed("MapDataFormat");
 }

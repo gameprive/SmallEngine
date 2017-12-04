@@ -50,6 +50,9 @@
     <ClInclude Include="Resource\RasterizerState.h">
       <Filter>Renderer\Resource\State</Filter>
     </ClInclude>
+    <ClInclude Include="Resource\RenderTarget2D.h">
+      <Filter>Renderer\Resource\Textures</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
@@ -100,6 +103,9 @@
     </ClCompile>
     <ClCompile Include="Resource\RasterizerState.cpp">
       <Filter>Renderer\Resource\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Resource\RenderTarget2D.cpp">
+      <Filter>Renderer\Resource\Textures</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

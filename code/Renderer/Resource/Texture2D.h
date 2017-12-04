@@ -4,9 +4,11 @@
 
 class Texture2D : Noncopyable
 {
+	friend class RenderTarget2D;
 public:
 	Texture2D(const std::string &filename, bool mipMap = false, DataFormat format = DataFormat::RGBA8);
-	Texture2D(uint32_t width, uint32_t height, bool mipMap = false, DataFormat format = DataFormat::RGBA8);
+	explicit Texture2D(uint32_t width, uint32_t height, bool mipMap = false, DataFormat format = DataFormat::RGBA8);
+	explicit Texture2D(uint32_t width, uint32_t height, int32_t levelCount, DataFormat format);
 	~Texture2D();
 
 	uint32_t GetWidth() const;

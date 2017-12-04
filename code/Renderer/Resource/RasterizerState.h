@@ -38,8 +38,8 @@ public:
 private:
 	GLfloat m_depthBias;
 	GLfloat m_slopeScaledDepthBias;
-	CullingMode m_cullMode;
 	GLenum m_fillMode;
+	CullingMode m_cullMode;
 	bool m_multisampleAntiAliasEnable;
 	bool m_scissorTestEnable;
 };

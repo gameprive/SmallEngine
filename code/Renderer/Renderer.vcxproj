@@ -90,6 +90,7 @@
     <ClInclude Include="Resource\Image.h" />
     <ClInclude Include="Resource\IndexBuffer.h" />
     <ClInclude Include="Resource\BlendState.h" />
+    <ClInclude Include="Resource\RenderTarget2D.h" />
     <ClInclude Include="Resource\Texture.h" />
     <ClInclude Include="Resource\SamplerState.h" />
     <ClInclude Include="Resource\ShaderProgram.h" />
@@ -109,6 +110,7 @@
     <ClCompile Include="Resource\Image.cpp" />
     <ClCompile Include="Resource\IndexBuffer.cpp" />
     <ClCompile Include="Resource\BlendState.cpp" />
+    <ClCompile Include="Resource\RenderTarget2D.cpp" />
     <ClCompile Include="Resource\Texture.cpp" />
     <ClCompile Include="Resource\SamplerState.cpp" />
     <ClCompile Include="Resource\ShaderProgram.cpp" />
