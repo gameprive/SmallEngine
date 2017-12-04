@@ -26,4 +26,6 @@ public:
 	std::shared_ptr<SamplerState> sampler;
 	std::shared_ptr<Texture2D> tex;
 
+	std::shared_ptr<RenderTarget2D> rt;
+
 };

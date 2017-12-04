@@ -17,6 +17,7 @@ private:
 	
 	Window m_window;
 	RenderDevice m_renderDevice;
+	RenderSystem m_system;
 	
 	float m_dt = 0.0f;
 	float m_currentTime;

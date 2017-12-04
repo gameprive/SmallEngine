@@ -53,8 +53,8 @@
     <ClInclude Include="Resource\RenderTarget2D.h">
       <Filter>Renderer\Resource\Textures</Filter>
     </ClInclude>
-    <ClInclude Include="Core.h">
-      <Filter>Renderer</Filter>
+    <ClInclude Include="System\RenderSystem.h">
+      <Filter>Renderer\System</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -110,8 +110,8 @@
     <ClCompile Include="Resource\RenderTarget2D.cpp">
       <Filter>Renderer\Resource\Textures</Filter>
     </ClCompile>
-    <ClCompile Include="Core.cpp">
-      <Filter>Renderer</Filter>
+    <ClCompile Include="System\RenderSystem.cpp">
+      <Filter>Renderer\System</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

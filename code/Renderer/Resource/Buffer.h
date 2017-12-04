@@ -10,16 +10,16 @@ enum class BufferType : uint8_t
 {
 	Vertex,
 	Index,
-	Constant,
-	Storage,
-	StreamOutput
+	Constant,		// Uniform Buffer Object
+	Storage,		// Shader Storage Buffer Object
+	StreamOutput	// Transform Feedback Buffer
 };
 
 enum class BufferAccess : uint8_t
 {
-	Read,
-	Write,
-	ReadWrite
+	ReadOnly,
+	WriteOnly,
+	ReadWriteOnly
 };
 
 class Buffer : Noncopyable

@@ -2,14 +2,14 @@
 
 enum class DataType : uint8_t
 {
-	Int8,		// 8-bit signed integer
-	UInt8,		// 8-bit unsigned integer
-	Int16,		// 16-bit signed integer
-	UInt16,		// 16-bit unsigned integer
-	Int32,		// 32-bit signed integer
-	UInt32,		// 32-bit unsigned integer	
-	Float,		// 32-bit floating-point
-	Double,		// 64-bit real type
+	Int8,
+	UInt8,
+	Int16,
+	UInt16,	
+	Int32,
+	UInt32,	
+	Float,	
+	Double,
 };
 
 enum class VectorType : uint8_t

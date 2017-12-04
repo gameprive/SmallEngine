@@ -40,5 +40,6 @@
 #include "Core/Debug/Log.h"
 #include "Core/Window/Window.h"
 #include "Renderer/System/RenderDevice.h"
+#include "Renderer/System/RenderSystem.h"
 
 #include "Global.h"

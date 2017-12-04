@@ -4,14 +4,8 @@
 #include "VertexBuffer.h"
 
 //-----------------------------------------------------------------------
-VertexBuffer::VertexBuffer(const void *vertices, size_t vertexCount, size_t sizeInBytes, BufferUsage bufferUsage)
+VertexBuffer::VertexBuffer(const void *vertices, uint32_t vertexCount, size_t sizeInBytes, BufferUsage bufferUsage)
 	: Buffer(BufferType::Vertex, vertices, sizeInBytes, bufferUsage)
-	, m_vertexCount(vertexCount)
-{
-}
-//-----------------------------------------------------------------------
-VertexBuffer::VertexBuffer(size_t vertexCount, size_t sizeInBytes, BufferUsage bufferUsage)
-	: Buffer(BufferType::Vertex, nullptr, sizeInBytes, bufferUsage)
 	, m_vertexCount(vertexCount)
 {
 }

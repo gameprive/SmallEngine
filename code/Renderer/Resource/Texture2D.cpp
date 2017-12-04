@@ -152,7 +152,6 @@ void Texture2D::init()
 	glTexStorage2D(GL_TEXTURE_2D, m_levelCount, toGLMapDataFormat(m_format), m_pixelWidth, m_pixelHeight);
 
 	// Set mipmap levels
-	Assert(m_levelCount > 0);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_BASE_LEVEL, 0);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, m_levelCount - 1);
 }

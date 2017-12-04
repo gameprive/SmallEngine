@@ -83,7 +83,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Core.h" />
     <ClInclude Include="Resource\RasterizerState.h" />
     <ClInclude Include="Resource\DepthStencilState.h" />
     <ClInclude Include="Resource\Buffer.h" />
@@ -101,10 +100,10 @@
     <ClInclude Include="Resource\VertexFormat.h" />
     <ClInclude Include="Format.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="System\RenderSystem.h" />
     <ClInclude Include="System\RenderDevice.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Core.cpp" />
     <ClCompile Include="Resource\RasterizerState.cpp" />
     <ClCompile Include="Resource\DepthStencilState.cpp" />
     <ClCompile Include="Resource\Buffer.cpp" />
@@ -125,6 +124,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="System\RenderSystem.cpp" />
     <ClCompile Include="System\RenderDevice.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -20,9 +20,9 @@ public:
 	uint32_t GetWidth() const;
 	uint32_t GetHeight() const;
 
-	void BindToFramebuffer(uint32_t attachmentPoint);
-	void UnbindFromFramebuffer(uint32_t attachmentPoint);
-	void BindDepthStencilBuffer();
+	void Bind(uint32_t attachmentPoint);
+	void Unbind(uint32_t attachmentPoint);
+
 	void BindTexture(uint32_t index);
 
 private:
@@ -33,7 +33,10 @@ private:
 	DepthFormat m_depthStencilFormat;
 
 	Texture2D m_texture;
-	GLuint m_renderBuffer;
+	GLuint m_depthRenderBuffer = 0;
+	GLuint m_frameBuffer;
+
+	GLenum m_textureTarget;
 	bool m_generateMipmap;
 	bool m_multiSampleEnabled;
 };

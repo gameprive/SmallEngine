@@ -1,5 +1,8 @@
 ﻿#pragma once
 
+//-----------------------------------------------------------------------
+#ifndef _REFACTORING__
+//-----------------------------------------------------------------------
 enum class DataFormat : uint8_t
 {
 	BC1,
@@ -44,7 +47,6 @@ enum class DataFormat : uint8_t
 };
 
 inline bool IsCompressedFormat(DataFormat format) { return format < DataFormat::Compressed; }
-//inline bool IsDepthFormat(DataFormat format) { return format > DataFormat::Depth; }
 
 inline GLenum ToInternalFormat(DataFormat format)
 {
@@ -222,3 +224,6 @@ inline GLenum ToTextureUnitIndex(uint32_t index)
 	Assert(index < 128);
 	return static_cast<GLenum>(GL_TEXTURE0 + index);
 }
+//-----------------------------------------------------------------------
+#endif
+//-----------------------------------------------------------------------

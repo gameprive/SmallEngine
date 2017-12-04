@@ -21,6 +21,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test", "Test\Test.vcxproj",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Application", "Application\Application.vcxproj", "{B4CCA4B1-EDE0-4C28-A48A-23BA6897BD86}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{93F6D7D2-3878-4209-B108-9B78F6099129}"
+	ProjectSection(SolutionItems) = preProject
+		..\TODO.txt = ..\TODO.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32

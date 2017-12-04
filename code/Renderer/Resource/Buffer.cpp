@@ -31,9 +31,9 @@ GLenum toGLBufferAccess(BufferAccess access)
 {
 	switch ( access )
 	{
-	case BufferAccess::Read: return GL_READ_ONLY;
-	case BufferAccess::Write: return GL_WRITE_ONLY;
-	case BufferAccess::ReadWrite: return GL_READ_WRITE;
+	case BufferAccess::ReadOnly: return GL_READ_ONLY;
+	case BufferAccess::WriteOnly: return GL_WRITE_ONLY;
+	case BufferAccess::ReadWriteOnly: return GL_READ_WRITE;
 	}
 	ParameterFailed("toGLBufferAccess");
 }

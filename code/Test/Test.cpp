@@ -104,6 +104,8 @@ Test::Test(Window *window)
 	
 	sampler = std::make_shared<SamplerState>(SamplerDescription::CreateAnisotropicClamp());
 	tex = std::make_shared<Texture2D>("data/textures/grass.png");
+
+	rt = std::make_shared<RenderTarget2D>(800, 600, 1, DataFormat::RGBA8, DepthFormat::Depth24Stencil8, 0);
 		
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS);
@@ -119,14 +121,33 @@ void Test::Update(float dt)
 //-----------------------------------------------------------------------
 void Test::Render()
 {
-	shaders->Bind();
-	shaders->UniformMatrix4fv("MVP", 1, glm::value_ptr(MVP));
+	{
+		RenderSystem::Get().SetRenderTarget2D(rt);
+		RenderSystem::Get().Clear(glm::vec4(1.0f));
 
-	sampler->Bind(0);
-	tex->Bind(0);
-	format->Bind();
-	
-	glDrawArrays(GL_TRIANGLES, 0, 12*3);
+		shaders->Bind();
+		shaders->UniformMatrix4fv("MVP", 1, glm::value_ptr(MVP));
+
+		sampler->Bind(0);
+		tex->Bind(0);
+		format->Bind();
+
+		glDrawArrays(GL_TRIANGLES, 0, 12 * 3);
+	}
+		
+	{
+		RenderSystem::Get().SetRenderTarget2D(nullptr);
+		RenderSystem::Get().Clear(glm::vec4(0.5f));
+
+		shaders->Bind();
+		shaders->UniformMatrix4fv("MVP", 1, glm::value_ptr(MVP));
+
+		sampler->Bind(0);
+		rt->BindTexture(0);
+		format->Bind();
+
+		glDrawArrays(GL_TRIANGLES, 0, 12 * 3);
+	}
 }
 //-----------------------------------------------------------------------
 void Test::Resize(int width, int height)
