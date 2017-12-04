@@ -83,6 +83,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Core.h" />
     <ClInclude Include="Resource\RasterizerState.h" />
     <ClInclude Include="Resource\DepthStencilState.h" />
     <ClInclude Include="Resource\Buffer.h" />
@@ -103,6 +104,7 @@
     <ClInclude Include="System\RenderDevice.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Core.cpp" />
     <ClCompile Include="Resource\RasterizerState.cpp" />
     <ClCompile Include="Resource\DepthStencilState.cpp" />
     <ClCompile Include="Resource\Buffer.cpp" />

@@ -92,6 +92,7 @@ Test::Test(Window *window)
 	};
 
 	vertexbuffer = std::make_shared<VertexBuffer>(VertexData, 12 * 3, sizeof(VertexData), BufferUsage::Immutable);
+
 	colorbuffer = std::make_shared<VertexBuffer>(uvData, 12 * 3, sizeof(uvData), BufferUsage::Immutable);
 	
 	format = std::make_shared<VertexFormat>();

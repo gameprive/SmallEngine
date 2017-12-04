@@ -53,6 +53,9 @@
     <ClInclude Include="Resource\RenderTarget2D.h">
       <Filter>Renderer\Resource\Textures</Filter>
     </ClInclude>
+    <ClInclude Include="Core.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
@@ -106,6 +109,9 @@
     </ClCompile>
     <ClCompile Include="Resource\RenderTarget2D.cpp">
       <Filter>Renderer\Resource\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Core.cpp">
+      <Filter>Renderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
