@@ -119,6 +119,13 @@ GLenum toBlendGL4(BlendFactor blend)
 	case BlendFactor::InverseDestinationAlpha: return GL_ONE_MINUS_DST_ALPHA;
 	case BlendFactor::DestinationColor: return GL_DST_COLOR;
 	case BlendFactor::InverseDestinationColor: return GL_ONE_MINUS_DST_COLOR;
+	case BlendFactor::SourceAlphaSaturation: return GL_SRC_ALPHA_SATURATE;
+	case BlendFactor::BlendFactor: return GL_CONSTANT_COLOR;
+	case BlendFactor::InvereseBlendFactor: return GL_ONE_MINUS_CONSTANT_COLOR;
+	case BlendFactor::Source1Color: return GL_SRC1_COLOR;
+	case BlendFactor::InverseSource1Color: return GL_ONE_MINUS_SRC1_COLOR;
+	case BlendFactor::Source1Alpha: return GL_SRC1_ALPHA;
+	case BlendFactor::InverseSource1Alpha: return GL_ONE_MINUS_SRC1_ALPHA;
 	}
 	ParameterFailed("toBlendGL4");
 }
@@ -135,24 +142,25 @@ GLenum toBlendOperationGL4(BlendOperation operation)
 	}
 	ParameterFailed("toBlendOperationGL4");
 }
-//-----------------------------------------------------------------------
-void toRenderTargetBlendGL4(const RenderTargetBlendDescription &desc, RenderTargetBlendDescGL4 &result)
-{
-	result.ColorSource = toBlendGL4(desc.ColorSourceBlend);
-	result.ColorDestination = toBlendGL4(desc.ColorDestinationBlend);
-	result.ColorOperation = toBlendOperationGL4(desc.ColorBlendOperation);
-	result.AlphaSource = toBlendGL4(desc.AlphaSourceBlend);
-	result.AlphaDestination = toBlendGL4(desc.AlphaDestinationBlend);
-	result.AlphaOperation = toBlendOperationGL4(desc.AlphaBlendOperation);
-	result.BlendEnable = desc.BlendEnable;
-}
+
 //-----------------------------------------------------------------------
 BlendState::BlendState(const BlendDescription &desc)
 	: m_independentBlendEnable(desc.IndependentBlendEnable)
 	, m_alphaToCoverageEnable(desc.AlphaToCoverageEnable)
 {
 	for ( size_t i = 0; i < 8; ++i )
-		toRenderTargetBlendGL4(desc.RenderTargets[i], m_renderTargets[i]);
+	{
+		auto &curRT = m_renderTargets[i];
+		const auto &curRTDesc = desc.RenderTargets[i];
+
+		curRT.ColorSource = toBlendGL4(curRTDesc.ColorSourceBlend);
+		curRT.ColorDestination = toBlendGL4(curRTDesc.ColorDestinationBlend);
+		curRT.ColorOperation = toBlendOperationGL4(curRTDesc.ColorBlendOperation);
+		curRT.AlphaSource = toBlendGL4(curRTDesc.AlphaSourceBlend);
+		curRT.AlphaDestination = toBlendGL4(curRTDesc.AlphaDestinationBlend);
+		curRT.AlphaOperation = toBlendOperationGL4(curRTDesc.AlphaBlendOperation);
+		curRT.BlendEnable = curRTDesc.BlendEnable;
+	}
 }
 //-----------------------------------------------------------------------
 void BlendState::Bind()

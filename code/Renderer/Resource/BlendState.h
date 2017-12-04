@@ -4,16 +4,21 @@ enum class BlendFactor : uint8_t
 {
 	Zero,
 	One,
-
-	DestinationColor,
 	SourceColor,
-	InverseDestinationColor,
 	InverseSourceColor,
-
-	DestinationAlpha,
 	SourceAlpha,
-	InverseDestinationAlpha,
 	InverseSourceAlpha,
+	DestinationAlpha,
+	InverseDestinationAlpha,
+	DestinationColor,
+	InverseDestinationColor,
+	SourceAlphaSaturation,
+	BlendFactor,
+	InvereseBlendFactor,
+	Source1Color,
+	InverseSource1Color,
+	Source1Alpha,
+	InverseSource1Alpha,
 };
 
 enum class BlendOperation : uint8_t
@@ -54,17 +59,6 @@ struct BlendDescription
 	bool IndependentBlendEnable;
 };
 
-struct RenderTargetBlendDescGL4
-{
-	GLenum ColorSource;
-	GLenum ColorDestination;
-	GLenum ColorOperation;
-	GLenum AlphaSource;
-	GLenum AlphaDestination;
-	GLenum AlphaOperation;
-	bool BlendEnable;
-};
-
 class BlendState
 {
 public:
@@ -73,7 +67,18 @@ public:
 	void Bind();
 
 private:
-	RenderTargetBlendDescGL4 m_renderTargets[8];
+	struct rtBlendDescGL4
+	{
+		GLenum ColorSource;
+		GLenum ColorDestination;
+		GLenum ColorOperation;
+		GLenum AlphaSource;
+		GLenum AlphaDestination;
+		GLenum AlphaOperation;
+		bool BlendEnable;
+	};
+
+	rtBlendDescGL4 m_renderTargets[8];
 	bool m_independentBlendEnable;
 	bool m_alphaToCoverageEnable;
 };
