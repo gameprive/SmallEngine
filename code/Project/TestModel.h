@@ -18,7 +18,7 @@ private:
 
 	glm::mat4 m_modelMat;
 
-	Shaders *m_shader;
+	std::shared_ptr<ShaderProgram> m_shaders;
 
 	GLuint m_vao;
 	GLuint m_vbos[3];

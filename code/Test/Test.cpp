@@ -105,7 +105,7 @@ Test::Test(Window *window)
 	sampler = std::make_shared<SamplerState>(SamplerDescription::CreateAnisotropicClamp());
 	tex = std::make_shared<Texture2D>("data/textures/grass.png");
 
-	rt = std::make_shared<RenderTarget2D>(800, 600, 1, DataFormat::RGBA8, DepthFormat::Depth24Stencil8, 0);
+	rt = std::make_shared<RenderTarget2D>(100, 100, 1, DataFormat::RGBA8, DepthFormat::Depth24Stencil8, 0);
 		
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS);

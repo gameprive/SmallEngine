@@ -10,6 +10,7 @@
 #include <ctime>
 
 #include <functional>
+#include <memory>
 
 #include <string>
 #include <vector>
@@ -37,5 +38,8 @@
 #include "Core/Debug/DebugNew.h"
 #include "Core/Debug/Log.h"
 #include "Core/Window/Window.h"
+
+#include "Renderer/Resource/ShaderProgram.h"
+
 
 #include "Global.h"
