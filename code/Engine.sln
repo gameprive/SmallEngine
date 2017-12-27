@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Project", "Project\Project.vcxproj", "{C2D45098-4DE6-4DF7-A9FF-B650F769E6A5}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -25,6 +25,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", 
 	ProjectSection(SolutionItems) = preProject
 		..\TODO.txt = ..\TODO.txt
 	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Math", "Math\Math.vcxproj", "{E2E8B60F-B65E-4DCB-B72C-D9B8C804A92C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,6 +54,10 @@ Global
 		{B4CCA4B1-EDE0-4C28-A48A-23BA6897BD86}.Debug|Win32.Build.0 = Debug|Win32
 		{B4CCA4B1-EDE0-4C28-A48A-23BA6897BD86}.Release|Win32.ActiveCfg = Release|Win32
 		{B4CCA4B1-EDE0-4C28-A48A-23BA6897BD86}.Release|Win32.Build.0 = Release|Win32
+		{E2E8B60F-B65E-4DCB-B72C-D9B8C804A92C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E2E8B60F-B65E-4DCB-B72C-D9B8C804A92C}.Debug|Win32.Build.0 = Debug|Win32
+		{E2E8B60F-B65E-4DCB-B72C-D9B8C804A92C}.Release|Win32.ActiveCfg = Release|Win32
+		{E2E8B60F-B65E-4DCB-B72C-D9B8C804A92C}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

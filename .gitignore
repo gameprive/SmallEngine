@@ -1,8 +1,6 @@
-obj
-mat
-lib
-/code/ThirdParty.v12.suo
-/code/project.v12.suo
+/obj
+/mat
+/lib
 /bin/project_d.exe
 /bin/project_d.ilk
 /bin/project_d.pdb
@@ -27,5 +25,4 @@ lib
 /bin/Test.iobj
 /bin/Test.ipdb
 /bin/Test.pdb
-/code/.vs/Engine/v14/.suo
-/code/.vs/ThirdParty/v14/.suo
+/code/.vs
