@@ -2,7 +2,7 @@
 // PVS-Studio Static Code Analyzer for C, C++ and C#: http://www.viva64.com
 #include "stdafx.h"
 #include "Image.h"
-#include "Core/Files/FileSystem.h"
+#include "Core/IO/FileSystem.h"
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
 

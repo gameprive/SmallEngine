@@ -26,23 +26,20 @@
     <ClInclude Include="Debug\DebugNew.h">
       <Filter>Core\Debug</Filter>
     </ClInclude>
-    <ClInclude Include="Files\FileSystem.h">
-      <Filter>Core\Files</Filter>
-    </ClInclude>
     <ClInclude Include="Utilities\Timer.h">
       <Filter>Core\Utilities</Filter>
     </ClInclude>
     <ClInclude Include="Window\Window.h">
       <Filter>Core\Window</Filter>
     </ClInclude>
+    <ClInclude Include="IO\FileSystem.h">
+      <Filter>Core\IO</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="Debug\Log.cpp">
       <Filter>Core\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="Files\FileSystem.cpp">
-      <Filter>Core\Files</Filter>
     </ClCompile>
     <ClCompile Include="Utilities\Timer.cpp">
       <Filter>Core\Utilities</Filter>
@@ -52,6 +49,9 @@
     </ClCompile>
     <ClCompile Include="Window\WindowCallback.cpp">
       <Filter>Core\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="IO\FileSystem.cpp">
+      <Filter>Core\IO</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -67,14 +67,14 @@
     <Filter Include="Core\Debug">
       <UniqueIdentifier>{958f7688-6265-4d30-9ef8-8df02a06a4b0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Core\Files">
-      <UniqueIdentifier>{47019d17-a6d6-44e6-a071-cff54bd24009}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Core\Utilities">
       <UniqueIdentifier>{d90553ba-6e4a-441b-9c30-4d3329c56534}</UniqueIdentifier>
     </Filter>
     <Filter Include="Core\Window">
       <UniqueIdentifier>{e2c3276f-4724-47dd-a6d6-0abdc8c6348e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\IO">
+      <UniqueIdentifier>{d644b5b7-0720-4897-a9f0-0ed1537ac2bf}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
