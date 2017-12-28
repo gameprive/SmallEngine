@@ -4,17 +4,17 @@
 #include "Quaternion.h"
 #include "Mathf.h"
 
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 Quaternion Quaternion::Identity()
 {
 	return Quaternion();
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 Quaternion::Quaternion(float x, float y, float z, float w) :
 	x(x), y(y), z(z), w(w)
 {
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 Vector3 Quaternion::ToEulerAngles() const
 {
 	float rx = atan2(2 * (w * x + y * z), 1 - 2 * (x * x + y * y));
@@ -23,7 +23,7 @@ Vector3 Quaternion::ToEulerAngles() const
 
 	return Vector3(rx, ry, rz) * Mathf::Rad2Deg;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 std::string Quaternion::ToString() const
 {
 	std::stringstream ss;
@@ -31,7 +31,7 @@ std::string Quaternion::ToString() const
 	auto str = ss.str();
 	return str.c_str();
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 Quaternion Quaternion::operator *(const Quaternion& quat) const
 {
 	float _x = w * quat.x + x * quat.w + y * quat.z - z * quat.y;
@@ -41,24 +41,24 @@ Quaternion Quaternion::operator *(const Quaternion& quat) const
 
 	return Quaternion(_x, _y, _z, _w);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 Quaternion Quaternion::operator *(float v) const
 {
 	return Quaternion(x * v, y * v, z * v, w * v);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 Vector3 Quaternion::operator *(const Vector3 &p) const
 {
 	Quaternion p_ = *this * Quaternion(p.x, p.y, p.z, 0) * Inverse(*this);
 
 	return Vector3(p_.x, p_.y, p_.z);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 bool Quaternion::operator !=(const Quaternion& v) const
 {
 	return !(*this == v);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 bool Quaternion::operator ==(const Quaternion& v) const
 {
 	return Mathf::FloatEqual(v.x, x) &&
@@ -66,12 +66,12 @@ bool Quaternion::operator ==(const Quaternion& v) const
 		Mathf::FloatEqual(v.z, z) &&
 		Mathf::FloatEqual(v.w, w);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 Quaternion Quaternion::Inverse(const Quaternion& q)
 {
 	return Quaternion(-q.x, -q.y, -q.z, q.w);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 Quaternion Quaternion::AngleAxis(float angle, const Vector3 &axis)
 {
 	Vector3 v = Vector3::Normalize(axis);
@@ -87,7 +87,7 @@ Quaternion Quaternion::AngleAxis(float angle, const Vector3 &axis)
 
 	return Quaternion(x, y, z, w);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 Quaternion Quaternion::Euler(float x, float y, float z)
 {
 	Quaternion around_x = AngleAxis(x, Vector3(1, 0, 0));
@@ -96,7 +96,7 @@ Quaternion Quaternion::Euler(float x, float y, float z)
 
 	return around_y * around_x * around_z;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 Quaternion Quaternion::Lerp(const Quaternion& from, const Quaternion& to, float t)
 {
 	Quaternion to_;
@@ -119,7 +119,7 @@ Quaternion Quaternion::Lerp(const Quaternion& from, const Quaternion& to, float 
 
 	return lerp;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 Quaternion Quaternion::SLerp(const Quaternion& from, const Quaternion& to, float t)
 {
 	Quaternion to_;
@@ -157,7 +157,7 @@ Quaternion Quaternion::SLerp(const Quaternion& from, const Quaternion& to, float
 
 	return slerp;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 Quaternion Quaternion::FromToRotation(const Vector3 &from_direction, const Vector3 &to_direction)
 {
 	Vector3 origin = Vector3::Normalize(from_direction);
@@ -208,7 +208,7 @@ Quaternion Quaternion::FromToRotation(const Vector3 &from_direction, const Vecto
 
 	return Quaternion::Identity();
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 Quaternion Quaternion::LookRotation(const Vector3 &forward, const Vector3 &up)
 {
 	Quaternion rot0 = Quaternion::FromToRotation(Vector3(0, 1, 0), up);
@@ -216,7 +216,7 @@ Quaternion Quaternion::LookRotation(const Vector3 &forward, const Vector3 &up)
 	Quaternion rot1 = Quaternion::AngleAxis(deg, rot0 * Vector3(0, 1, 0));
 	return rot1 * rot0;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void Quaternion::Normalize()
 {
 	float sqr_magnitude = x*x + y*y + z*z + w*w;
@@ -231,9 +231,9 @@ void Quaternion::Normalize()
 		w = w * inv;
 	}
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 float Quaternion::Dot(const Quaternion& v) const
 {
 	return x * v.x + y * v.y + z * v.z + w * v.w;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------

@@ -3,7 +3,7 @@
 #include "stdafx.h"
 #include "Shader.h"
 
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 GLenum toGLShaderType(ShaderType mode)
 {
 	switch ( mode )
@@ -16,7 +16,7 @@ GLenum toGLShaderType(ShaderType mode)
 	}
 	ParameterFailed("ShaderType");
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void printShaderLogInfo(GLuint obj)
 {
 	int infologLength = 0;
@@ -29,7 +29,7 @@ void printShaderLogInfo(GLuint obj)
 		delete infoLog;
 	}
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 Shader::Shader(ShaderType type, const std::string &path)
 {	
 	std::vector<uint8_t> data;
@@ -42,12 +42,12 @@ Shader::Shader(ShaderType type, const std::string &path)
 	else
 		Log(LevelLog::Error) << "Cannot open shader file: " << path;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 Shader::~Shader()
 {
 	glDeleteShader(m_shader);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void Shader::create(const std::vector<uint8_t> &data)
 {
 	const GLchar *shaderSource[] = { reinterpret_cast<const GLchar*>(data.data()) };
@@ -59,7 +59,7 @@ void Shader::create(const std::vector<uint8_t> &data)
 	glShaderSource(m_shader, 1, shaderSource, &sourceLength);
 	glCompileShader(m_shader);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void Shader::checkCompilation(const GLuint shader) const
 {
 	GLint compileSuccess;
@@ -70,4 +70,4 @@ void Shader::checkCompilation(const GLuint shader) const
 		printShaderLogInfo(shader);
 	}
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------

@@ -4,17 +4,17 @@
 #include "Window.h"
 #include "Debug/Log.h"
 
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 TODO("нужно как-то определять какую версию создавать");
 uint16_t apiOGLMajorVersion = 4;
 uint16_t apiOGLMinorVersion = 3;
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void SetPreCreateCallback();						// ==> "WindowCallback.cpp"
 void SetPostCreateCallback(GLFWwindow *window);		// ==> "WindowCallback.cpp"
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 // https://blog.nobel-joergensen.com/2013/02/17/debugging-opengl-part-2-using-gldebugmessagecallback/
 // http://steps3d.narod.ru/tutorials/debug-output-tutorial.html
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 #ifdef WIN32
 static void APIENTRY openglErrorCallback(
 #else
@@ -51,7 +51,7 @@ static void openglErrorCallback(
 	case GL_DEBUG_SEVERITY_HIGH: errorLog << "HIGH"; break;
 	}
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void InitGLDebugger()
 {
 	if ( glDebugMessageCallback )
@@ -65,7 +65,7 @@ void InitGLDebugger()
 	else
 		Log(LevelLog::Info) << "GL callback debugging is not available";
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 bool Window::Init(const WindowConfig &config)
 {
 	m_config = config;
@@ -171,7 +171,7 @@ bool Window::Init(const WindowConfig &config)
 				
 	return true;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void Window::Close()
 {
 	if ( m_window )
@@ -181,49 +181,49 @@ void Window::Close()
 		m_window = nullptr;
 	}
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void Window::Swap()
 {
 	glfwSwapBuffers(m_window);
 	glfwPollEvents();
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 bool Window::IsQuit()
 {
 	return (glfwWindowShouldClose(m_window) != 0);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void Window::SetCursorMode(int mode)
 {
 	glfwSetInputMode(m_window, GLFW_CURSOR, mode);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void Window::SetCursorPosition(float x, float y)
 {
 	glfwSetCursorPos(m_window, x, y);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 bool Window::GetKey(int key)
 {
 	if ( glfwGetKey(m_window, key) == GLFW_PRESS ) return true;
 	return false;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 bool Window::GetMouseButton(int button)
 {
 	if ( glfwGetMouseButton(m_window, button) == GLFW_PRESS ) return true;
 	return false;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void Window::GetMousePos(double &x, double &y)
 {
 	glfwGetCursorPos(m_window, &x, &y);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void Window::resize(int w, int h)
 {
 	m_config.width = w;
 	m_config.height = h;
 	if ( windowsResizeHandler ) windowsResizeHandler(w, h);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------

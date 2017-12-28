@@ -5,12 +5,12 @@
 #include "Image.h"
 #include "System/RenderDevice.h"
 
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 inline GLsizei mipmapImageDataBytes(GLsizei width, GLsizei height, GLsizei bytesPerBlock)
 {
 	return width * height * bytesPerBlock;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void setPixelDataTexture2DCompressed(uint32_t pixelWidth, uint32_t pixelHeight, int32_t levelCount, DataFormat format, const void *pixelData)
 {
 	const auto internalFormat = toGLMapDataFormat(format);
@@ -31,7 +31,7 @@ void setPixelDataTexture2DCompressed(uint32_t pixelWidth, uint32_t pixelHeight, 
 		mipMapHeight = std::max((mipMapHeight >> 1), 1);
 	}
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void setPixelDataTexture2D(uint32_t pixelWidth, uint32_t pixelHeight, int32_t levelCount, DataFormat format, const void *pixelData)
 {
 	const auto formatComponents = ToInternalFormat(format);
@@ -53,7 +53,7 @@ void setPixelDataTexture2D(uint32_t pixelWidth, uint32_t pixelHeight, int32_t le
 		mipMapHeight = std::max((mipMapHeight >> 1), 1);
 	}
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 Texture2D::Texture2D(const std::string &filename, bool mipMap, DataFormat format)
 	: m_levelCount(mipMap ? ComputeMipmapLevelCount(m_pixelWidth, m_pixelHeight) : 1)
 	, m_format(format)
@@ -67,7 +67,7 @@ Texture2D::Texture2D(const std::string &filename, bool mipMap, DataFormat format
 	
 	SetData(img.GetData().data());
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 Texture2D::Texture2D(uint32_t pixelWidth, uint32_t pixelHeight, bool mipMap, DataFormat format)
 	: m_pixelWidth(pixelWidth)
 	, m_pixelHeight(pixelHeight)
@@ -76,7 +76,7 @@ Texture2D::Texture2D(uint32_t pixelWidth, uint32_t pixelHeight, bool mipMap, Dat
 {
 	init();
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 Texture2D::Texture2D(uint32_t pixelWidth, uint32_t pixelHeight, int32_t levelCount, DataFormat format)
 	: m_pixelWidth(pixelWidth)
 	, m_pixelHeight(pixelHeight)
@@ -85,23 +85,23 @@ Texture2D::Texture2D(uint32_t pixelWidth, uint32_t pixelHeight, int32_t levelCou
 {
 	init();
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 Texture2D::~Texture2D()
 {
 	if ( m_textureObject ) 
 		glDeleteTextures(1, &m_textureObject);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 uint32_t Texture2D::GetWidth() const
 {
 	return m_pixelWidth;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 uint32_t Texture2D::GetHeight() const
 {
 	return m_pixelHeight;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void Texture2D::SetData(const void *pixelData)
 {
 	Assert(pixelData);
@@ -120,7 +120,7 @@ void Texture2D::SetData(const void *pixelData)
 		break;
 	}
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void Texture2D::Bind(uint32_t index) const
 {
 #if defined(_DEBUG) && !defined(NDEBUG)
@@ -130,14 +130,14 @@ void Texture2D::Bind(uint32_t index) const
 	glActiveTexture(ToTextureUnitIndex(index));
 	glBindTexture(GL_TEXTURE_2D, m_textureObject);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void Texture2D::GenerateMipmap() const
 {
 	Assert(m_textureObject);
 	glBindTexture(GL_TEXTURE_2D, m_textureObject);
 	glGenerateMipmap(GL_TEXTURE_2D);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void Texture2D::init()
 {
 	Assert(m_pixelWidth > 0);
@@ -155,4 +155,4 @@ void Texture2D::init()
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_BASE_LEVEL, 0);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, m_levelCount - 1);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------

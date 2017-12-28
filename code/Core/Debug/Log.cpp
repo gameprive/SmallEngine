@@ -3,35 +3,35 @@
 #include "stdafx.h"
 #include "Log.h"
 #include <spdlog/spdlog.h>
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 auto console = spdlog::stdout_color_mt("console");
 auto fileLogger = spdlog::basic_logger_mt("basic_logger", "log.txt");
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 // DOC: https://github.com/gabime/spdlog
 // DOC: https://github.com/gabime/spdlog/wiki/1.-QuickStart
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 Log::~Log()
 {
-	if ( m_s.empty() ) return;
+	if ( m_text.empty() ) return;
 
 	switch ( m_level )
 	{
 	case LevelLog::Error:
-		console->error(m_s);
-		fileLogger->error(m_s);
+		console->error(m_text);
+		fileLogger->error(m_text);
 		break;
 	case LevelLog::Warning:
-		console->warn(m_s);
-		fileLogger->warn(m_s);
+		console->warn(m_text);
+		fileLogger->warn(m_text);
 		break;
 	case LevelLog::Info:
-		console->info(m_s);
-		fileLogger->info(m_s);
+		console->info(m_text);
+		fileLogger->info(m_text);
 		break;
 	default: break;
 	}
 #if _WIN32
-	OutputDebugStringA((m_s + "\n").c_str());
+	OutputDebugStringA((m_text + "\n").c_str());
 #endif
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------

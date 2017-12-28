@@ -3,12 +3,12 @@
 #include "stdafx.h"
 #include "DepthStencilState.h"
 
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 DepthStencilDescription DepthStencilDescription::CreateDefault()
 {
 	return CreateReadWriteDepth();
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 DepthStencilDescription DepthStencilDescription::CreateReadWriteDepth()
 {
 	DepthStencilDescription desc;
@@ -28,7 +28,7 @@ DepthStencilDescription DepthStencilDescription::CreateReadWriteDepth()
 	desc.CounterClockwiseFace = defaultOperation;
 	return desc;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 DepthStencilDescription DepthStencilDescription::CreateReadOnlyDepth()
 {
 	DepthStencilDescription desc;
@@ -48,7 +48,7 @@ DepthStencilDescription DepthStencilDescription::CreateReadOnlyDepth()
 	desc.CounterClockwiseFace = defaultOperation;
 	return desc;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 DepthStencilDescription DepthStencilDescription::CreateNone()
 {
 	DepthStencilDescription desc;
@@ -68,7 +68,7 @@ DepthStencilDescription DepthStencilDescription::CreateNone()
 	desc.CounterClockwiseFace = defaultOperation;
 	return desc;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 GLenum toComparisonFunctionGL4(ComparisonFunction comparison)
 {
 	switch ( comparison )
@@ -84,7 +84,7 @@ GLenum toComparisonFunctionGL4(ComparisonFunction comparison)
 	}
 	ParameterFailed("toComparisonFunctionGL4");
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 GLenum toStencilOperationGL4(StencilOperation operation)
 {
 	switch ( operation )
@@ -100,7 +100,7 @@ GLenum toStencilOperationGL4(StencilOperation operation)
 	}
 	ParameterFailed("toStencilOperationGL4");
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void toDepthStencilFaceOperationGL4(const DepthStencilOperation &face, DepthStencilFaceOperationGL4 &result)
 {
 	result.stencilFunction = toComparisonFunctionGL4(face.StencilFunction);
@@ -108,7 +108,7 @@ void toDepthStencilFaceOperationGL4(const DepthStencilOperation &face, DepthSten
 	result.stencilFail = toStencilOperationGL4(face.StencilFail);
 	result.stencilPass = toStencilOperationGL4(face.StencilPass);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 DepthStencilState::DepthStencilState(const DepthStencilDescription &desc)
 	: m_depthFunction(toComparisonFunctionGL4(desc.DepthBufferFunction))
 	, m_referenceStencil(desc.ReferenceStencil)
@@ -121,13 +121,13 @@ DepthStencilState::DepthStencilState(const DepthStencilDescription &desc)
 	toDepthStencilFaceOperationGL4(desc.ClockwiseFace, m_clockwiseFace);
 	toDepthStencilFaceOperationGL4(desc.CounterClockwiseFace, m_counterClockwiseFace);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void DepthStencilState::Bind()
 {
 	applyDepthTest();
 	applyStencilTest();
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void DepthStencilState::applyDepthTest()
 {
 	if ( !m_depthBufferEnable )
@@ -142,7 +142,7 @@ void DepthStencilState::applyDepthTest()
 
 	glDepthFunc(m_depthFunction);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void DepthStencilState::applyStencilTest()
 {
 	if ( !m_stencilEnable )
@@ -177,4 +177,4 @@ void DepthStencilState::applyStencilTest()
 
 	glStencilMask(m_stencilWriteMask);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------

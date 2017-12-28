@@ -2,7 +2,7 @@
 #include "TestModel.h"
 #include "LoadTexture.h"
 
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 TestModel::TestModel(const glm::vec3 &pos, float angle)
 {
 	setupModelMatrix(pos, angle);
@@ -10,7 +10,7 @@ TestModel::TestModel(const glm::vec3 &pos, float angle)
 	loadTextures();
 	loadShader();
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 TestModel::~TestModel()
 {
 	glDeleteTextures(1, &m_diffuseMap);
@@ -20,7 +20,7 @@ TestModel::~TestModel()
 	glDeleteBuffers(3, m_vbos);
 	glDeleteVertexArrays(1, &m_vao);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void TestModel::Render(const glm::mat4 &projection, const glm::mat4 &view)
 {
 	const glm::mat3 normal = glm::inverseTranspose(glm::mat3(m_modelMat));
@@ -45,14 +45,14 @@ void TestModel::Render(const glm::mat4 &projection, const glm::mat4 &view)
 	glBindVertexArray(m_vao);
 	glDrawArrays(GL_TRIANGLES, 0, m_numVertices);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void TestModel::setupModelMatrix(const glm::vec3 &pos, float angle)
 {
 	m_modelMat = glm::translate(pos);
 	m_modelMat = glm::rotate(m_modelMat, angle, glm::vec3(0.0, 1.0, 0.0));
 	m_modelMat = glm::scale(m_modelMat, glm::vec3(1.0));
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void TestModel::loadMesh()
 {
 	GLMmodel *geometry = glmReadOBJ("Data/mesh/sign.obj");
@@ -66,7 +66,7 @@ void TestModel::loadMesh()
 	}
 	glmDelete(geometry);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void TestModel::loadTextures()
 {
 	m_diffuseMap = LoadTexture("Data/textures/grass.png");
@@ -74,7 +74,7 @@ void TestModel::loadTextures()
 	m_specularMap = LoadTexture("Data/textures/sign-specular-map.png");
 	m_emissionMap = LoadTexture("Data/textures/black.png");
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void TestModel::loadShader()
 {
 	m_shaders = std::make_shared<ShaderProgram>("Data/shaders/solid.vert", "Data/shaders/solid.frag");
@@ -89,4 +89,4 @@ void TestModel::loadShader()
 	m_shaders->Uniform1f("uSpecularHardness", 16.0);
 	m_shaders->Uniform1f("uNormalMapStrength", 1.5);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------

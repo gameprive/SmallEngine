@@ -3,7 +3,7 @@
 #include "stdafx.h"
 #include "BlendState.h"
 
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 RenderTargetBlendDescription RenderTargetBlendDescription::CreateAdditive()
 {
 	RenderTargetBlendDescription desc;
@@ -16,7 +16,7 @@ RenderTargetBlendDescription RenderTargetBlendDescription::CreateAdditive()
 	desc.AlphaDestinationBlend = BlendFactor::One;
 	return desc;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 RenderTargetBlendDescription RenderTargetBlendDescription::CreateAlphaBlend()
 {
 	RenderTargetBlendDescription desc;
@@ -29,7 +29,7 @@ RenderTargetBlendDescription RenderTargetBlendDescription::CreateAlphaBlend()
 	desc.AlphaDestinationBlend = BlendFactor::InverseSourceAlpha;
 	return desc;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 RenderTargetBlendDescription RenderTargetBlendDescription::CreateNonPremultiplied()
 {
 	RenderTargetBlendDescription desc;
@@ -42,7 +42,7 @@ RenderTargetBlendDescription RenderTargetBlendDescription::CreateNonPremultiplie
 	desc.AlphaDestinationBlend = BlendFactor::InverseSourceAlpha;
 	return desc;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 RenderTargetBlendDescription RenderTargetBlendDescription::CreateOpaque()
 {
 	RenderTargetBlendDescription desc;
@@ -55,12 +55,12 @@ RenderTargetBlendDescription RenderTargetBlendDescription::CreateOpaque()
 	desc.AlphaDestinationBlend = BlendFactor::Zero;
 	return desc;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 BlendDescription BlendDescription::CreateDefault()
 {
 	return CreateOpaque();
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 BlendDescription BlendDescription::CreateAdditive()
 {
 	BlendDescription desc;
@@ -71,7 +71,7 @@ BlendDescription BlendDescription::CreateAdditive()
 
 	return desc;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 BlendDescription BlendDescription::CreateAlphaBlend()
 {
 	BlendDescription desc;
@@ -82,7 +82,7 @@ BlendDescription BlendDescription::CreateAlphaBlend()
 
 	return desc;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 BlendDescription BlendDescription::CreateNonPremultiplied()
 {
 	BlendDescription desc;
@@ -93,7 +93,7 @@ BlendDescription BlendDescription::CreateNonPremultiplied()
 
 	return desc;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 BlendDescription BlendDescription::CreateOpaque()
 {
 	BlendDescription desc;
@@ -104,7 +104,7 @@ BlendDescription BlendDescription::CreateOpaque()
 
 	return desc;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 GLenum toBlendGL4(BlendFactor blend)
 {
 	switch ( blend )
@@ -129,7 +129,7 @@ GLenum toBlendGL4(BlendFactor blend)
 	}
 	ParameterFailed("toBlendGL4");
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 GLenum toBlendOperationGL4(BlendOperation operation)
 {
 	switch ( operation )
@@ -143,7 +143,7 @@ GLenum toBlendOperationGL4(BlendOperation operation)
 	ParameterFailed("toBlendOperationGL4");
 }
 
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 BlendState::BlendState(const BlendDescription &desc)
 	: m_independentBlendEnable(desc.IndependentBlendEnable)
 	, m_alphaToCoverageEnable(desc.AlphaToCoverageEnable)
@@ -162,7 +162,7 @@ BlendState::BlendState(const BlendDescription &desc)
 		curRT.BlendEnable = curRTDesc.BlendEnable;
 	}
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void BlendState::Bind()
 {
 	if ( m_independentBlendEnable )
@@ -198,4 +198,4 @@ void BlendState::Bind()
 	else
 		glDisable(GL_SAMPLE_ALPHA_TO_COVERAGE);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------

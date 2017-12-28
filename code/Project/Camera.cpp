@@ -1,9 +1,9 @@
 #include "stdafx.h"
 #include "Camera.h"
 
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 const float Camera::MAX_LOOK_PITCH = PI_2 - 0.2f;
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 Camera::Camera(Window *window, const glm::vec3 &pos)
 	: m_window(window)
 	, m_pos(pos)
@@ -13,7 +13,7 @@ Camera::Camera(Window *window, const glm::vec3 &pos)
 	computeWalkingVectors();
 	m_window->GetMousePos(m_oldMouseX, m_oldMouseY);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void Camera::Update(float dt)
 {
 	controlMouseInput();
@@ -22,22 +22,22 @@ void Camera::Update(float dt)
 	controlLooking();
 	computeCameraOrientation();
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 glm::mat4 Camera::GetViewMatrix()
 {
 	return glm::lookAt(m_pos, m_cameraLook, glm::vec3(0.0, 1.0, 0.0));
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 const glm::vec3& Camera::GetPos() const
 {
 	return m_pos;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void Camera::SetPos(const glm::vec3 &pos)
 {
 	m_pos = pos;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void Camera::ResizeProjection(int w, int h)
 {
 	const float FOV = 45.0f;
@@ -46,13 +46,13 @@ void Camera::ResizeProjection(int w, int h)
 	const float PERSPECTIVE_FAR_RANGE = 8000.0f;
 	m_perspectiveProjection = glm::perspective(FOV, ASPECT_RATIO, PERSPECTIVE_NEAR_RANGE, PERSPECTIVE_FAR_RANGE);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void Camera::computeWalkingVectors()
 {
 	m_forward = glm::rotate(glm::vec3(0.0, 0.0, -1.0), m_lookAngleY, m_up);
 	m_side = glm::normalize(glm::cross(m_forward, m_up));
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void Camera::controlMouseInput()
 {
 	double mouseX, mouseY;
@@ -68,7 +68,7 @@ void Camera::controlMouseInput()
 	m_oldMouseX = mouseX;
 	m_oldMouseY = mouseY;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void Camera::controlMoving(float dt)
 {
 	glm::vec3 targetVelocity(0.0);
@@ -83,7 +83,7 @@ void Camera::controlMoving(float dt)
 
 	m_pos = m_pos + (m_forward * targetVelocity.z * dt) + (m_side * targetVelocity.x * dt);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void Camera::controlLooking()
 {
 	// compute our pitch angle, taking into account any impact animations
@@ -94,7 +94,7 @@ void Camera::controlLooking()
 	// y-look direction is simpler
 	m_lookAngleY = m_lookAngleY + (m_targetLookAngleY - m_lookAngleY) * 0.8f;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void Camera::computeCameraOrientation()
 {
 	glm::mat4 camera = glm::mat4(1.0);
@@ -103,4 +103,4 @@ void Camera::computeCameraOrientation()
 
 	m_cameraLook = m_pos - glm::vec3(camera[2]);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------

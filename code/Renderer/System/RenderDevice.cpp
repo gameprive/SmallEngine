@@ -3,7 +3,7 @@
 #include "stdafx.h"
 #include "RenderDevice.h"
 
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void RenderDevice::Init()
 {
 	const auto glVersion = reinterpret_cast<const char*>(glGetString(GL_VERSION));
@@ -24,33 +24,37 @@ void RenderDevice::Init()
 	glGetIntegerv(GL_MAX_FRAGMENT_UNIFORM_BLOCKS, &m_maxPixelConstantBuffers);
 
 	glGetIntegerv(GL_MAX_VERTEX_UNIFORM_VECTORS, &m_maxVertexUniformVectors);
+	glGetIntegerv(GL_MAX_UNIFORM_BLOCK_SIZE, &m_maxUniformBlockSize);
+	glGetIntegerv(GL_UNIFORM_BUFFER_OFFSET_ALIGNMENT, &m_uniformBufferOffsetAlignment);
 
 	infoLog << "\n";
-	infoLog << "\n\tMax Anisotropy:               " << m_deviceMaxAnisotropy;
-	infoLog << "\n\tMax Texture Slot:             " << m_maxTextureSlot;
-	infoLog << "\n\tMax Vertex Constant Buffer:   " << m_maxVertexConstantBuffers;
-	infoLog << "\n\tMax Pixel Constant Buffer:    " << m_maxPixelConstantBuffers;
+	infoLog << "\n\tMax Anisotropy:                  " << m_deviceMaxAnisotropy;
+	infoLog << "\n\tMax Texture Slot:                " << m_maxTextureSlot;
+	infoLog << "\n\tMax Vertex Constant Buffer:      " << m_maxVertexConstantBuffers;
+	infoLog << "\n\tMax Pixel Constant Buffer:       " << m_maxPixelConstantBuffers;
 
-	infoLog << "\n\tMax Vertex Constant Vectors:  " << m_maxVertexUniformVectors;
+	infoLog << "\n\tMax Vertex Constant Vectors:     " << m_maxVertexUniformVectors;
+	infoLog << "\n\tMax Uniform Block Size:          " << m_maxUniformBlockSize;
+	infoLog << "\n\tUniform Buffer Offset Alignment: " << m_uniformBufferOffsetAlignment;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 int32_t RenderDevice::GetMaxAnisotropy() const
 {
 	return m_deviceMaxAnisotropy;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 int32_t RenderDevice::GetMaxTextureSlot() const
 {
 	return m_maxTextureSlot;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 int32_t RenderDevice::GetMaxVertexConstantBuffer() const
 {
 	return m_maxVertexConstantBuffers;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 int32_t RenderDevice::GetMaxPixelConstantBuffer() const
 {
 	return m_maxPixelConstantBuffers;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------

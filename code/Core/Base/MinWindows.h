@@ -1,12 +1,9 @@
 ﻿#pragma once
 
 #if WIN32
-#	ifndef WIN32_LEAN_AND_MEAN
-#		define WIN32_LEAN_AND_MEAN
-#	endif
-#	ifndef WIN32_EXTRA_LEAN
-#		define WIN32_EXTRA_LEAN
-#	endif
+#	define WIN32_LEAN_AND_MEAN
+#	define WIN32_EXTRA_LEAN
+
 #	define NOIME				// 
 #	define NOWINRES				// 
 #	define NOGDICAPMASKS		// CC_*, LC_*, PC_*, CP_*, TC_*, RC_
@@ -54,5 +51,6 @@
 #	define NOCRYPT				// 
 #	define NOKERNEL				// All KERNEL defines and routines
 #	define NONLS				// All NLS defines and routines
+
 #	include <Windows.h>
 #endif

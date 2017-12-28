@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "Core/Base/BaseFunc.h"
+#include "Core/Template/Noncopyable.h"
 
 enum class LevelLog
 {
@@ -9,7 +10,7 @@ enum class LevelLog
 	Info
 };
 
-class Log
+class Log : Noncopyable
 {
 public:
 	Log(LevelLog pLevel = LevelLog::Info) : m_level(pLevel) {}
@@ -18,35 +19,31 @@ public:
 	template <typename T>
 	Log& operator<< (T val)
 	{
-		m_s += ToString(val);
+		m_text += ToString(val);
 		return *this;
 	}
 
 	Log& operator<<(const std::string &val)
 	{
-		m_s += val;
+		m_text += val;
 		return *this;
 	}
 
 	Log& operator<<(char *val)
 	{
-		m_s += val;
+		m_text += val;
 		return *this;
 	}
 
 	Log& operator<<(const char *val)
 	{
-		m_s += val;
+		m_text += val;
 		return *this;
 	}
 
 private:
-	Log(const Log&) = delete;
-	void operator=(const Log&) = delete;
-	void operator=(Log&&) = delete;
-
-	LevelLog m_level = LevelLog::Info;
-	std::string m_s;
+	LevelLog m_level;
+	std::string m_text;
 };
 
 #if _DEBUG && WIN32

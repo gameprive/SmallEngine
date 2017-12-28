@@ -3,12 +3,12 @@
 #include "stdafx.h"
 #include "RasterizerState.h"
 
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 RasterizerDescription RasterizerDescription::CreateDefault()
 {
 	return CreateCullCounterClockwise();
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 RasterizerDescription RasterizerDescription::CreateCullClockwise()
 {
 	RasterizerDescription desc;
@@ -20,7 +20,7 @@ RasterizerDescription RasterizerDescription::CreateCullClockwise()
 	desc.ScissorTestEnable = false;
 	return desc;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 RasterizerDescription RasterizerDescription::CreateCullCounterClockwise()
 {
 	RasterizerDescription desc;
@@ -32,7 +32,7 @@ RasterizerDescription RasterizerDescription::CreateCullCounterClockwise()
 	desc.ScissorTestEnable = false;
 	return desc;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 RasterizerDescription RasterizerDescription::CreateCullNone()
 {
 	RasterizerDescription desc;
@@ -44,7 +44,7 @@ RasterizerDescription RasterizerDescription::CreateCullNone()
 	desc.ScissorTestEnable = false;
 	return desc;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 GLenum toFillModeGL4(const FillMode &fillMode)
 {
 	switch ( fillMode )
@@ -54,7 +54,7 @@ GLenum toFillModeGL4(const FillMode &fillMode)
 	}
 	return GL_FILL;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 RasterizerState::RasterizerState(const RasterizerDescription &desc)
 	: m_fillMode(toFillModeGL4(desc.FillMode))
 	, m_cullMode(desc.CullingMode)
@@ -64,7 +64,7 @@ RasterizerState::RasterizerState(const RasterizerDescription &desc)
 	, m_scissorTestEnable(desc.ScissorTestEnable)
 {
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void RasterizerState::Bind()
 {
 	// CullingMode:
@@ -107,4 +107,4 @@ void RasterizerState::Bind()
 	else
 		glDisable(GL_MULTISAMPLE);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------

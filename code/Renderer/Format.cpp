@@ -3,7 +3,7 @@
 #include "stdafx.h"
 #include "Format.h"
 
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 uint32_t DataTypeSize(const DataType dataType)
 {
 	switch ( dataType )
@@ -23,7 +23,7 @@ uint32_t DataTypeSize(const DataType dataType)
 	}
 	return 0;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 uint32_t VectorTypeSize(const VectorType vectorType)
 {
 	DataType dataType = DataType::Float;
@@ -31,7 +31,7 @@ uint32_t VectorTypeSize(const VectorType vectorType)
 	VectorTypeFormat(vectorType, dataType, components);
 	return (DataTypeSize(dataType) * components);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void VectorTypeFormat(const VectorType vectorType, DataType &dataType, uint8_t &components)
 {
 	uint8_t vectorTypeIdx = static_cast<uint8_t>(vectorType);
@@ -44,4 +44,4 @@ void VectorTypeFormat(const VectorType vectorType, DataType &dataType, uint8_t &
 		components = (componentsIdx + 1);
 	}
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------

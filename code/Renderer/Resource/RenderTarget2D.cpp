@@ -3,7 +3,7 @@
 #include "stdafx.h"
 #include "RenderTarget2D.h"
 
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 GLenum toColorAttachment(uint32_t index)
 {
 	static_assert(GL_COLOR_ATTACHMENT0 == (GL_COLOR_ATTACHMENT0 + 0), "");
@@ -18,7 +18,7 @@ GLenum toColorAttachment(uint32_t index)
 	Assert(index < 8);
 	return static_cast<GLenum>(GL_COLOR_ATTACHMENT0 + index);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 GLenum toDepthStencilFormat(DepthFormat depthFormat)
 {
 	switch ( depthFormat )
@@ -32,7 +32,7 @@ GLenum toDepthStencilFormat(DepthFormat depthFormat)
 	}
 	ParameterFailed("toDepthStencilFormat");
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 RenderTarget2D::RenderTarget2D(uint32_t pixelWidth, uint32_t pixelHeight, int32_t levelCount, DataFormat format, DepthFormat depthStencilFormat, int32_t multiSampleCount)
 	: m_texture(pixelWidth, pixelHeight, levelCount, format)
 	, m_generateMipmap(levelCount > 1)
@@ -56,40 +56,40 @@ RenderTarget2D::RenderTarget2D(uint32_t pixelWidth, uint32_t pixelHeight, int32_
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 	}
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 RenderTarget2D::~RenderTarget2D()
 {
 	glDeleteFramebuffers(1, &m_frameBuffer);
 	if ( m_depthRenderBuffer )
 		glDeleteRenderbuffers(1, &m_depthRenderBuffer);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 uint32_t RenderTarget2D::GetWidth() const
 {
 	return m_pixelWidth;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 uint32_t RenderTarget2D::GetHeight() const
 {
 	return m_pixelHeight;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void RenderTarget2D::Bind(uint32_t attachmentPoint)
 {
 	glBindFramebuffer(GL_FRAMEBUFFER, m_frameBuffer);
 	glFramebufferTexture2D(GL_FRAMEBUFFER, toColorAttachment(attachmentPoint), m_textureTarget, m_texture.m_textureObject, 0);
 	glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, m_depthRenderBuffer);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void RenderTarget2D::Unbind(uint32_t attachmentPoint)
 {
 	glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, 0);
 	glFramebufferTexture2D(GL_FRAMEBUFFER, toColorAttachment(attachmentPoint), m_textureTarget, 0, 0);
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void RenderTarget2D::BindTexture(uint32_t index)
 {
 	m_texture.Bind(index);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------

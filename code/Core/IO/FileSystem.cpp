@@ -4,7 +4,7 @@
 #include "FileSystem.h"
 #include "Debug/Log.h"
 
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 bool FileSystem::ReadFile(const std::string &filename, std::vector<uint8_t> &data)
 {
 	if ( filename.empty() )
@@ -26,7 +26,7 @@ bool FileSystem::ReadFile(const std::string &filename, std::vector<uint8_t> &dat
 
 	return true;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 bool FileSystem::WriteFile(const std::string &filename, const std::vector<uint8_t> &data)
 {
 	std::ofstream file(filename, std::ios::binary);
@@ -41,4 +41,4 @@ bool FileSystem::WriteFile(const std::string &filename, const std::vector<uint8_
 	file.close();
 	return true;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------

@@ -5,7 +5,7 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
 
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 GLuint LoadTexture(const char *name, bool highQualityMipmaps)
 {
 	GLuint result = 0;
@@ -55,4 +55,4 @@ GLuint LoadTexture(const char *name, bool highQualityMipmaps)
 
 	return result;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------

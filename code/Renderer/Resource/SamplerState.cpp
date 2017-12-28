@@ -4,13 +4,13 @@
 #include "SamplerState.h"
 #include "System/RenderDevice.h"
 
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 struct PairTexFilter
 {
 	GLenum min;
 	GLenum mag;
 };
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 PairTexFilter MapTextureFilter(SamplerFilter filter)
 {
 	switch ( filter )
@@ -27,7 +27,7 @@ PairTexFilter MapTextureFilter(SamplerFilter filter)
 	}
 	ParameterFailed("MapTextureFilter");
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 GLenum toGLAddressMode(AddressMode address)
 {
 	switch ( address )
@@ -39,12 +39,12 @@ GLenum toGLAddressMode(AddressMode address)
 	}
 	ParameterFailed("TextureAddressMode");
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 SamplerDescription SamplerDescription::CreateDefault()
 {
 	return CreateLinearClamp();
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 SamplerDescription SamplerDescription::CreateAnisotropicClamp()
 {
 	SamplerDescription desc;
@@ -58,7 +58,7 @@ SamplerDescription SamplerDescription::CreateAnisotropicClamp()
 	desc.MaxMipLevel = 1000.0f;
 	return desc;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 SamplerDescription SamplerDescription::CreateAnisotropicWrap()
 {
 	SamplerDescription desc;
@@ -72,7 +72,7 @@ SamplerDescription SamplerDescription::CreateAnisotropicWrap()
 	desc.MaxMipLevel = 1000.0f;
 	return desc;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 SamplerDescription SamplerDescription::CreateLinearClamp()
 {
 	SamplerDescription desc;
@@ -86,7 +86,7 @@ SamplerDescription SamplerDescription::CreateLinearClamp()
 	desc.MaxMipLevel = std::numeric_limits<float>::max();
 	return desc;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 SamplerDescription SamplerDescription::CreateLinearWrap()
 {
 	SamplerDescription desc;
@@ -100,7 +100,7 @@ SamplerDescription SamplerDescription::CreateLinearWrap()
 	desc.MaxMipLevel = std::numeric_limits<float>::max();
 	return desc;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 SamplerDescription SamplerDescription::CreatePointClamp()
 {
 	SamplerDescription desc;
@@ -114,7 +114,7 @@ SamplerDescription SamplerDescription::CreatePointClamp()
 	desc.MaxMipLevel = std::numeric_limits<float>::max();
 	return desc;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 SamplerDescription SamplerDescription::CreatePointWrap()
 {
 	SamplerDescription desc;
@@ -128,7 +128,7 @@ SamplerDescription SamplerDescription::CreatePointWrap()
 	desc.MaxMipLevel = std::numeric_limits<float>::max();
 	return desc;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 SamplerState::SamplerState(const SamplerDescription &desc)
 {
 	Assert(desc.MinMipLevel <= desc.MaxMipLevel);
@@ -167,16 +167,16 @@ SamplerState::SamplerState(const SamplerDescription &desc)
 
 	glSamplerParameterfv(m_samplerObject, GL_TEXTURE_BORDER_COLOR, fcolor);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 SamplerState::~SamplerState()
 {
 	glDeleteSamplers(1, &m_samplerObject);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void SamplerState::Bind(uint32_t index)
 {
 	Assert(index <= 19);
 	Assert(m_samplerObject);
 	glBindSampler(index, m_samplerObject);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------

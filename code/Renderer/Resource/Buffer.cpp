@@ -3,7 +3,7 @@
 #include "stdafx.h"
 #include "Buffer.h"
 
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 GLenum toGLBufferType(BufferType mode)
 {
 	switch ( mode )
@@ -16,7 +16,7 @@ GLenum toGLBufferType(BufferType mode)
 	}
 	ParameterFailed("toGLBufferType");
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 GLenum toGLBufferUsage(BufferUsage bufferUsage)
 {
 	switch ( bufferUsage )
@@ -26,7 +26,7 @@ GLenum toGLBufferUsage(BufferUsage bufferUsage)
 	}
 	ParameterFailed("toGLBufferUsage");
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 GLenum toGLBufferAccess(BufferAccess access)
 {
 	switch ( access )
@@ -37,7 +37,7 @@ GLenum toGLBufferAccess(BufferAccess access)
 	}
 	ParameterFailed("toGLBufferAccess");
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 Buffer::Buffer(BufferType type, const void *sourceData, size_t sizeInBytes, BufferUsage bufferUsage)
 {
 	Assert(sizeInBytes > 0);
@@ -52,7 +52,7 @@ Buffer::Buffer(BufferType type, const void *sourceData, size_t sizeInBytes, Buff
 	glBufferData(m_type, sizeInBytes, sourceData, toGLBufferUsage(bufferUsage));
 	glBindBuffer(m_type, 0);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 Buffer::~Buffer()
 {
 	if ( m_buffer )
@@ -62,12 +62,12 @@ Buffer::~Buffer()
 		m_buffer = 0;
 	}
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void Buffer::SetData(const void *source, size_t sizeInBytes)
 {
 	SetData(0, source, sizeInBytes);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void Buffer::SetData(size_t offsetInBytes, const void *source, size_t sizeInBytes)
 {
 	Assert(source != nullptr);
@@ -76,17 +76,17 @@ void Buffer::SetData(size_t offsetInBytes, const void *source, size_t sizeInByte
 	glBufferSubData(m_type, offsetInBytes, sizeInBytes, source);
 	glBindBuffer(m_type, 0);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void* Buffer::Map(BufferAccess access)
 {
 	glBindBuffer(m_type, m_buffer);
 	return glMapBuffer(m_type, toGLBufferAccess(access));
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 bool Buffer::Unmap()
 {
 	const bool ret = (glUnmapBuffer(m_type) == GL_TRUE);
 	glBindBuffer(m_type, 0);
 	return ret;
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------

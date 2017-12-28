@@ -4,7 +4,7 @@
 #include "RenderSystem.h"
 #include "Core/Window/Window.h"
 
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void RenderSystem::SetRenderTarget2D(std::shared_ptr<RenderTarget2D> rt)
 {
 	if ( m_rt ) m_rt->Unbind(0);
@@ -23,12 +23,12 @@ void RenderSystem::SetRenderTarget2D(std::shared_ptr<RenderTarget2D> rt)
 		SetViewport(0, 0, rt->GetWidth(), rt->GetHeight());
 	}
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void RenderSystem::SetViewport(int x, int y, int w, int h)
 {
 	glViewport(x, y, w, h);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
 void RenderSystem::Clear(const glm::vec4 &color, float depth, uint8_t stencil)
 {
 	GLbitfield mask = 0;
@@ -51,4 +51,4 @@ void RenderSystem::Clear(const glm::vec4 &color, float depth, uint8_t stencil)
 	
 	glClear(mask);
 }
-//-----------------------------------------------------------------------
+//--------------------------------------------------------------------
