@@ -11,6 +11,60 @@
     <ClCompile Include="Test2.cpp">
       <Filter>Test2</Filter>
     </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>Test2</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Test2</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Test2</Filter>
+    </ClCompile>
+    <ClCompile Include="components\Camera.cpp">
+      <Filter>Test2\components</Filter>
+    </ClCompile>
+    <ClCompile Include="components\InputController.cpp">
+      <Filter>Test2\components</Filter>
+    </ClCompile>
+    <ClCompile Include="components\Light.cpp">
+      <Filter>Test2\components</Filter>
+    </ClCompile>
+    <ClCompile Include="components\MeshShape.cpp">
+      <Filter>Test2\components</Filter>
+    </ClCompile>
+    <ClCompile Include="components\Physics.cpp">
+      <Filter>Test2\components</Filter>
+    </ClCompile>
+    <ClCompile Include="components\PhysicsCharacter.cpp">
+      <Filter>Test2\components</Filter>
+    </ClCompile>
+    <ClCompile Include="components\Renderer.cpp">
+      <Filter>Test2\components</Filter>
+    </ClCompile>
+    <ClCompile Include="components\Transform.cpp">
+      <Filter>Test2\components</Filter>
+    </ClCompile>
+    <ClCompile Include="systems\InputSystem.cpp">
+      <Filter>Test2\systems</Filter>
+    </ClCompile>
+    <ClCompile Include="systems\PhysicsSystem.cpp">
+      <Filter>Test2\systems</Filter>
+    </ClCompile>
+    <ClCompile Include="systems\RenderSystem.cpp">
+      <Filter>Test2\systems</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\InputManager.cpp">
+      <Filter>Test2\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\MeshLoader.cpp">
+      <Filter>Test2\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\ShaderManager.cpp">
+      <Filter>Test2\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\ShapeGenerator.cpp">
+      <Filter>Test2\utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -21,6 +75,72 @@
     <ClInclude Include="Test2.h">
       <Filter>Test2</Filter>
     </ClInclude>
+    <ClInclude Include="common.h">
+      <Filter>Test2</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>Test2</Filter>
+    </ClInclude>
+    <ClInclude Include="engine.h">
+      <Filter>Test2</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Test2</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Test2</Filter>
+    </ClInclude>
+    <ClInclude Include="MessageTypes.h">
+      <Filter>Test2</Filter>
+    </ClInclude>
+    <ClInclude Include="System.h">
+      <Filter>Test2</Filter>
+    </ClInclude>
+    <ClInclude Include="components\Camera.h">
+      <Filter>Test2\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\InputController.h">
+      <Filter>Test2\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\Light.h">
+      <Filter>Test2\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\MeshShape.h">
+      <Filter>Test2\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\Physics.h">
+      <Filter>Test2\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\PhysicsCharacter.h">
+      <Filter>Test2\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\Renderer.h">
+      <Filter>Test2\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\Transform.h">
+      <Filter>Test2\components</Filter>
+    </ClInclude>
+    <ClInclude Include="systems\InputSystem.h">
+      <Filter>Test2\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="systems\PhysicsSystem.h">
+      <Filter>Test2\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="systems\RenderSystem.h">
+      <Filter>Test2\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\InputManager.h">
+      <Filter>Test2\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\MeshLoader.h">
+      <Filter>Test2\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\ShaderManager.h">
+      <Filter>Test2\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\ShapeGenerator.h">
+      <Filter>Test2\utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Test">
@@ -28,6 +148,15 @@
     </Filter>
     <Filter Include="Test2">
       <UniqueIdentifier>{d9fb5f65-1969-46c2-b5a6-1b335dd38a1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Test2\components">
+      <UniqueIdentifier>{d1fe7d95-7495-465a-a50d-4098e1cdee9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Test2\systems">
+      <UniqueIdentifier>{004df4bb-6381-4ea5-96dd-6877dbee3196}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Test2\utils">
+      <UniqueIdentifier>{e596dc57-0c1d-4843-8cb5-584546d77ca4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

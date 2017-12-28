@@ -90,6 +90,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
+    <ClCompile Include="Component.cpp" />
+    <ClCompile Include="components\Camera.cpp" />
+    <ClCompile Include="components\InputController.cpp" />
+    <ClCompile Include="components\Light.cpp" />
+    <ClCompile Include="components\MeshShape.cpp" />
+    <ClCompile Include="components\Physics.cpp" />
+    <ClCompile Include="components\PhysicsCharacter.cpp" />
+    <ClCompile Include="components\Renderer.cpp" />
+    <ClCompile Include="components\Transform.cpp" />
+    <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PragmaLib.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
@@ -99,14 +110,43 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="systems\InputSystem.cpp" />
+    <ClCompile Include="systems\PhysicsSystem.cpp" />
+    <ClCompile Include="systems\RenderSystem.cpp" />
     <ClCompile Include="Test.cpp" />
     <ClCompile Include="Test2.cpp" />
+    <ClCompile Include="utils\InputManager.cpp" />
+    <ClCompile Include="utils\MeshLoader.cpp" />
+    <ClCompile Include="utils\ShaderManager.cpp" />
+    <ClCompile Include="utils\ShapeGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h" />
+    <ClInclude Include="common.h" />
+    <ClInclude Include="Component.h" />
+    <ClInclude Include="components\Camera.h" />
+    <ClInclude Include="components\InputController.h" />
+    <ClInclude Include="components\Light.h" />
+    <ClInclude Include="components\MeshShape.h" />
+    <ClInclude Include="components\Physics.h" />
+    <ClInclude Include="components\PhysicsCharacter.h" />
+    <ClInclude Include="components\Renderer.h" />
+    <ClInclude Include="components\Transform.h" />
+    <ClInclude Include="engine.h" />
+    <ClInclude Include="Entity.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="MessageTypes.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="System.h" />
+    <ClInclude Include="systems\InputSystem.h" />
+    <ClInclude Include="systems\PhysicsSystem.h" />
+    <ClInclude Include="systems\RenderSystem.h" />
     <ClInclude Include="Test.h" />
     <ClInclude Include="Test2.h" />
+    <ClInclude Include="utils\InputManager.h" />
+    <ClInclude Include="utils\MeshLoader.h" />
+    <ClInclude Include="utils\ShaderManager.h" />
+    <ClInclude Include="utils\ShapeGenerator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
