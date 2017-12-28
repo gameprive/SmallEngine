@@ -41,47 +41,45 @@ GLenum toGLBufferAccess(BufferAccess access)
 Buffer::Buffer(BufferType type, const void *sourceData, size_t sizeInBytes, BufferUsage bufferUsage)
 {
 	Assert(sizeInBytes > 0);
-	if ( !sourceData ) bufferUsage = BufferUsage::Dynamic;
+
 	m_type = toGLBufferType(type);
 
-	glGenBuffers(1, &m_bufferObject);
-	Assert(m_bufferObject);
-	Assert(sizeInBytes > 0);
-	glBindBuffer(m_type, m_bufferObject);
+	if ( !sourceData ) bufferUsage = BufferUsage::Dynamic;
+	
+	glGenBuffers(1, &m_buffer);
+
+	glBindBuffer(m_type, m_buffer);
 	glBufferData(m_type, sizeInBytes, sourceData, toGLBufferUsage(bufferUsage));
 	glBindBuffer(m_type, 0);
 }
 //-----------------------------------------------------------------------
 Buffer::~Buffer()
 {
-	if ( m_bufferObject )
+	if ( m_buffer )
 	{
 		glBindBuffer(m_type, 0);
-		glDeleteBuffers(1, &m_bufferObject);
+		glDeleteBuffers(1, &m_buffer);
+		m_buffer = 0;
 	}
 }
 //-----------------------------------------------------------------------
 void Buffer::SetData(const void *source, size_t sizeInBytes)
 {
-	Assert(source != nullptr);
-	Assert(sizeInBytes > 0);
-	glBindBuffer(m_type, m_bufferObject);
-	glBufferSubData(m_type, 0, sizeInBytes, source);
-	glBindBuffer(m_type, 0);
+	SetData(0, source, sizeInBytes);
 }
 //-----------------------------------------------------------------------
 void Buffer::SetData(size_t offsetInBytes, const void *source, size_t sizeInBytes)
 {
 	Assert(source != nullptr);
 	Assert(sizeInBytes > 0);
-	glBindBuffer(m_type, m_bufferObject);
+	glBindBuffer(m_type, m_buffer);
 	glBufferSubData(m_type, offsetInBytes, sizeInBytes, source);
 	glBindBuffer(m_type, 0);
 }
 //-----------------------------------------------------------------------
 void* Buffer::Map(BufferAccess access)
 {
-	glBindBuffer(m_type, m_bufferObject);
+	glBindBuffer(m_type, m_buffer);
 	return glMapBuffer(m_type, toGLBufferAccess(access));
 }
 //-----------------------------------------------------------------------

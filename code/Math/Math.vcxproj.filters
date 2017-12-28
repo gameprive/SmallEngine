@@ -2,9 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
-    <ClCompile Include="Mathf.cpp">
-      <Filter>Math\NewFilter1</Filter>
-    </ClCompile>
     <ClCompile Include="Vector3.cpp">
       <Filter>Math</Filter>
     </ClCompile>
@@ -29,12 +26,15 @@
     <ClCompile Include="Bounds.cpp">
       <Filter>Math</Filter>
     </ClCompile>
+    <ClCompile Include="Color.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathf.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="Mathf.h">
-      <Filter>Math\NewFilter1</Filter>
-    </ClInclude>
     <ClInclude Include="Vector4.h">
       <Filter>Math</Filter>
     </ClInclude>
@@ -62,13 +62,16 @@
     <ClInclude Include="Bounds.h">
       <Filter>Math</Filter>
     </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Mathf.h">
+      <Filter>Math</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Math">
       <UniqueIdentifier>{94a16678-67ff-459f-9e7c-5a08f1227bc8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Math\NewFilter1">
-      <UniqueIdentifier>{f7847f65-14c5-4147-874e-7828802f994f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

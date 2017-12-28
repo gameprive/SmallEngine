@@ -12,5 +12,5 @@ public:
 	size_t GetVertexCount() const;
 
 private:
-	uint32_t m_vertexCount = 0;
+	uint32_t m_vertexCount;
 };

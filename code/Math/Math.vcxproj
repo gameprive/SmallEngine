@@ -84,6 +84,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Bounds.h" />
+    <ClInclude Include="Color.h" />
     <ClInclude Include="Frustum.h" />
     <ClInclude Include="Mathf.h" />
     <ClInclude Include="Matrix4x4.h" />
@@ -97,6 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bounds.cpp" />
+    <ClCompile Include="Color.cpp" />
     <ClCompile Include="Frustum.cpp" />
     <ClCompile Include="Mathf.cpp" />
     <ClCompile Include="Matrix4x4.cpp" />

@@ -21,8 +21,11 @@ public:
 	// ...
 
 private:
-	int32_t m_deviceMaxAnisotropy = 0;
-	int32_t m_maxTextureSlot = 0;
-	int32_t m_maxVertexConstantBuffers = 0;
-	int32_t m_maxPixelConstantBuffers = 0;
+	int32_t m_deviceMaxAnisotropy;
+	int32_t m_maxTextureSlot;
+	int32_t m_maxVertexConstantBuffers;
+	int32_t m_maxPixelConstantBuffers;
+	
+	// TODO: get
+	int32_t m_maxVertexUniformVectors;
 };

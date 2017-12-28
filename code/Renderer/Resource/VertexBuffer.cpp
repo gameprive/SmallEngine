@@ -12,8 +12,7 @@ VertexBuffer::VertexBuffer(const void *vertices, uint32_t vertexCount, size_t si
 //-----------------------------------------------------------------------
 void VertexBuffer::Bind()
 {
-	Assert(m_bufferObject);
-	glBindBuffer(m_type, m_bufferObject);
+	glBindBuffer(m_type, m_buffer);
 }
 //-----------------------------------------------------------------------
 size_t VertexBuffer::GetVertexCount() const

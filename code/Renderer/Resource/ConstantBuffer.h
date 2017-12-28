@@ -13,7 +13,7 @@ public:
 	template <typename T>
 	void SetData(const T &value)
 	{
-		SetData(static_cast<const void*>(&value), sizeof(value));
+		Buffer::SetData(static_cast<const void*>(&value), sizeof(value));
 	}
 
 private:

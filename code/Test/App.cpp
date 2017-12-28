@@ -15,7 +15,9 @@ void App::Start()
 	srand(static_cast<unsigned>(time(nullptr)));
 
 	WindowConfig config;
-	config.samples = 16;
+	config.samples = 1;
+	config.width = 1024;
+	config.height = 768;
 	if ( m_window.Init(config) )
 	{
 		m_window.windowsResizeHandler = std::bind(&App::resize, this, std::placeholders::_1, std::placeholders::_2);

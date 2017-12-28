@@ -23,11 +23,15 @@ void RenderDevice::Init()
 	glGetIntegerv(GL_MAX_VERTEX_UNIFORM_BLOCKS, &m_maxVertexConstantBuffers);
 	glGetIntegerv(GL_MAX_FRAGMENT_UNIFORM_BLOCKS, &m_maxPixelConstantBuffers);
 
+	glGetIntegerv(GL_MAX_VERTEX_UNIFORM_VECTORS, &m_maxVertexUniformVectors);
+
 	infoLog << "\n";
-	infoLog << "\n\tMax Anisotropy:             " << m_deviceMaxAnisotropy;
-	infoLog << "\n\tMax Texture Slot:           " << m_maxTextureSlot;
-	infoLog << "\n\tMax Vertex Constant Buffer: " << m_maxVertexConstantBuffers;
-	infoLog << "\n\tMax Pixel Constant Buffer:  " << m_maxPixelConstantBuffers;
+	infoLog << "\n\tMax Anisotropy:               " << m_deviceMaxAnisotropy;
+	infoLog << "\n\tMax Texture Slot:             " << m_maxTextureSlot;
+	infoLog << "\n\tMax Vertex Constant Buffer:   " << m_maxVertexConstantBuffers;
+	infoLog << "\n\tMax Pixel Constant Buffer:    " << m_maxPixelConstantBuffers;
+
+	infoLog << "\n\tMax Vertex Constant Vectors:  " << m_maxVertexUniformVectors;
 }
 //-----------------------------------------------------------------------
 int32_t RenderDevice::GetMaxAnisotropy() const

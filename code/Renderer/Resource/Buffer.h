@@ -36,6 +36,6 @@ public:
 protected:
 	Buffer(BufferType type, const void *sourceData, size_t sizeInBytes, BufferUsage bufferUsage);
 
-	GLuint m_bufferObject = 0;
+	GLuint m_buffer = 0;
 	GLenum m_type = 0;
 };

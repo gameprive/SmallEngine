@@ -5,6 +5,7 @@
 enum class DepthFormat : uint8_t
 {
 	Depth16,
+	Depth24,			// TODO
 	Depth24Stencil8,
 	Depth32,
 	Depth32FStencil8,

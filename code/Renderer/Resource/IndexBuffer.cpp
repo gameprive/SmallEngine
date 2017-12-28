@@ -4,25 +4,25 @@
 #include "IndexBuffer.h"
 
 //-----------------------------------------------------------------------
-size_t ToIndexElementOffsetBytes(IndexElementSize elementSize)
+inline size_t toSizeIndexElement(IndexElementSize elementSize)
 {
 	switch ( elementSize )
 	{
 	case IndexElementSize::Bit32: return sizeof(int);
 	case IndexElementSize::Bit16: return sizeof(short);
 	};
-	ParameterFailed("IndexElementOffsetBytes");
+	ParameterFailed("toSizeIndexElement");
 }
 //-----------------------------------------------------------------------
 IndexBuffer::IndexBuffer(IndexElementSize elementSize, const void *indices, size_t indexCount, BufferUsage bufferUsage)
-	: Buffer(BufferType::Index, indices, indexCount * ToIndexElementOffsetBytes(elementSize), bufferUsage)
+	: Buffer(BufferType::Index, indices, indexCount * toSizeIndexElement(elementSize), bufferUsage)
 	, m_indexCount(indexCount)
 	, m_elementSize(elementSize)
 {
 }
 //-----------------------------------------------------------------------
 IndexBuffer::IndexBuffer(IndexElementSize elementSize, size_t indexCount, BufferUsage bufferUsage)
-	: Buffer(BufferType::Index, nullptr, indexCount * ToIndexElementOffsetBytes(elementSize), bufferUsage)
+	: Buffer(BufferType::Index, nullptr, indexCount * toSizeIndexElement(elementSize), bufferUsage)
 	, m_indexCount(indexCount)
 	, m_elementSize(elementSize)
 {
@@ -30,8 +30,7 @@ IndexBuffer::IndexBuffer(IndexElementSize elementSize, size_t indexCount, Buffer
 //-----------------------------------------------------------------------
 void IndexBuffer::Bind()
 {
-	Assert(m_bufferObject);
-	glBindBuffer(m_type, m_bufferObject);
+	glBindBuffer(m_type, m_buffer);
 }
 //-----------------------------------------------------------------------
 size_t IndexBuffer::GetIndexCount() const

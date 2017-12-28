@@ -5,6 +5,7 @@
 #include "Renderer/Resource/SamplerState.h"
 #include "Renderer/Resource/Texture2D.h"
 
+
 class Test
 {
 public:
@@ -19,6 +20,9 @@ public:
 	
 	std::shared_ptr<VertexBuffer> vertexbuffer;
 	std::shared_ptr<VertexBuffer> colorbuffer;
+
+	std::shared_ptr<ConstantBuffer> cb;
+
 	std::shared_ptr<VertexFormat> format;
 
 	std::shared_ptr<ShaderProgram> shaders;

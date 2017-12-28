@@ -18,7 +18,6 @@ ConstantBuffer::ConstantBuffer(const void *sourceData, size_t sizeInBytes)
 //-----------------------------------------------------------------------
 void ConstantBuffer::Bind(uint8_t slotIndex)
 {
-	Assert(m_bufferObject);
-	glBindBufferBase(GL_UNIFORM_BUFFER, slotIndex, m_bufferObject);
+	glBindBufferBase(GL_UNIFORM_BUFFER, slotIndex, m_buffer);
 }
 //-----------------------------------------------------------------------
