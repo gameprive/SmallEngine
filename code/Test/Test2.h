@@ -4,6 +4,7 @@ class Test2
 {
 public:
 	Test2(Window *window);
+	~Test2();
 
 	void Update(float dt);
 	void Render();

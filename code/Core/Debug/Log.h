@@ -13,7 +13,7 @@ enum class LevelLog
 class Log : Noncopyable
 {
 public:
-	Log(LevelLog pLevel = LevelLog::Info) : m_level(pLevel) {}
+	Log(LevelLog level = LevelLog::Info) : m_level(level) {}
 	~Log();
 
 	template <typename T>
