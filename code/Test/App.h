@@ -1,6 +1,11 @@
 ﻿#pragma once
 
 class Test;
+class Test2;
+
+static const bool VSYNC = false;
+static const double TARGET_FRAME_INTERVAL = 0.016665 * (VSYNC ? 1.0 : 0.0);
+static const float FRAME_TIME_ALPHA = 0.25f;
 
 class App
 {
@@ -19,12 +24,12 @@ private:
 	RenderDevice m_renderDevice;
 	RenderSystem m_system;
 	
-	float m_dt = 0.0f;
-	float m_currentTime;
-	float m_oldTime;
-	float m_frameTime = 0.0f;
-	float m_renderAccum = 0.0f;
-	float m_smoothFrameTime = TARGET_FRAME_INTERVAL;
+	double m_dt = 0.0;
+	double m_currentTime;
+	double m_oldTime;
+	double m_frameTime = 0.0;
+	double m_renderAccum = 0.0;
+	double m_smoothFrameTime = TARGET_FRAME_INTERVAL;
 
-	Test *m_test = nullptr;
+	Test2 *m_test = nullptr;
 };

@@ -2,32 +2,31 @@
 
 #include "Noncopyable.h"
 
-template<typename Implementation>
+template<typename T>
 class Singleton : Noncopyable
 {
 public:
 	Singleton()
 	{
-		assert(!m_type);
-		m_type = static_cast<Implementation*>(this);
+		m_type = static_cast<T*>(this);
 	}
 	~Singleton()
 	{
 		m_type = nullptr;
 	}
-	static Implementation& Get()
+	static T& Get()
 	{
 		assert(m_type);
 		return (*m_type);
 	}
-	static Implementation* GetPtr()
+	static T* GetPtr()
 	{
 		assert(m_type);
 		return m_type;
 	}
 
 private:
-	static Implementation *m_type;
+	static T *m_type;
 };
 
-template<typename Implementation> Implementation *Singleton<Implementation>::m_type = nullptr;
+template<typename T> T *Singleton<T>::m_type = nullptr;

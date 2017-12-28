@@ -3,6 +3,7 @@
 #include "stdafx.h"
 #include "App.h"
 #include "Test.h"
+#include "Test2.h"
 
 //--------------------------------------------------------------------
 App::~App()
@@ -26,7 +27,7 @@ void App::Start()
 
 		prepareOpenGL();
 
-		m_test = new Test(&m_window);
+		m_test = new Test2(&m_window);
 		m_currentTime = glfwGetTime();
 		while ( !m_window.GetKey(GLFW_KEY_ESCAPE) && frame() );
 	}
@@ -49,7 +50,7 @@ bool App::frame()
 	if ( m_renderAccum >= TARGET_FRAME_INTERVAL )
 	{
 		m_renderAccum -= TARGET_FRAME_INTERVAL;
-		m_smoothFrameTime = (m_smoothFrameTime * FRAME_TIME_ALPHA) + (m_frameTime * (1.0f - FRAME_TIME_ALPHA));
+		m_smoothFrameTime = (m_smoothFrameTime * FRAME_TIME_ALPHA) + (m_frameTime * (1.0 - FRAME_TIME_ALPHA));
 		m_frameTime = 0.0f;
 				
 		m_test->Update(m_smoothFrameTime);
