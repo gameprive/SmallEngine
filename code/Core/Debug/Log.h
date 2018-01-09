@@ -46,10 +46,14 @@ private:
 	std::string m_text;
 };
 
+class LogError : public Log
+{
+public:
+	LogError() : Log(LevelLog::Error) {}
+};
+
 #if _DEBUG && WIN32
 #	define Assert(expression) static_cast<void>((!!(expression)) || (_CrtDbgBreak(), _ASSERT(expression), false))
-#	define AssertMsg(expression, message) static_cast<void>((!!(expression)) || (1 != _CrtDbgReportW(_CRT_ASSERT, _CRT_WIDE(__FILE__), __LINE__, nullptr, L"%s", message)) || (_CrtDbgBreak(), false))
 #else
 #	define Assert(expression)
-#	define AssertMsg(expression, message)
 #endif

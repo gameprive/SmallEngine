@@ -4,15 +4,8 @@
 #include "Engine.h"
 
 //--------------------------------------------------------------------
-Engine::~Engine()
+void Engine::start()
 {
-	close();
-}
-//--------------------------------------------------------------------
-void Engine::Start(IApp *app)
-{
-	m_app.reset(app);
-
 	srand(static_cast<unsigned>(time(nullptr)));
 
 	WindowConfig config;
@@ -33,7 +26,6 @@ void Engine::Start(IApp *app)
 			while ( !m_window.GetKey(GLFW_KEY_ESCAPE) && frame() );
 		}		
 	}
-	close();
 }
 //--------------------------------------------------------------------
 void Engine::prepareOpenGL()
@@ -67,6 +59,7 @@ bool Engine::frame()
 //--------------------------------------------------------------------
 void Engine::close()
 {
+	if ( m_app ) m_app->Close();
 	m_app.release();
 	m_window.Close();
 }

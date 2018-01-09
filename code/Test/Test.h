@@ -13,6 +13,8 @@ public:
 	void Update(float dt) final;
 	void Render() final;
 
+	void Close() final;
+
 private:
 	std::shared_ptr<VertexBuffer> vertexbuffer;
 	std::shared_ptr<VertexBuffer> colorbuffer;

@@ -7,16 +7,64 @@
     <ClCompile Include="Test.cpp">
       <Filter>Test</Filter>
     </ClCompile>
+    <ClCompile Include="New.cpp">
+      <Filter>New</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometry.cpp">
+      <Filter>New</Filter>
+    </ClCompile>
+    <ClCompile Include="Statistics.cpp">
+      <Filter>New</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture2D.cpp">
+      <Filter>New</Filter>
+    </ClCompile>
+    <ClCompile Include="DDSLoader.cpp">
+      <Filter>New</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureCommon.cpp">
+      <Filter>New</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderTexture.cpp">
+      <Filter>New</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Test.h">
       <Filter>Test</Filter>
     </ClInclude>
+    <ClInclude Include="New.h">
+      <Filter>New</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry.h">
+      <Filter>New</Filter>
+    </ClInclude>
+    <ClInclude Include="Statistics.h">
+      <Filter>New</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureBase.h">
+      <Filter>New</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture2D.h">
+      <Filter>New</Filter>
+    </ClInclude>
+    <ClInclude Include="DDSLoader.h">
+      <Filter>New</Filter>
+    </ClInclude>
+    <ClInclude Include="HasExtension.h">
+      <Filter>New</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderTexture.h">
+      <Filter>New</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Test">
       <UniqueIdentifier>{a478bb3d-a1f9-45af-87eb-add12e63929d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="New">
+      <UniqueIdentifier>{0eb7a33f-46e6-40f3-aa24-20f2bbd4796a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -9,14 +9,14 @@ bool FileSystem::ReadFile(const std::string &filename, std::vector<uint8_t> &dat
 {
 	if ( filename.empty() )
 	{
-		Log(LevelLog::Error) << "Failed to find file " << filename;
+		Log(LevelLog::Error) << "FileSystem: Filename empty!";
 		return false;
 	}
 
 	std::ifstream file(filename, std::ios::binary);
-	if ( !file )
+	if ( !file.is_open() )
 	{
-		Log(LevelLog::Error) << "Failed to open file " << filename;
+		Log(LevelLog::Error) << "FileSystem: Could not open " << filename;
 		return false;
 	}
 
@@ -29,8 +29,14 @@ bool FileSystem::ReadFile(const std::string &filename, std::vector<uint8_t> &dat
 //--------------------------------------------------------------------
 bool FileSystem::WriteFile(const std::string &filename, const std::vector<uint8_t> &data)
 {
+	if ( filename.empty() )
+	{
+		Log(LevelLog::Error) << "FileSystem: Filename empty!";
+		return false;
+	}
+
 	std::ofstream file(filename, std::ios::binary);
-	if ( !file )
+	if ( !file.is_open() )
 	{
 		Log(LevelLog::Error) << "Failed to open file " << filename;
 		return false;

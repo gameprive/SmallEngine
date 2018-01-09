@@ -9,11 +9,18 @@ static const float FRAME_TIME_ALPHA = 0.25f;
 class Engine
 {
 public:
-	~Engine();
-
-	void Start(IApp *app);
+	template <typename T>
+	void Start()
+	{
+		m_app = std::make_unique<T>();
+		if ( !m_app ) return;
+		
+		start();
+		close();
+	}	
 
 private:
+	void start();
 	void prepareOpenGL();
 	bool frame();
 	void close();
