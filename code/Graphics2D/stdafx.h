@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "Core/Base/CompileConfig.h"
+#include "Core/Base/CompilationOptions.h"
 //#include "Core/Base/MinWindows.h"
 
 #pragma warning( push )

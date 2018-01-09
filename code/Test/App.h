@@ -31,5 +31,5 @@ private:
 	double m_renderAccum = 0.0;
 	double m_smoothFrameTime = TARGET_FRAME_INTERVAL;
 
-	Test2 *m_test = nullptr;
+	Test *m_test = nullptr;
 };

@@ -85,7 +85,7 @@
   <ItemGroup>
     <ClInclude Include="Base\Base.h" />
     <ClInclude Include="Base\BaseFunc.h" />
-    <ClInclude Include="Base\CompileConfig.h" />
+    <ClInclude Include="Base\CompilationOptions.h" />
     <ClInclude Include="Base\MinWindows.h" />
     <ClInclude Include="Debug\DebugNew.h" />
     <ClInclude Include="Debug\Log.h" />

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Core/Base/CompileConfig.h"
+#include "Core/Base/CompilationOptions.h"
 
 #pragma warning( push )
 #pragma warning( disable : 4201 )

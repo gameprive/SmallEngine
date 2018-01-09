@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "Base/CompileConfig.h"
+#include "Base/CompilationOptions.h"
 
 #include "Base/MinWindows.h"
 

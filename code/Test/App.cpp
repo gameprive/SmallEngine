@@ -27,7 +27,7 @@ void App::Start()
 
 		prepareOpenGL();
 
-		m_test = new Test2(&m_window);
+		m_test = new Test(&m_window);
 		m_currentTime = glfwGetTime();
 		while ( !m_window.GetKey(GLFW_KEY_ESCAPE) && frame() );
 	}

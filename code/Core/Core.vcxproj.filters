@@ -14,9 +14,6 @@
     <ClInclude Include="Base\BaseFunc.h">
       <Filter>Core\Base</Filter>
     </ClInclude>
-    <ClInclude Include="Base\CompileConfig.h">
-      <Filter>Core\Base</Filter>
-    </ClInclude>
     <ClInclude Include="Base\MinWindows.h">
       <Filter>Core\Base</Filter>
     </ClInclude>
@@ -34,6 +31,9 @@
     </ClInclude>
     <ClInclude Include="IO\FileSystem.h">
       <Filter>Core\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\CompilationOptions.h">
+      <Filter>Core\Base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
