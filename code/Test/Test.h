@@ -5,19 +5,15 @@
 #include "Renderer/Resource/SamplerState.h"
 #include "Renderer/Resource/Texture2D.h"
 
-
-class Test
+class Test final : public IApp
 {
 public:
-	Test(Window *window);
-	~Test();
+	bool Init() final;
 
-	void Update(float dt);
-	void Render();
-	void Resize(int width, int height);
+	void Update(float dt) final;
+	void Render() final;
 
-	bool IsGameDone();
-	
+private:
 	std::shared_ptr<VertexBuffer> vertexbuffer;
 	std::shared_ptr<VertexBuffer> colorbuffer;
 
@@ -31,5 +27,4 @@ public:
 	std::shared_ptr<Texture2D> tex;
 
 	std::shared_ptr<RenderTarget2D> rt;
-
 };

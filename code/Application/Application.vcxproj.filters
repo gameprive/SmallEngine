@@ -2,8 +2,22 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Engine.h">
+      <Filter>Application</Filter>
+    </ClInclude>
+    <ClInclude Include="App.h">
+      <Filter>Application</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="Engine.cpp">
+      <Filter>Application</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Application">
+      <UniqueIdentifier>{41ea1d56-110d-42da-927b-20204ce27c4f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

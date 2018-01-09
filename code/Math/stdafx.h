@@ -6,12 +6,7 @@
 #pragma warning( push )
 //#pragma warning( disable : 0 )
 
-#include <cstdlib>
 
-#include <sstream>
-
-#include <string>
-#include <vector>
 
 #pragma warning( pop )
 

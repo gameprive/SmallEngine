@@ -2,76 +2,8 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
-    <ClCompile Include="Vector3.cpp">
-      <Filter>Math</Filter>
-    </ClCompile>
-    <ClCompile Include="Vector2.cpp">
-      <Filter>Math</Filter>
-    </ClCompile>
-    <ClCompile Include="Quaternion.cpp">
-      <Filter>Math</Filter>
-    </ClCompile>
-    <ClCompile Include="Rect.cpp">
-      <Filter>Math</Filter>
-    </ClCompile>
-    <ClCompile Include="Ray.cpp">
-      <Filter>Math</Filter>
-    </ClCompile>
-    <ClCompile Include="Matrix4x4.cpp">
-      <Filter>Math</Filter>
-    </ClCompile>
-    <ClCompile Include="Frustum.cpp">
-      <Filter>Math</Filter>
-    </ClCompile>
-    <ClCompile Include="Bounds.cpp">
-      <Filter>Math</Filter>
-    </ClCompile>
-    <ClCompile Include="Color.cpp">
-      <Filter>Math</Filter>
-    </ClCompile>
-    <ClCompile Include="Mathf.cpp">
-      <Filter>Math</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="Vector4.h">
-      <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector3.h">
-      <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector2.h">
-      <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Quaternion.h">
-      <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Rect.h">
-      <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Ray.h">
-      <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Matrix4x4.h">
-      <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Frustum.h">
-      <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Bounds.h">
-      <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Color.h">
-      <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Mathf.h">
-      <Filter>Math</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Filter Include="Math">
-      <UniqueIdentifier>{94a16678-67ff-459f-9e7c-5a08f1227bc8}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
 </Project>

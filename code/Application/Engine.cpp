@@ -1,18 +1,18 @@
 ﻿// This is an independent project of an individual developer. Dear PVS-Studio, please check it.
 // PVS-Studio Static Code Analyzer for C, C++ and C#: http://www.viva64.com
 #include "stdafx.h"
-#include "App.h"
-#include "Test.h"
-#include "Test2.h"
+#include "Engine.h"
 
 //--------------------------------------------------------------------
-App::~App()
+Engine::~Engine()
 {
 	close();
 }
 //--------------------------------------------------------------------
-void App::Start()
+void Engine::Start(IApp *app)
 {
+	m_app.reset(app);
+
 	srand(static_cast<unsigned>(time(nullptr)));
 
 	WindowConfig config;
@@ -21,25 +21,27 @@ void App::Start()
 	config.height = 768;
 	if ( m_window.Init(config) )
 	{
-		m_window.windowsResizeHandler = std::bind(&App::resize, this, std::placeholders::_1, std::placeholders::_2);
+		m_window.windowsResizeHandler = std::bind(&Engine::resize, this, std::placeholders::_1, std::placeholders::_2);
 
 		m_renderDevice.Init();
 
 		prepareOpenGL();
 
-		m_test = new Test(&m_window);
-		m_currentTime = glfwGetTime();
-		while ( !m_window.GetKey(GLFW_KEY_ESCAPE) && frame() );
+		if ( m_app->Init() )
+		{
+			m_currentTime = glfwGetTime();
+			while ( !m_window.GetKey(GLFW_KEY_ESCAPE) && frame() );
+		}		
 	}
 	close();
 }
 //--------------------------------------------------------------------
-void App::prepareOpenGL()
+void Engine::prepareOpenGL()
 {
 	glClearColor(0.3f, 0.8f, 1.0f, 1.0f);
 }
 //--------------------------------------------------------------------
-bool App::frame()
+bool Engine::frame()
 {
 	m_oldTime = m_currentTime;
 	m_currentTime = glfwGetTime();
@@ -52,26 +54,25 @@ bool App::frame()
 		m_renderAccum -= TARGET_FRAME_INTERVAL;
 		m_smoothFrameTime = (m_smoothFrameTime * FRAME_TIME_ALPHA) + (m_frameTime * (1.0 - FRAME_TIME_ALPHA));
 		m_frameTime = 0.0f;
-				
-		m_test->Update(m_smoothFrameTime);
+
+		m_app->Update(m_smoothFrameTime);
 	}
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	m_test->Render();
+	m_app->Render();
 	m_window.Swap();
 
 	return !m_window.IsQuit();
 }
 //--------------------------------------------------------------------
-void App::close()
+void Engine::close()
 {
-	delete m_test; m_test = nullptr;
+	m_app.release();
 	m_window.Close();
 }
 //--------------------------------------------------------------------
-void App::resize(int width, int height)
+void Engine::resize(int width, int height)
 {
 	glViewport(0, 0, width, height);
-	m_test->Resize(width, height);
 }
 //--------------------------------------------------------------------
