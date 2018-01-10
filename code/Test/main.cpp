@@ -3,6 +3,7 @@
 #include "stdafx.h"
 #include "Test.h"
 #include "New.h"
+#include "Misc2D.h"
 
 //--------------------------------------------------------------------
 int main()

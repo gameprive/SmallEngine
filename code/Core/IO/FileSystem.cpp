@@ -5,6 +5,12 @@
 #include "Debug/Log.h"
 
 //--------------------------------------------------------------------
+FileData::FileData(const std::string &file)
+{
+	isLoaded = FileSystem::ReadFile(file, data);
+	fileName = file;
+}
+//--------------------------------------------------------------------
 bool FileSystem::ReadFile(const std::string &filename, std::vector<uint8_t> &data)
 {
 	if ( filename.empty() )

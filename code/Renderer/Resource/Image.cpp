@@ -15,11 +15,12 @@
 bool Image::Init(const std::string &filename)
 {
 	m_filename = filename;
-	std::vector<uint8_t> newData;
-	if ( !FileSystem::ReadFile(m_filename, newData) )
-		return false;
 
-	return Init(newData);
+	FileData data(m_filename);
+	if ( !data.isLoaded )
+		return false;
+	
+	return Init(data.data);
 }
 //--------------------------------------------------------------------
 bool Image::Init(const std::vector<uint8_t> &data)

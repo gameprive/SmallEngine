@@ -32,11 +32,11 @@ void printShaderLogInfo(GLuint obj)
 //--------------------------------------------------------------------
 Shader::Shader(ShaderType type, const std::string &path)
 {	
-	std::vector<uint8_t> data;
-	if ( FileSystem::ReadFile(path, data) && !data.empty() )
+	FileData data(path);
+	if ( data.isLoaded )
 	{
 		m_type = toGLShaderType(type);
-		create(data);
+		create(data.data);
 		checkCompilation(m_shader);
 	}
 	else

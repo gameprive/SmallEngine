@@ -30,9 +30,8 @@ static void openglErrorCallback(
 {
 	Log errorLog(LevelLog::Error);
 
-	errorLog << "OPENGL ERROR DETECTED:";
-	errorLog << "\nmessage: " << message;
-	errorLog << "\ntype: ";
+	errorLog << "OpenGL: " << message;
+	errorLog << " [type: ";
 	switch ( type )
 	{
 	case GL_DEBUG_TYPE_ERROR: errorLog << "ERROR"; break;
@@ -42,23 +41,29 @@ static void openglErrorCallback(
 	case GL_DEBUG_TYPE_PERFORMANCE: errorLog << "PERFORMANCE"; break;
 	case GL_DEBUG_TYPE_OTHER: errorLog << "OTHER"; break;
 	}
-	errorLog << "\nid: " << id;
-	errorLog << "\nseverity: ";
+	errorLog << " id: " << id;
+	errorLog << " severity: ";
 	switch ( severity )
 	{
 	case GL_DEBUG_SEVERITY_LOW: errorLog << "LOW"; break;
 	case GL_DEBUG_SEVERITY_MEDIUM: errorLog << "MEDIUM"; break;
 	case GL_DEBUG_SEVERITY_HIGH: errorLog << "HIGH"; break;
 	}
+	errorLog << "]";
 }
 //--------------------------------------------------------------------
 void InitGLDebugger()
 {
-	if ( glDebugMessageCallback )
-	{
-		GLuint unusedIds = 0;
+	GLint v;
+	glGetIntegerv(GL_CONTEXT_FLAGS, &v);
+
+
+	if ( (v & GL_CONTEXT_FLAG_DEBUG_BIT) && glDebugMessageCallback )
+	{		
 		glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
-		glDebugMessageCallback(openglErrorCallback, NULL);
+		glDebugMessageCallback(openglErrorCallback, nullptr);
+		
+		GLuint unusedIds = 0;
 		glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0, &unusedIds, true);
 		Log(LevelLog::Info) << "GL callback debugging is enabled";
 	}

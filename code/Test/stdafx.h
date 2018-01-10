@@ -11,10 +11,12 @@
 #include <functional>
 #include <memory>
 #include <algorithm>
+#include <sstream>
 
 #include <string>
 #include <vector>
 #include <map>
+#include <unordered_map>
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -33,7 +35,13 @@
 #include "Core/Debug/DebugNew.h"
 #include "Core/Debug/Log.h"
 #include "Core/Window/Window.h"
+#include "Core/IO/FileSystem.h"
 #include "Renderer/System/RenderDevice.h"
 #include "Renderer/System/RenderSystem.h"
 
 #include "Application/Engine.h"
+
+#include "Math/Vector3.h"
+#include "Math/Matrix.h"
+#include "Math/Quaternion.h"
+#include "Math/Frustum.h"
