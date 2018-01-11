@@ -28,6 +28,10 @@ static void openglErrorCallback(
 	const GLchar* message,
 	const void* /*userParam*/)
 {
+	// на не нужно писать в лог свои же сообщения
+	if ( (type == GL_DEBUG_TYPE_PUSH_GROUP || type == GL_DEBUG_TYPE_POP_GROUP) && severity == GL_DEBUG_SEVERITY_NOTIFICATION )
+		return;
+
 	Log errorLog(LevelLog::Error);
 
 	errorLog << "OpenGL: " << message;
@@ -56,8 +60,6 @@ void InitGLDebugger()
 {
 	GLint v;
 	glGetIntegerv(GL_CONTEXT_FLAGS, &v);
-
-
 	if ( (v & GL_CONTEXT_FLAG_DEBUG_BIT) && glDebugMessageCallback )
 	{		
 		glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);

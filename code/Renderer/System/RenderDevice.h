@@ -9,10 +9,17 @@ public:
 	// Render Device Info
 	//----------------------------------------------------------------------
 
-	int32_t GetMaxAnisotropy() const;
-	int32_t GetMaxTextureSlot() const;
-	int32_t GetMaxVertexConstantBuffer() const;
-	int32_t GetMaxPixelConstantBuffer() const;
+	static int32_t GetMaxAnisotropy();
+	static int32_t GetMaxTextureSlot();
+
+	static bool SupportsKHRDebug();
+
+	//----------------------------------------------------------------------
+	// Render Device Debug Util
+	//----------------------------------------------------------------------
+	static void LabelObject(GLenum type, GLuint object, const char *name);
+	static void PushGroupMarker(const char *name);
+	static void PopGroupMarker();
 
 	//----------------------------------------------------------------------
 	// Render Resource Create
@@ -21,13 +28,5 @@ public:
 	// ...
 
 private:
-	int32_t m_deviceMaxAnisotropy;
-	int32_t m_maxTextureSlot;
-	int32_t m_maxVertexConstantBuffers;
-	int32_t m_maxPixelConstantBuffers;
-	
-	// TODO: get
-	int32_t m_maxVertexUniformVectors;
-	int32_t m_maxUniformBlockSize;
-	int32_t m_uniformBufferOffsetAlignment;
+
 };
