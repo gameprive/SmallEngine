@@ -7,7 +7,8 @@ enum class LevelLog
 {
 	Error,
 	Warning,
-	Info
+	Info, 
+	Debug
 };
 
 class Log : Noncopyable
@@ -15,6 +16,11 @@ class Log : Noncopyable
 public:
 	Log(LevelLog level = LevelLog::Info) : m_level(level) {}
 	~Log();
+
+	void SetLevel(LevelLog level)
+	{
+		m_level = level;
+	}
 
 	template <typename T>
 	Log& operator<< (T val)

@@ -20,7 +20,7 @@ static void APIENTRY openglErrorCallback(
 #else
 static void openglErrorCallback(
 #endif
-	GLenum /*source*/,
+	GLenum source,
 	GLenum type,
 	GLuint id,
 	GLenum severity,
@@ -28,32 +28,44 @@ static void openglErrorCallback(
 	const GLchar* message,
 	const void* /*userParam*/)
 {
-	// на не нужно писать в лог свои же сообщения
-	if ( (type == GL_DEBUG_TYPE_PUSH_GROUP || type == GL_DEBUG_TYPE_POP_GROUP) && severity == GL_DEBUG_SEVERITY_NOTIFICATION )
-		return;
+	LogError log;
+	log << "OpenGL: " << message << " [";
 
-	Log errorLog(LevelLog::Error);
+	log << "source: ";
+	switch ( source )
+	{
+	case GL_DEBUG_SOURCE_API: log << "API"; break;
+	case GL_DEBUG_SOURCE_WINDOW_SYSTEM: log << "System"; break;
+	case GL_DEBUG_SOURCE_SHADER_COMPILER: log << "ShaderCompiler"; break;
+	case GL_DEBUG_SOURCE_THIRD_PARTY: log << "ThirdParty"; break;
+	case GL_DEBUG_SOURCE_APPLICATION: log << "Application"; break;
+	case GL_DEBUG_SOURCE_OTHER: log << "Other"; break;
+	}
 
-	errorLog << "OpenGL: " << message;
-	errorLog << " [type: ";
+	log << " type: ";
 	switch ( type )
 	{
-	case GL_DEBUG_TYPE_ERROR: errorLog << "ERROR"; break;
-	case GL_DEBUG_TYPE_DEPRECATED_BEHAVIOR: errorLog << "DEPRECATED_BEHAVIOR"; break;
-	case GL_DEBUG_TYPE_UNDEFINED_BEHAVIOR: errorLog << "UNDEFINED_BEHAVIOR"; break;
-	case GL_DEBUG_TYPE_PORTABILITY: errorLog << "PORTABILITY"; break;
-	case GL_DEBUG_TYPE_PERFORMANCE: errorLog << "PERFORMANCE"; break;
-	case GL_DEBUG_TYPE_OTHER: errorLog << "OTHER"; break;
+	case GL_DEBUG_TYPE_ERROR: log << "Error"; break;
+	case GL_DEBUG_TYPE_DEPRECATED_BEHAVIOR: log << "Deprecated"; break;
+	case GL_DEBUG_TYPE_UNDEFINED_BEHAVIOR: log << "UndefinedBehavior"; break;
+	case GL_DEBUG_TYPE_PORTABILITY: log << "Portability"; break;
+	case GL_DEBUG_TYPE_PERFORMANCE: log << "Performance"; break;
+	case GL_DEBUG_TYPE_OTHER: log << "Other"; break;
+
+	case GL_DEBUG_TYPE_MARKER: log << "Marker"; break;
+	case GL_DEBUG_TYPE_PUSH_GROUP: log << "PushGroup"; break;
+	case GL_DEBUG_TYPE_POP_GROUP: log << "PopGroup"; break;
 	}
-	errorLog << " id: " << id;
-	errorLog << " severity: ";
+	log << " id: " << id;
+	log << " severity: ";
 	switch ( severity )
 	{
-	case GL_DEBUG_SEVERITY_LOW: errorLog << "LOW"; break;
-	case GL_DEBUG_SEVERITY_MEDIUM: errorLog << "MEDIUM"; break;
-	case GL_DEBUG_SEVERITY_HIGH: errorLog << "HIGH"; break;
+	case GL_DEBUG_SEVERITY_LOW: log << "Low"; break;
+	case GL_DEBUG_SEVERITY_MEDIUM: log << "Medium"; break;
+	case GL_DEBUG_SEVERITY_HIGH: log << "High"; break;
+	case GL_DEBUG_SEVERITY_NOTIFICATION: log << "Notification"; break;
 	}
-	errorLog << "]";
+	log << "]";
 }
 //--------------------------------------------------------------------
 void InitGLDebugger()
@@ -65,12 +77,16 @@ void InitGLDebugger()
 		glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
 		glDebugMessageCallback(openglErrorCallback, nullptr);
 		
-		GLuint unusedIds = 0;
-		glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0, &unusedIds, true);
-		Log(LevelLog::Info) << "GL callback debugging is enabled";
+		glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0, nullptr, GL_TRUE);
+
+		glDebugMessageControl(GL_DEBUG_SOURCE_APPLICATION, GL_DEBUG_TYPE_MARKER, GL_DONT_CARE, 0, nullptr, GL_FALSE);
+		glDebugMessageControl(GL_DEBUG_SOURCE_APPLICATION, GL_DEBUG_TYPE_PUSH_GROUP, GL_DONT_CARE, 0, nullptr, GL_FALSE);
+		glDebugMessageControl(GL_DEBUG_SOURCE_APPLICATION, GL_DEBUG_TYPE_POP_GROUP, GL_DONT_CARE, 0, nullptr, GL_FALSE);
+
+		Log(LevelLog::Info) << "OpenGL debug output extension enabled";
 	}
 	else
-		Log(LevelLog::Info) << "GL callback debugging is not available";
+		Log(LevelLog::Info) << "OpenGL debug output extension not available";
 }
 //--------------------------------------------------------------------
 bool Window::Init(const WindowConfig &config)

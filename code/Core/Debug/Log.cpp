@@ -28,6 +28,11 @@ Log::~Log()
 		console->info(m_text);
 		fileLogger->info(m_text);
 		break;
+
+	case LevelLog::Debug:
+		console->debug(m_text);
+		fileLogger->debug(m_text);
+		break;
 	default: break;
 	}
 #if _WIN32
