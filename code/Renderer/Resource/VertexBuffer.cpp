@@ -8,6 +8,7 @@ VertexBuffer::VertexBuffer(const void *vertices, uint32_t vertexCount, size_t si
 	: Buffer(BufferType::Vertex, vertices, sizeInBytes, bufferUsage)
 	, m_vertexCount(vertexCount)
 {
+	TODO("Buffer(BufferType::Vertex, vertices, vertexCount*sizeInBytes, bufferUsage ???");
 }
 //--------------------------------------------------------------------
 void VertexBuffer::Bind()

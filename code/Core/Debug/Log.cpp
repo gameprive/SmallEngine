@@ -5,7 +5,7 @@
 #include <spdlog/spdlog.h>
 //--------------------------------------------------------------------
 auto console = spdlog::stdout_color_mt("console");
-auto fileLogger = spdlog::basic_logger_mt("basic_logger", "log.txt");
+auto fileLogger = spdlog::basic_logger_mt("basic_logger", "log.txt", true);
 //--------------------------------------------------------------------
 // DOC: https://github.com/gabime/spdlog
 // DOC: https://github.com/gabime/spdlog/wiki/1.-QuickStart
