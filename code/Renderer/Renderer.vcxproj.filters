@@ -56,6 +56,9 @@
     <ClInclude Include="System\RenderSystem.h">
       <Filter>Renderer\System</Filter>
     </ClInclude>
+    <ClInclude Include="Resource\DDSLoader.h">
+      <Filter>Renderer\Resource</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
@@ -112,6 +115,9 @@
     </ClCompile>
     <ClCompile Include="System\RenderSystem.cpp">
       <Filter>Renderer\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Resource\DDSLoader.cpp">
+      <Filter>Renderer\Resource</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

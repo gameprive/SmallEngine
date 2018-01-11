@@ -26,6 +26,7 @@ bool Image::Init(const std::string &filename)
 bool Image::Init(const std::vector<uint8_t> &data)
 {
 	TODO("определить формат пикселя");
+	TODO("объединить с DDSLoader");
 
 	int width, height, comp;
 	stbi_uc *tempData = stbi_load_from_memory(data.data(), static_cast<int>(data.size()), &width, &height, &comp, STBI_rgb_alpha);

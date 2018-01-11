@@ -35,6 +35,14 @@ void RenderDevice::Init()
 	infoLog << "\n\tMax Texture Slot:                " << maxTextureSlot;
 	infoLog << "\n\tUniform Buffer Offset Alignment: " << uniformBufferOffsetAlignment;
 	
+#if EXTENSION_LOG
+	infoLog << "\n\nExtensions: \n";
+	int count;
+	glGetIntegerv(GL_NUM_EXTENSIONS, &count);
+
+	for ( int i = 0; i < count; ++i )
+		infoLog << std::string((const char*)glGetStringi(GL_EXTENSIONS, i)) << "\n";
+#endif
 }
 //--------------------------------------------------------------------
 int32_t RenderDevice::GetMaxAnisotropy()
@@ -50,6 +58,21 @@ int32_t RenderDevice::GetMaxTextureSlot()
 bool RenderDevice::SupportsKHRDebug()
 {
 	return (GLEW_KHR_debug);
+}
+//--------------------------------------------------------------------
+bool RenderDevice::SupportsTextureFilterAnisotropic()
+{
+	return (GLEW_EXT_texture_filter_anisotropic);
+}
+//--------------------------------------------------------------------
+bool RenderDevice::SupportsTextureCompressionS3TC()
+{
+	return (GLEW_EXT_texture_compression_s3tc);
+}
+//--------------------------------------------------------------------
+bool RenderDevice::SupportsBufferStorage()
+{
+	return (GLEW_ARB_buffer_storage);
 }
 //--------------------------------------------------------------------
 void RenderDevice::LabelObject(GLenum type, GLuint object, const char *name)

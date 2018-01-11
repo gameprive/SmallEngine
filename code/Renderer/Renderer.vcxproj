@@ -83,6 +83,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Resource\DDSLoader.h" />
     <ClInclude Include="Resource\RasterizerState.h" />
     <ClInclude Include="Resource\DepthStencilState.h" />
     <ClInclude Include="Resource\Buffer.h" />
@@ -104,6 +105,7 @@
     <ClInclude Include="System\RenderDevice.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Resource\DDSLoader.cpp" />
     <ClCompile Include="Resource\RasterizerState.cpp" />
     <ClCompile Include="Resource\DepthStencilState.cpp" />
     <ClCompile Include="Resource\Buffer.cpp" />
