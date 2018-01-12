@@ -64,7 +64,7 @@ void ShaderProgram::Uniform3iv(const char *var, int count, int *vals)
 	glUniform3iv(getUniLoc(var), count, vals);
 }
 //--------------------------------------------------------------------
-void ShaderProgram::Uniform3fv(const char *var, int count, float *vals)
+void ShaderProgram::Uniform3fv(const char *var, int count, const float *vals)
 {
 	glUniform3fv(getUniLoc(var), count, vals);
 }
@@ -89,7 +89,7 @@ void ShaderProgram::Uniform4iv(const char *var, int count, int *vals)
 	glUniform4iv(getUniLoc(var), count, vals);
 }
 //--------------------------------------------------------------------
-void ShaderProgram::Uniform4fv(const char *var, int count, float *vals)
+void ShaderProgram::Uniform4fv(const char *var, int count, const float *vals)
 {
 	glUniform4fv(getUniLoc(var), count, vals);
 }
@@ -106,7 +106,8 @@ void ShaderProgram::UniformVec4(const char *var, const glm::vec4 &v)
 //--------------------------------------------------------------------
 void ShaderProgram::UniformMatrix4fv(const char *var, int count, const GLfloat *vals, bool transpose)
 {
-	glUniformMatrix4fv(getUniLoc(var), count, transpose, vals);
+	glProgramUniformMatrix4fv(m_program, getUniLoc(var), count, transpose, vals);
+//	glUniformMatrix4fv();
 }
 //--------------------------------------------------------------------
 void ShaderProgram::init(const std::vector<std::shared_ptr<Shader>> &shaders)
@@ -121,6 +122,8 @@ void ShaderProgram::init(const std::vector<std::shared_ptr<Shader>> &shaders)
 
 	for ( auto &s : shaders )
 		glDetachShader(m_program, s->m_shader);
+
+	getUniformLocations();
 }
 //--------------------------------------------------------------------
 void ShaderProgram::checkLinking(const GLuint program) const
@@ -128,7 +131,7 @@ void ShaderProgram::checkLinking(const GLuint program) const
 	GLint linked = 0;
 	glGetProgramiv(m_program, GL_LINK_STATUS, &linked);
 	if ( !linked )
-		Log(LevelLog::Error) << "Shaders::Shaders() compiled but could not be linked";
+		LogError() << "Shaders::Shaders() compiled but could not be linked";
 
 	GLint bufflen;
 	glGetProgramiv(program, GL_INFO_LOG_LENGTH, &bufflen);
@@ -136,16 +139,37 @@ void ShaderProgram::checkLinking(const GLuint program) const
 	{
 		GLchar *log = new char[bufflen + 1];
 		glGetProgramInfoLog(program, bufflen, 0, log);
-		Log(LevelLog::Error) << "Linking log:\n" << log;
+		LogError() << "Linking log:\n" << log;
 		delete log;
 	}
 }
 //--------------------------------------------------------------------
 GLint ShaderProgram::getUniLoc(const char *name)
 {
+	// что быстрее - glGetUniformLocation или доступ к хешмапе по строке?
+#if 0
 	const GLint loc = glGetUniformLocation(m_program, name);
-	if ( loc == -1 )
-		Log(LevelLog::Error) << "Shaders::getUniLoc(): uniform '" << name << "' has not been defined";
+#else
+	const GLint loc = m_uniformLocations[name];
+#endif
+	if ( loc == -1 ) LogError() << "uniform '" << name << "' has not been defined";
 	return loc;
+}
+//--------------------------------------------------------------------
+void ShaderProgram::getUniformLocations()
+{
+	int numUni = -1;
+	glGetProgramiv(m_program, GL_ACTIVE_UNIFORMS, &numUni);
+	
+	for ( int i = 0; i < numUni; ++i )
+	{
+		int namelen;
+		int num;
+		GLenum type;
+		char name[128];
+		glGetActiveUniform(m_program, static_cast<GLuint>(i), sizeof(name) - 1, &namelen, &num, &type, name);
+		name[namelen] = 0;		
+		m_uniformLocations[name] = glGetUniformLocation(m_program, name);
+	}
 }
 //--------------------------------------------------------------------

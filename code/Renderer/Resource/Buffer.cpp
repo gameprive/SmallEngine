@@ -2,7 +2,23 @@
 // PVS-Studio Static Code Analyzer for C, C++ and C#: http://www.viva64.com
 #include "stdafx.h"
 #include "Buffer.h"
+#include "System/RenderDevice.h"
 
+//--------------------------------------------------------------------
+// TODO: Buffer Storage
+// https://ferransole.wordpress.com/2014/06/08/persistent-mapped-buffers/
+// http://steps3d.narod.ru/tutorials/buffer-storage-tutorial.html
+// http://www.bfilipek.com/2015/01/persistent-mapped-buffers-benchmark.html
+// Unreal Engine 4
+//if ( RenderDevice::SupportsBufferStorage() )
+//{
+//	const GLbitfield flags = GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT | GL_MAP_COHERENT_BIT;
+//	glBufferStorage(GL_ARRAY_BUFFER, vertexCount * sizeof(Vertex), vertices, flags);
+//}
+//else
+//{
+//	glBufferData(GL_ARRAY_BUFFER, vertexCount * sizeof(Vertex), vertices, GL_STATIC_DRAW);
+//}
 //--------------------------------------------------------------------
 GLenum toGLBufferType(BufferType mode)
 {
@@ -88,5 +104,10 @@ bool Buffer::Unmap()
 	const bool ret = (glUnmapBuffer(m_type) == GL_TRUE);
 	glBindBuffer(m_type, 0);
 	return ret;
+}
+//--------------------------------------------------------------------
+void Buffer::SetDebugName(const char *name)
+{
+	RenderDevice::LabelObject(GL_BUFFER, m_buffer, name);
 }
 //--------------------------------------------------------------------

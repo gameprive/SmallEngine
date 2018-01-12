@@ -2,6 +2,7 @@
 
 #include "Renderer/Format.h"
 #include "VertexBuffer.h"
+#include "IndexBuffer.h"
 
 struct VertexAttribute
 {
@@ -22,8 +23,11 @@ public:
 
 	void PushAttribute(const VectorType vectorType, uint32_t instanceDivisor = 0);
 	
+	void Build(VertexBuffer *vb);
 	void Build(std::shared_ptr<VertexBuffer> vb);
 	void Build(const std::vector<std::shared_ptr<VertexBuffer>> &vbs);
+
+	void Build(VertexBuffer *vb, IndexBuffer *ib);
 
 	void Bind();
 

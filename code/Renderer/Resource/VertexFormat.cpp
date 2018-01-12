@@ -38,6 +38,7 @@ VertexFormat::VertexFormat()
 //--------------------------------------------------------------------
 VertexFormat::~VertexFormat()
 {
+	TODO("нужно отбиндить перед удалением. надо где-то хранить текущий вао, и при удалении - сравнивать - если это оно, то отбинидить");
 	glDeleteVertexArrays(1, &m_vao);
 }
 //--------------------------------------------------------------------
@@ -57,13 +58,18 @@ void VertexFormat::PushAttribute(const VectorType vectorType, uint32_t instanceD
 	m_stride += attr.GetSize();
 }
 //--------------------------------------------------------------------
-void VertexFormat::Build(std::shared_ptr<VertexBuffer> vb)
+void VertexFormat::Build(VertexBuffer *vb)
 {
 	glBindVertexArray(m_vao);
 	vb->Bind();
-	for ( size_t i = 0; i < m_attributes.size(); i++)
+	for ( size_t i = 0; i < m_attributes.size(); i++ )
 		buildVertexAttribute(m_attributes[i], m_attributes[i].offset, m_stride, i);
 	glBindVertexArray(0);
+}
+//--------------------------------------------------------------------
+void VertexFormat::Build(std::shared_ptr<VertexBuffer> vb)
+{
+	Build(vb.get());
 }
 //--------------------------------------------------------------------
 void VertexFormat::Build(const std::vector<std::shared_ptr<VertexBuffer>> &vbs)
@@ -79,6 +85,16 @@ void VertexFormat::Build(const std::vector<std::shared_ptr<VertexBuffer>> &vbs)
 		i++;
 	}
 
+	glBindVertexArray(0);
+}
+//--------------------------------------------------------------------
+void VertexFormat::Build(VertexBuffer *vb, IndexBuffer *ib)
+{
+	glBindVertexArray(m_vao);
+	vb->Bind();
+	ib->Bind();
+	for ( size_t i = 0; i < m_attributes.size(); i++ )
+		buildVertexAttribute(m_attributes[i], m_attributes[i].offset, m_stride, i);
 	glBindVertexArray(0);
 }
 //--------------------------------------------------------------------

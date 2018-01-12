@@ -13,10 +13,10 @@ bool m_debugContext;
 void RenderDevice::Init()
 {
 	const auto glVersion = reinterpret_cast<const char*>(glGetString(GL_VERSION));
-	const auto glslVersion = reinterpret_cast<const char*>(glGetString(GL_SHADING_LANGUAGE_VERSION));
 	const auto vendor = reinterpret_cast<const char*>(glGetString(GL_VENDOR));
 	const auto renderer = reinterpret_cast<const char*>(glGetString(GL_RENDERER));
-
+	const auto glslVersion = reinterpret_cast<const char*>(glGetString(GL_SHADING_LANGUAGE_VERSION));
+	
 	m_debugContext = (glIsEnabled(GL_DEBUG_OUTPUT) != GL_FALSE) && SupportsKHRDebug();
 	
 	Log infoLog(LevelLog::Info);	
@@ -34,7 +34,7 @@ void RenderDevice::Init()
 	infoLog << "\n\tMax Anisotropy:                  " << deviceMaxAnisotropy;
 	infoLog << "\n\tMax Texture Slot:                " << maxTextureSlot;
 	infoLog << "\n\tUniform Buffer Offset Alignment: " << uniformBufferOffsetAlignment;
-	
+		
 #if EXTENSION_LOG
 	infoLog << "\n\nExtensions: \n";
 	int count;

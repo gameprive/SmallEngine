@@ -33,6 +33,8 @@ public:
 	void* Map(BufferAccess access);
 	bool Unmap();
 
+	void SetDebugName(const char *name);
+
 protected:
 	Buffer(BufferType type, const void *sourceData, size_t sizeInBytes, BufferUsage bufferUsage);
 

@@ -17,30 +17,31 @@ GLenum toGLShaderType(ShaderType mode)
 	ParameterFailed("ShaderType");
 }
 //--------------------------------------------------------------------
-void printShaderLogInfo(GLuint obj)
+Shader::Shader(ShaderType type, const std::string &data, ShaderSourceType sourceType)
 {
-	int infologLength = 0;
-	glGetShaderiv(obj, GL_INFO_LOG_LENGTH, &infologLength);
-	if ( infologLength > 1 )
+	m_type = toGLShaderType(type);
+
+	if ( sourceType == ShaderSourceType::File )
 	{
-		char *infoLog = new char[infologLength + 1];
-		glGetShaderInfoLog(obj, infologLength, 0, infoLog);
-		Log(LevelLog::Error) << infoLog;
-		delete infoLog;
+		FileData fData(data);
+		if ( fData.isLoaded )
+		{
+			const GLchar *shaderSource[] = { reinterpret_cast<const GLchar*>(fData.data.data()) };
+			create(shaderSource, fData.data.size());
+		}
+		else
+			LogError() << "Cannot open shader file: " << data;
 	}
-}
-//--------------------------------------------------------------------
-Shader::Shader(ShaderType type, const std::string &path)
-{	
-	FileData data(path);
-	if ( data.isLoaded )
+	else if ( sourceType == ShaderSourceType::String )
 	{
-		m_type = toGLShaderType(type);
-		create(data.data);
-		checkCompilation(m_shader);
+		if ( !data.empty() )
+		{
+			const GLchar *shaderSource[] = { reinterpret_cast<const GLchar*>(data.data()) };
+			create(shaderSource, data.size());
+		}
+		else
+			LogError() << "Shader data empty!!!";		
 	}
-	else
-		Log(LevelLog::Error) << "Cannot open shader file: " << path;
 }
 //--------------------------------------------------------------------
 Shader::~Shader()
@@ -48,26 +49,30 @@ Shader::~Shader()
 	glDeleteShader(m_shader);
 }
 //--------------------------------------------------------------------
-void Shader::create(const std::vector<uint8_t> &data)
+void Shader::create(const GLchar *source[], size_t size)
 {
-	const GLchar *shaderSource[] = { reinterpret_cast<const GLchar*>(data.data()) };
-
-	const int sourceLength = static_cast<int>(data.size());
+	const int sourceLength = static_cast<int>(size);
 	Assert(sourceLength < std::numeric_limits<int>::max());
 
 	m_shader = glCreateShader(m_type);
-	glShaderSource(m_shader, 1, shaderSource, &sourceLength);
+	glShaderSource(m_shader, 1, source, &sourceLength);
 	glCompileShader(m_shader);
-}
-//--------------------------------------------------------------------
-void Shader::checkCompilation(const GLuint shader) const
-{
+
 	GLint compileSuccess;
-	glGetShaderiv(shader, GL_COMPILE_STATUS, &compileSuccess);
-	if ( compileSuccess == GL_FALSE )
+	glGetShaderiv(m_shader, GL_COMPILE_STATUS, &compileSuccess);
+	if ( !compileSuccess )
 	{
-		Log(LevelLog::Error) << "Shaders could not compile shader.";
-		printShaderLogInfo(shader);
+		LogError() << "Shaders could not compile shader.";
+
+		int infologLength = 0;
+		glGetShaderiv(m_shader, GL_INFO_LOG_LENGTH, &infologLength);
+		if ( infologLength > 0 )
+		{
+			char *infoLog = new char[infologLength + 1];
+			glGetShaderInfoLog(m_shader, infologLength, 0, infoLog);
+			LogError() << infoLog;
+			delete infoLog;
+		}
 	}
 }
 //--------------------------------------------------------------------

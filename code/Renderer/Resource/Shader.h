@@ -9,16 +9,21 @@ enum class ShaderType : uint8_t
 	Geometry
 };
 
+enum class ShaderSourceType : uint8_t
+{
+	File,
+	String
+};
+
 class Shader : Noncopyable
 {
 	friend class ShaderProgram;
 public:
-	Shader(ShaderType type, const std::string &path);
+	Shader(ShaderType type, const std::string &data, ShaderSourceType sourceType = ShaderSourceType::File);
 	~Shader();
 	
 private:
-	void create(const std::vector<uint8_t> &data);
-	void checkCompilation(const GLuint shader) const;
+	void create(const GLchar *source[], size_t size);
 
 	GLenum m_type;
 	GLuint m_shader;
