@@ -30,7 +30,6 @@
 
 #pragma warning( pop )
 
-
 #include "Core/Base/Base.h"
 #include "Core/Debug/DebugNew.h"
 #include "Core/Debug/Log.h"
@@ -38,10 +37,8 @@
 #include "Core/IO/FileSystem.h"
 #include "Renderer/System/RenderDevice.h"
 #include "Renderer/System/RenderSystem.h"
+#include "Renderer/Resource/DDSLoader.h"
+#include "Renderer/Resource/VertexFormat.h"
+#include "Renderer/Resource/ShaderProgram.h"
 
 #include "Application/Engine.h"
-
-#include "Math/Vector3.h"
-#include "Math/Matrix.h"
-#include "Math/Quaternion.h"
-#include "Math/Frustum.h"

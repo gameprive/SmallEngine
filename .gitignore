@@ -1,5 +1,6 @@
 /obj
 /mat
+/old
 /lib
 /bin/project_d.exe
 /bin/project_d.ilk
@@ -26,3 +27,4 @@
 /bin/Test.ipdb
 /bin/Test.pdb
 /code/.vs
+

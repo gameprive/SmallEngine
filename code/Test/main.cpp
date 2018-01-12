@@ -2,8 +2,6 @@
 // PVS-Studio Static Code Analyzer for C, C++ and C#: http://www.viva64.com
 #include "stdafx.h"
 #include "Test.h"
-#include "New.h"
-#include "Misc2D.h"
 
 //--------------------------------------------------------------------
 int main()
@@ -17,7 +15,7 @@ int main()
 #endif
 
 	Engine engine;
-	engine.Start<New>();
+	engine.Start<Test>();
 	return 0;
 }
 //--------------------------------------------------------------------

@@ -31,27 +31,27 @@ void ShaderProgram::Bind() const
 //--------------------------------------------------------------------
 void ShaderProgram::Uniform1f(const char *var, float val)
 {
-	glUniform1f(getUniLoc(var), val);
+	glProgramUniform1f(m_program, getUniLoc(var), val);
 }
 //--------------------------------------------------------------------
 void ShaderProgram::Uniform1i(const char *var, int val)
 {
-	glUniform1i(getUniLoc(var), val);
+	glProgramUniform1i(m_program, getUniLoc(var), val);
 }
 //--------------------------------------------------------------------
 void ShaderProgram::Uniform1fv(const char *var, int count, float *vals)
 {
-	glUniform1fv(getUniLoc(var), count, vals);
+	glProgramUniform1fv(m_program, getUniLoc(var), count, vals);
 }
 //--------------------------------------------------------------------
 void ShaderProgram::Uniform2f(const char *var, float v1, float v2)
 {
-	glUniform2f(getUniLoc(var), v1, v2);
+	glProgramUniform2f(m_program, getUniLoc(var), v1, v2);
 }
 //--------------------------------------------------------------------
 void ShaderProgram::Uniform2fv(const char *var, int count, float *vals)
 {
-	glUniform2fv(getUniLoc(var), count, vals);
+	glProgramUniform2fv(m_program, getUniLoc(var), count, vals);
 }
 //--------------------------------------------------------------------
 void ShaderProgram::UniformVec2(const char *var, const glm::vec2 &v)
@@ -61,17 +61,17 @@ void ShaderProgram::UniformVec2(const char *var, const glm::vec2 &v)
 //--------------------------------------------------------------------
 void ShaderProgram::Uniform3iv(const char *var, int count, int *vals)
 {
-	glUniform3iv(getUniLoc(var), count, vals);
+	glProgramUniform3iv(m_program, getUniLoc(var), count, vals);
 }
 //--------------------------------------------------------------------
 void ShaderProgram::Uniform3fv(const char *var, int count, const float *vals)
 {
-	glUniform3fv(getUniLoc(var), count, vals);
+	glProgramUniform3fv(m_program, getUniLoc(var), count, vals);
 }
 //--------------------------------------------------------------------
 void ShaderProgram::Uniform3f(const char *var, const float v1, const float v2, const float v3)
 {
-	glUniform3f(getUniLoc(var), v1, v2, v3);
+	glProgramUniform3f(m_program, getUniLoc(var), v1, v2, v3);
 }
 //--------------------------------------------------------------------
 void ShaderProgram::UniformVec3(const char *var, const glm::vec3 &v)
@@ -81,22 +81,22 @@ void ShaderProgram::UniformVec3(const char *var, const glm::vec3 &v)
 //--------------------------------------------------------------------
 void ShaderProgram::UniformMatrix3fv(const char *var, int count, const GLfloat *vals, bool transpose)
 {
-	glUniformMatrix3fv(getUniLoc(var), count, transpose, vals);
+	glProgramUniformMatrix3fv(m_program, getUniLoc(var), count, transpose, vals);
 }
 //--------------------------------------------------------------------
 void ShaderProgram::Uniform4iv(const char *var, int count, int *vals)
 {
-	glUniform4iv(getUniLoc(var), count, vals);
+	glProgramUniform4iv(m_program, getUniLoc(var), count, vals);
 }
 //--------------------------------------------------------------------
 void ShaderProgram::Uniform4fv(const char *var, int count, const float *vals)
 {
-	glUniform4fv(getUniLoc(var), count, vals);
+	glProgramUniform4fv(m_program, getUniLoc(var), count, vals);
 }
 //--------------------------------------------------------------------
 void ShaderProgram::Uniform4f(const char *var, float v1, float v2, float v3, float v4)
 {
-	glUniform4f(getUniLoc(var), v1, v2, v3, v4);
+	glProgramUniform4f(m_program, getUniLoc(var), v1, v2, v3, v4);
 }
 //--------------------------------------------------------------------
 void ShaderProgram::UniformVec4(const char *var, const glm::vec4 &v)
@@ -107,7 +107,6 @@ void ShaderProgram::UniformVec4(const char *var, const glm::vec4 &v)
 void ShaderProgram::UniformMatrix4fv(const char *var, int count, const GLfloat *vals, bool transpose)
 {
 	glProgramUniformMatrix4fv(m_program, getUniLoc(var), count, transpose, vals);
-//	glUniformMatrix4fv();
 }
 //--------------------------------------------------------------------
 void ShaderProgram::init(const std::vector<std::shared_ptr<Shader>> &shaders)
@@ -131,7 +130,7 @@ void ShaderProgram::checkLinking(const GLuint program) const
 	GLint linked = 0;
 	glGetProgramiv(m_program, GL_LINK_STATUS, &linked);
 	if ( !linked )
-		LogError() << "Shaders::Shaders() compiled but could not be linked";
+		LogError() << "Shaders compiled but could not be linked";
 
 	GLint bufflen;
 	glGetProgramiv(program, GL_INFO_LOG_LENGTH, &bufflen);
