@@ -13,3 +13,4 @@
 #endif
 #pragma comment(lib, "OpenGL32.lib")
 #pragma comment(lib, "OpenAL32.lib")
+#pragma comment(lib, "assimp-vc140-mt.lib")

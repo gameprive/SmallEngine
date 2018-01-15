@@ -8,7 +8,22 @@
       <Filter>Sample</Filter>
     </ClCompile>
     <ClCompile Include="TestAnim.cpp">
-      <Filter>Sample</Filter>
+      <Filter>TestAnim</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>TestAnim</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>TestAnim</Filter>
+    </ClCompile>
+    <ClCompile Include="ForShader.cpp">
+      <Filter>TestAnim</Filter>
+    </ClCompile>
+    <ClCompile Include="SkyBox.cpp">
+      <Filter>TestAnim</Filter>
+    </ClCompile>
+    <ClCompile Include="Textur.cpp">
+      <Filter>TestAnim</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -17,12 +32,33 @@
       <Filter>Sample</Filter>
     </ClInclude>
     <ClInclude Include="TestAnim.h">
-      <Filter>Sample</Filter>
+      <Filter>TestAnim</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>TestAnim</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>TestAnim</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>TestAnim</Filter>
+    </ClInclude>
+    <ClInclude Include="ForShader.h">
+      <Filter>TestAnim</Filter>
+    </ClInclude>
+    <ClInclude Include="SkyBox.h">
+      <Filter>TestAnim</Filter>
+    </ClInclude>
+    <ClInclude Include="Textur.h">
+      <Filter>TestAnim</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Sample">
       <UniqueIdentifier>{a478bb3d-a1f9-45af-87eb-add12e63929d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TestAnim">
+      <UniqueIdentifier>{36e57bdb-1e38-4408-bc54-e2566ca7b0fa}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
