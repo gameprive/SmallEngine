@@ -27,7 +27,7 @@ public:
 	void Uniform4f(const char*, float, float, float, float);
 	void UniformVec4(const char*, const glm::vec4&);
 	void UniformMatrix4fv(const char *var, int count, const GLfloat *vals, bool transpose = false);
-
+	
 private:
 	void init(const std::vector<std::shared_ptr<Shader>> &shaders);
 	void checkLinking(const GLuint program) const;

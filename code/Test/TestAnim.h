@@ -15,9 +15,7 @@ public:
 
 private:
 	std::shared_ptr<ShaderProgram> shaders;
-
-
-	//GLuint shaders = 0;
+	
 	Model model_astroboy;
 	glm::mat4 mat_model;
 	Camera camera;

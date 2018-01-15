@@ -12,7 +12,6 @@ public:
 	~Model();
 	static const uint32_t MAX_BONES = 100;
 	
-	void initShaders(std::shared_ptr<ShaderProgram> shaders);
 	void loadModel(const std::string& path);
 
 	void draw(std::shared_ptr<ShaderProgram> shaders);
@@ -33,7 +32,7 @@ private:
 	std::vector<BoneMatrix> m_bone_matrices;
 	aiMatrix4x4 m_global_inverse_transform;
 
-	//GLuint m_bone_location[MAX_BONES];
+	GLuint m_bone_location[MAX_BONES];
 	float ticks_per_second = 0.0f;
 
 	void processNode(aiNode* node, const aiScene* scene);

@@ -146,7 +146,8 @@ void ShaderProgram::checkLinking(const GLuint program) const
 GLint ShaderProgram::getUniLoc(const char *name)
 {
 	// что быстрее - glGetUniformLocation или доступ к хешмапе по строке?
-#if 0
+	// выявлена ошибка при работе с хешмапой
+#if 1
 	const GLint loc = glGetUniformLocation(m_program, name);
 #else
 	const GLint loc = m_uniformLocations[name];

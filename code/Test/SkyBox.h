@@ -14,7 +14,6 @@ public:
 	void draw();
 
 private:
-	SkyBox();
 	~SkyBox();
 
 	GLuint VAO_skybox;
@@ -23,9 +22,7 @@ private:
 	GLuint cube_texture_id;
 	GLuint createCubeTexture(char* folder);
 
-	GLuint skybox_shaders;
+	std::shared_ptr<ShaderProgram> shaders;
 
 	glm::mat4 VP_matrix; // WITHOUT model for skybox
-
-
 };

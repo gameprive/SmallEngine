@@ -1,12 +1,6 @@
 #include "stdafx.h"
 #include "SkyBox.h"
-#include "ForShader.h"
-
-SkyBox::SkyBox()
-{
-
-}
-
+#include <iostream>
 
 SkyBox::~SkyBox()
 {
@@ -78,62 +72,28 @@ void SkyBox::init(char* folder)
 
 	cube_texture_id = createCubeTexture(folder);
 
-	skybox_shaders = ForShader::makeProgram("shaders/skybox.vert", "shaders/skybox.frag");
-
+	shaders = std::make_shared<ShaderProgram>("shaders/skybox.vert", "shaders/skybox.frag");
 }
 
 void SkyBox::update(glm::mat4 VP_matr)
 {
-	// another skybox
-
-	//if ( InputHandler::Instance()->isKeyDown(SDL_SCANCODE_5) )
-	//{
-	//	glDeleteTextures(1, &cube_texture_id);
-	//	cube_texture_id = createCubeTexture("images/skybox_morning");
-	//}
-	//if ( InputHandler::Instance()->isKeyDown(SDL_SCANCODE_6) )
-	//{
-	//	glDeleteTextures(1, &cube_texture_id);
-	//	cube_texture_id = createCubeTexture("images/skybox_ayden");
-	//}
-	//if ( InputHandler::Instance()->isKeyDown(SDL_SCANCODE_7) )
-	//{
-	//	glDeleteTextures(1, &cube_texture_id);
-	//	cube_texture_id = createCubeTexture("images/skybox_drakeq");
-	//}
-	//if ( InputHandler::Instance()->isKeyDown(SDL_SCANCODE_8) )
-	//{
-	//	glDeleteTextures(1, &cube_texture_id);
-	//	cube_texture_id = createCubeTexture("images/skybox_mercury");
-	//}
-	//if ( InputHandler::Instance()->isKeyDown(SDL_SCANCODE_9) )
-	//{
-	//	glDeleteTextures(1, &cube_texture_id);
-	//	cube_texture_id = createCubeTexture("images/skybox_shadow");
-	//}
-	//if ( InputHandler::Instance()->isKeyDown(SDL_SCANCODE_0) )
-	//{
-	//	glDeleteTextures(1, &cube_texture_id);
-	//	cube_texture_id = createCubeTexture("images/skybox_violentday");
-	//}
-
 	// get MV matrix from world around whom draw skybox
 	VP_matrix = VP_matr;
 }
 
 void SkyBox::draw()
 {
-
 	// draw skybox LAST in scene ( optimization in vertex shader )
 	glDepthFunc(GL_LEQUAL); // optimization in shaders
-	glUseProgram(skybox_shaders);
+
+	shaders->Bind();
+	shaders->UniformMatrix4fv("VP", 1, glm::value_ptr(VP_matrix));
+	
 	glBindVertexArray(VAO_skybox);
-	glUniformMatrix4fv(glGetUniformLocation(skybox_shaders, "VP"), 1, GL_FALSE, glm::value_ptr(VP_matrix));
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_CUBE_MAP, cube_texture_id);
 	glDrawArrays(GL_TRIANGLES, 0, 36);
 	glBindVertexArray(0);
-	glUseProgram(0);
 	glDepthFunc(GL_LESS); // return to default
 }
 
@@ -153,8 +113,6 @@ GLuint SkyBox::createCubeTexture(char* folder)
 
 	for ( int i = 0; i < 6; i++ ) // load DDS image for each side cube map
 	{
-
-
 		unsigned char header[124];
 		// пробуем открыть файл
 		FILE *fp;
@@ -182,11 +140,6 @@ GLuint SkyBox::createCubeTexture(char* folder)
 		unsigned int linear_size = *(unsigned int*)&(header[16]);
 		unsigned int mipmap_count = *(unsigned int*)&(header[24]);
 		unsigned int four_cc = *(unsigned int*)&(header[80]);  // formats
-
-#ifdef _DEBUG
-		std::cout << "image: " << image_path[i].c_str() << " mipmap_count = " << mipmap_count << std::endl;
-#endif // _DEBUG
-
 
 		unsigned char *buffer;
 		unsigned int buff_size = mipmap_count > 1 ? linear_size * 2 : linear_size;
@@ -250,7 +203,6 @@ GLuint SkyBox::createCubeTexture(char* folder)
 			height /= 2;
 		}
 		free(buffer);
-
 	}
 
 	return text_id;

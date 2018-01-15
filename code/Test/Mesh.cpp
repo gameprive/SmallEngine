@@ -57,13 +57,11 @@ void Mesh::Draw(std::shared_ptr<ShaderProgram> shaders)
 		}
 
 		glBindTexture(GL_TEXTURE_2D, textures[i].id);
-		//glUniform1i(glGetUniformLocation(shaders_program, ("material." + name + number).c_str()), i);
+		//glUniform1i(glGetUniformLocation(shaders, ("material." + name + number).c_str()), i);
 		shaders->Uniform1i(("material." + name + number).c_str(), i);
 
 		//cout << "added in shader : " << ("material." + name + number).c_str() << endl;
 	}
-
-	//glUniform1f(glGetUniformLocation(shaders_program, "material.shininess"), 32.0f);
 
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	//glLineWidth(2);

@@ -15,18 +15,6 @@ Model::~Model()
 	import.FreeScene();
 }
 
-void Model::initShaders(std::shared_ptr<ShaderProgram> shaders)
-{
-	for ( uint32_t i = 0; i < MAX_BONES; i++ ) // get location all matrices of bones
-	{
-		std::string name = "bones[" + std::to_string(i) + "]";// name like in shader
-		//m_bone_location[i] = glGetUniformLocation(shader_program, name.c_str());
-	}
-
-	// rotate head AND AXIS(y_z) about x !!!!!  Not be gimbal lock
-	//rotate_head_xz *= glm::quat(cos(glm::radians(-45.0f / 2)), sin(glm::radians(-45.0f / 2)) * glm::vec3(1.0f, 0.0f, 0.0f));
-}
-
 void Model::draw(std::shared_ptr<ShaderProgram> shaders)
 {
 	std::vector<aiMatrix4x4> transforms;
@@ -35,8 +23,6 @@ void Model::draw(std::shared_ptr<ShaderProgram> shaders)
 	for ( uint32_t i = 0; i < transforms.size(); i++ ) // move all matrices for actual model position to shader
 	{
 		std::string name = "bones[" + std::to_string(i) + "]";// name like in shader
-		//glUniformMatrix4fv(m_bone_location[i], 1, GL_TRUE, (const GLfloat*)&transforms[i]);
-
 		shaders->UniformMatrix4fv(name.c_str(), 1, (const GLfloat*)&transforms[i], true);
 	}
 

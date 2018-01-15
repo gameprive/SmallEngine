@@ -16,9 +16,6 @@
     <ClCompile Include="Model.cpp">
       <Filter>TestAnim</Filter>
     </ClCompile>
-    <ClCompile Include="ForShader.cpp">
-      <Filter>TestAnim</Filter>
-    </ClCompile>
     <ClCompile Include="SkyBox.cpp">
       <Filter>TestAnim</Filter>
     </ClCompile>
@@ -41,9 +38,6 @@
       <Filter>TestAnim</Filter>
     </ClInclude>
     <ClInclude Include="Model.h">
-      <Filter>TestAnim</Filter>
-    </ClInclude>
-    <ClInclude Include="ForShader.h">
       <Filter>TestAnim</Filter>
     </ClInclude>
     <ClInclude Include="SkyBox.h">
