@@ -6,22 +6,26 @@ static const float FRAME_TIME_ALPHA = 0.25f;
 
 #include "App.h"
 
+struct EngineConfig
+{
+	WindowConfig window;
+};
+
 class Engine
 {
 public:
 	template <typename T>
-	void Start()
+	void Start(const EngineConfig &config)
 	{
 		m_app = std::make_unique<T>();
 		if ( !m_app ) return;
 		
-		start();
+		start(config);
 		close();
 	}	
 
 private:
-	void start();
-	void prepareOpenGL();
+	void start(const EngineConfig &config);
 	bool frame();
 	void close();
 	void resize(int width, int height);

@@ -211,19 +211,10 @@ inline uint32_t ComputeMipmapLevelCount(uint32_t width, uint32_t height)
 	return levelCount;
 }
 
-inline GLenum ToTextureUnitIndex(uint32_t index)
-{
-	static_assert(GL_TEXTURE0 == (GL_TEXTURE0 + 0), "");
-	static_assert(GL_TEXTURE1 == (GL_TEXTURE0 + 1), "");
-	static_assert(GL_TEXTURE2 == (GL_TEXTURE0 + 2), "");
-	static_assert(GL_TEXTURE3 == (GL_TEXTURE0 + 3), "");
-	static_assert(GL_TEXTURE4 == (GL_TEXTURE0 + 4), "");
-	static_assert(GL_TEXTURE5 == (GL_TEXTURE0 + 5), "");
-	static_assert(GL_TEXTURE6 == (GL_TEXTURE0 + 6), "");
-	static_assert(GL_TEXTURE7 == (GL_TEXTURE0 + 7), "");
-	Assert(index < 128);
-	return static_cast<GLenum>(GL_TEXTURE0 + index);
-}
+//inline GLenum ToTextureUnitIndex(uint32_t index)
+//{
+//	return static_cast<GLenum>(GL_TEXTURE0 + index);
+//}
 //--------------------------------------------------------------------
 #endif
 //--------------------------------------------------------------------

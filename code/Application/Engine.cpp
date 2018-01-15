@@ -4,21 +4,13 @@
 #include "Engine.h"
 
 //--------------------------------------------------------------------
-void Engine::start()
+void Engine::start(const EngineConfig &config)
 {
-	srand(static_cast<unsigned>(time(nullptr)));
-
-	WindowConfig config;
-	config.samples = 1;
-	config.width = 1024;
-	config.height = 768;
-	if ( m_window.Init(config) )
+	if ( m_window.Init(config.window) )
 	{
 		m_window.windowsResizeHandler = std::bind(&Engine::resize, this, std::placeholders::_1, std::placeholders::_2);
 
 		m_renderDevice.Init();
-
-		prepareOpenGL();
 
 		if ( m_app->Init() )
 		{
@@ -26,11 +18,6 @@ void Engine::start()
 			while ( !m_window.GetKey(GLFW_KEY_ESCAPE) && frame() );
 		}		
 	}
-}
-//--------------------------------------------------------------------
-void Engine::prepareOpenGL()
-{
-	glClearColor(0.3f, 0.8f, 1.0f, 1.0f);
 }
 //--------------------------------------------------------------------
 bool Engine::frame()

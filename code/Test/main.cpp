@@ -2,6 +2,7 @@
 // PVS-Studio Static Code Analyzer for C, C++ and C#: http://www.viva64.com
 #include "stdafx.h"
 #include "Test.h"
+#include "TestAnim.h"
 
 //--------------------------------------------------------------------
 int main()
@@ -13,9 +14,13 @@ int main()
 	//_CrtSetDbgFlag(flag);							// Set flag to the new value
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 #endif
+	EngineConfig config;
+	config.window.samples = 1;
+	config.window.width = 1024;
+	config.window.height = 768;
 
 	Engine engine;
-	engine.Start<Test>();
+	engine.Start<TestAnim>(config);
 	return 0;
 }
 //--------------------------------------------------------------------

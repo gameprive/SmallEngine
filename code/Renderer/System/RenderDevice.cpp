@@ -43,6 +43,7 @@ void RenderDevice::Init()
 	for ( int i = 0; i < count; ++i )
 		infoLog << std::string((const char*)glGetStringi(GL_EXTENSIONS, i)) << "\n";
 #endif
+	prepareOpenGL();
 }
 //--------------------------------------------------------------------
 int32_t RenderDevice::GetMaxAnisotropy()
@@ -91,5 +92,10 @@ void RenderDevice::PopGroupMarker()
 {
 	if ( glPopDebugGroup && m_debugContext )
 		glPopDebugGroup();
+}
+//--------------------------------------------------------------------
+void RenderDevice::prepareOpenGL()
+{
+	glClearColor(0.3f, 0.8f, 1.0f, 1.0f);
 }
 //--------------------------------------------------------------------

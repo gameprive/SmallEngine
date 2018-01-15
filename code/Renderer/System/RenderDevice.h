@@ -31,5 +31,5 @@ public:
 	// ...
 
 private:
-
+	void prepareOpenGL();
 };

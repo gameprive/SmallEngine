@@ -5,17 +5,23 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PragmaLib.cpp" />
     <ClCompile Include="Test.cpp">
-      <Filter>Test</Filter>
+      <Filter>Sample</Filter>
+    </ClCompile>
+    <ClCompile Include="TestAnim.cpp">
+      <Filter>Sample</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Test.h">
-      <Filter>Test</Filter>
+      <Filter>Sample</Filter>
+    </ClInclude>
+    <ClInclude Include="TestAnim.h">
+      <Filter>Sample</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Test">
+    <Filter Include="Sample">
       <UniqueIdentifier>{a478bb3d-a1f9-45af-87eb-add12e63929d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>

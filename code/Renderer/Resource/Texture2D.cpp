@@ -121,13 +121,9 @@ void Texture2D::SetData(const void *pixelData)
 	}
 }
 //--------------------------------------------------------------------
-void Texture2D::Bind(uint32_t index) const
+void Texture2D::Bind(uint32_t unit) const
 {
-#if defined(_DEBUG) && !defined(NDEBUG)
-	Assert(index < RenderDevice::Get().GetMaxTextureSlot());
-#endif
-	
-	glActiveTexture(ToTextureUnitIndex(index));
+	glActiveTexture(static_cast<GLenum>(GL_TEXTURE0 + unit));
 	glBindTexture(GL_TEXTURE_2D, m_textureObject);
 }
 //--------------------------------------------------------------------
