@@ -87,7 +87,7 @@ void SkyBox::draw()
 	glDepthFunc(GL_LEQUAL); // optimization in shaders
 
 	shaders->Bind();
-	shaders->UniformMatrix4fv("VP", 1, glm::value_ptr(VP_matrix));
+	shaders->UniformMatrix4("VP", 1, glm::value_ptr(VP_matrix));
 	
 	glBindVertexArray(VAO_skybox);
 	glActiveTexture(GL_TEXTURE0);

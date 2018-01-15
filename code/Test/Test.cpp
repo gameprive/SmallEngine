@@ -123,7 +123,7 @@ void Test::Render()
 		RenderSystem::Get().Clear(glm::vec4(1.0f));
 
 		shaders->Bind();
-		shaders->UniformMatrix4fv("MVP", 1, glm::value_ptr(MVP));
+		shaders->UniformMatrix4("MVP", 1, glm::value_ptr(MVP));
 
 		sampler->Bind(0);
 		tex->Bind(0);
@@ -137,7 +137,7 @@ void Test::Render()
 		RenderSystem::Get().Clear(glm::vec4(0.5f));
 
 		shaders->Bind();
-		shaders->UniformMatrix4fv("MVP", 1, glm::value_ptr(MVP));
+		shaders->UniformMatrix4("MVP", 1, glm::value_ptr(MVP));
 
 		sampler->Bind(0);
 		rt->BindTexture(0);

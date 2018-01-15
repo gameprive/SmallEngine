@@ -16,7 +16,7 @@ bool TestAnim::Init()
 	mat_model = glm::rotate(glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 	mat_model = glm::translate(mat_model, glm::vec3(3.0f, 0.0f, 0.0f));
 
-	SkyBox::Instance()->init("images/skybox_shadow");
+	//SkyBox::Instance()->init("images/skybox_shadow");
 	
 	return true;
 }
@@ -55,7 +55,7 @@ void TestAnim::Update(float dt)
 	}
 		
 	// delete translation from view matrix
-	SkyBox::Instance()->update(perspective_projection * glm::mat4(glm::mat3(perspective_view)));
+	//SkyBox::Instance()->update(perspective_projection * glm::mat4(glm::mat3(perspective_view)));
 }
 //--------------------------------------------------------------------
 void TestAnim::Render()
@@ -63,29 +63,28 @@ void TestAnim::Render()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
 	shaders->Bind();
-	shaders->Uniform3f("view_pos", camera.camera_pos.x, camera.camera_pos.y, camera.camera_pos.z);
+	shaders->Uniform3("view_pos", camera.camera_pos);
 
-	shaders->Uniform1f("material.shininess", 32.0f);
-	shaders->Uniform1f("material.transparency", 1.0f);
+	shaders->Uniform1("material.shininess", 32.0f);
+	shaders->Uniform1("material.transparency", 1.0f);
 
-	shaders->Uniform3f("point_light.position", camera.camera_pos.x, camera.camera_pos.y, camera.camera_pos.z);
-	shaders->Uniform3f("point_light.ambient", 0.1f, 0.1f, 0.1f);
-	shaders->Uniform3f("point_light.diffuse", 1.0f, 1.0f, 1.0f);
-	shaders->Uniform3f("point_light.specular", 1.0f, 1.0f, 1.0f);
-	shaders->Uniform1f("point_light.constant", 1.0f);
-	shaders->Uniform1f("point_light.linear", 0.007f);
-	shaders->Uniform1f("point_light.quadratic", 0.0002f);
+	shaders->Uniform3("point_light.position", camera.camera_pos);
+	shaders->Uniform3("point_light.ambient", 0.1f, 0.1f, 0.1f);
+	shaders->Uniform3("point_light.diffuse", 1.0f, 1.0f, 1.0f);
+	shaders->Uniform3("point_light.specular", 1.0f, 1.0f, 1.0f);
+	shaders->Uniform1("point_light.constant", 1.0f);
+	shaders->Uniform1("point_light.linear", 0.007f);
+	shaders->Uniform1("point_light.quadratic", 0.0002f);
 
-	shaders->UniformMatrix4fv("MVP", 1, glm::value_ptr(MVP));
-	shaders->UniformMatrix4fv("M_matrix", 1, glm::value_ptr(mat_model));
+	shaders->UniformMatrix4("MVP", 1, glm::value_ptr(MVP));
+	shaders->UniformMatrix4("M_matrix", 1, glm::value_ptr(mat_model));
 	
 	glm::mat4 matr_normals_cube2 = glm::mat4(glm::transpose(glm::inverse(mat_model)));
-	shaders->UniformMatrix4fv("normals_matrix", 1, glm::value_ptr(matr_normals_cube2));
+	shaders->UniformMatrix4("normals_matrix", 1, glm::value_ptr(matr_normals_cube2));
 
 	model_astroboy.draw(shaders);
-	glUseProgram(0);
 
-	SkyBox::Instance()->draw();
+	//SkyBox::Instance()->draw();
 }
 //--------------------------------------------------------------------
 void TestAnim::Close()

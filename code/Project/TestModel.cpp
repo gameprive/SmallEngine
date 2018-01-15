@@ -26,10 +26,10 @@ void TestModel::Render(const glm::mat4 &projection, const glm::mat4 &view)
 	const glm::mat3 normal = glm::inverseTranspose(glm::mat3(m_modelMat));
 
 	m_shaders->Bind();
-	m_shaders->UniformMatrix4fv("uProjection", 1, glm::value_ptr(projection));
-	m_shaders->UniformMatrix4fv("uView", 1, glm::value_ptr(view));
-	m_shaders->UniformMatrix4fv("uModel", 1, glm::value_ptr(m_modelMat));
-	m_shaders->UniformMatrix3fv("uNormal", 1, glm::value_ptr(normal));
+	m_shaders->UniformMatrix4("uProjection", 1, glm::value_ptr(projection));
+	m_shaders->UniformMatrix4("uView", 1, glm::value_ptr(view));
+	m_shaders->UniformMatrix4("uModel", 1, glm::value_ptr(m_modelMat));
+	m_shaders->UniformMatrix3("uNormal", 1, glm::value_ptr(normal));
 
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, m_diffuseMap);
@@ -79,14 +79,14 @@ void TestModel::loadShader()
 {
 	m_shaders = std::make_shared<ShaderProgram>("Data/shaders/solid.vert", "Data/shaders/solid.frag");
 	m_shaders->Bind();
-	m_shaders->Uniform1i("uDiffuseMap", 0);
-	m_shaders->Uniform1i("uNormalMap", 1);
-	m_shaders->Uniform1i("uSpecularMap", 2);
-	m_shaders->Uniform1i("uEmissionMap", 3);
-	m_shaders->UniformVec3("uMaterialDiffuse", glm::vec3(1.0, 1.0, 1.0));
-	m_shaders->UniformVec3("uMaterialSpecular", glm::vec3(1.0, 1.0, 1.0));
-	m_shaders->Uniform1f("uSpecularIntensity", 6.0);
-	m_shaders->Uniform1f("uSpecularHardness", 16.0);
-	m_shaders->Uniform1f("uNormalMapStrength", 1.5);
+	m_shaders->Uniform1("uDiffuseMap", 0);
+	m_shaders->Uniform1("uNormalMap", 1);
+	m_shaders->Uniform1("uSpecularMap", 2);
+	m_shaders->Uniform1("uEmissionMap", 3);
+	m_shaders->Uniform3("uMaterialDiffuse", glm::vec3(1.0, 1.0, 1.0));
+	m_shaders->Uniform3("uMaterialSpecular", glm::vec3(1.0, 1.0, 1.0));
+	m_shaders->Uniform1("uSpecularIntensity", 6.0f);
+	m_shaders->Uniform1("uSpecularHardness", 16.0f);
+	m_shaders->Uniform1("uNormalMapStrength", 1.5f);
 }
 //--------------------------------------------------------------------

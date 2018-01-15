@@ -23,7 +23,7 @@ void Model::draw(std::shared_ptr<ShaderProgram> shaders)
 	for ( uint32_t i = 0; i < transforms.size(); i++ ) // move all matrices for actual model position to shader
 	{
 		std::string name = "bones[" + std::to_string(i) + "]";// name like in shader
-		shaders->UniformMatrix4fv(name.c_str(), 1, (const GLfloat*)&transforms[i], true);
+		shaders->UniformMatrix4(name.c_str(), 1, (const GLfloat*)&transforms[i], true);
 	}
 
 	for ( int i = 0; i < meshes.size(); i++ )

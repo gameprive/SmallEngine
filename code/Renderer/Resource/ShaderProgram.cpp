@@ -4,6 +4,10 @@
 #include "ShaderProgram.h"
 
 //--------------------------------------------------------------------
+// glProgramUniform требует OGL 4.1
+// glUniform - требует бинда (glUseProgram) перед использованием
+// но так как я все равно должен биндить ShaderProgram, то возможно glUniform будет лучшим решением
+//--------------------------------------------------------------------
 ShaderProgram::ShaderProgram(const std::vector<std::shared_ptr<Shader>> &shaders)
 {
 	init(shaders);
@@ -29,84 +33,74 @@ void ShaderProgram::Bind() const
 	glUseProgram(m_program);
 }
 //--------------------------------------------------------------------
-void ShaderProgram::Uniform1f(const char *var, float val)
+void ShaderProgram::Uniform1(const char *name, int val)
 {
-	glProgramUniform1f(m_program, getUniLoc(var), val);
+	glUniform1i(getUniLoc(name), val);
 }
 //--------------------------------------------------------------------
-void ShaderProgram::Uniform1i(const char *var, int val)
+void ShaderProgram::Uniform1(const char *name, float val)
 {
-	glProgramUniform1i(m_program, getUniLoc(var), val);
+	glUniform1f(getUniLoc(name), val);
 }
 //--------------------------------------------------------------------
-void ShaderProgram::Uniform1fv(const char *var, int count, float *vals)
+void ShaderProgram::Uniform2(const char *name, float v1, float v2)
 {
-	glProgramUniform1fv(m_program, getUniLoc(var), count, vals);
+	glUniform2f(getUniLoc(name), v1, v2);
 }
 //--------------------------------------------------------------------
-void ShaderProgram::Uniform2f(const char *var, float v1, float v2)
+void ShaderProgram::Uniform2(const char *name, const glm::vec2 &v)
 {
-	glProgramUniform2f(m_program, getUniLoc(var), v1, v2);
+	glUniform2f(getUniLoc(name), v.x, v.y);
 }
 //--------------------------------------------------------------------
-void ShaderProgram::Uniform2fv(const char *var, int count, float *vals)
+void ShaderProgram::Uniform3(const char *name, float v1, float v2, float v3)
 {
-	glProgramUniform2fv(m_program, getUniLoc(var), count, vals);
+	glUniform3f(getUniLoc(name), v1, v2, v3);
 }
 //--------------------------------------------------------------------
-void ShaderProgram::UniformVec2(const char *var, const glm::vec2 &v)
+void ShaderProgram::Uniform3(const char *name, const glm::vec3 &v)
 {
-	Uniform2f(var, v.x, v.y);
+	glUniform3f(getUniLoc(name), v.x, v.y, v.z);
 }
 //--------------------------------------------------------------------
-void ShaderProgram::Uniform3iv(const char *var, int count, int *vals)
+void ShaderProgram::Uniform4(const char *name, float v1, float v2, float v3, float v4)
 {
-	glProgramUniform3iv(m_program, getUniLoc(var), count, vals);
+	glUniform4f(getUniLoc(name), v1, v2, v3, v4);
 }
 //--------------------------------------------------------------------
-void ShaderProgram::Uniform3fv(const char *var, int count, const float *vals)
+void ShaderProgram::Uniform4(const char *name, const glm::vec4 &v)
 {
-	glProgramUniform3fv(m_program, getUniLoc(var), count, vals);
+	glUniform4f(getUniLoc(name), v.x, v.y, v.z, v.w);
 }
 //--------------------------------------------------------------------
-void ShaderProgram::Uniform3f(const char *var, const float v1, const float v2, const float v3)
+void ShaderProgram::UniformMatrix3(const char *name, int count, const float *vals, bool transpose)
 {
-	glProgramUniform3f(m_program, getUniLoc(var), v1, v2, v3);
+	glUniformMatrix3fv(getUniLoc(name), count, transpose, vals);
 }
 //--------------------------------------------------------------------
-void ShaderProgram::UniformVec3(const char *var, const glm::vec3 &v)
+void ShaderProgram::UniformMatrix4(const char *name, int count, const float *vals, bool transpose)
 {
-	Uniform3f(var, v.x, v.y, v.z);
+	glUniformMatrix4fv(getUniLoc(name), count, transpose, vals);
 }
 //--------------------------------------------------------------------
-void ShaderProgram::UniformMatrix3fv(const char *var, int count, const GLfloat *vals, bool transpose)
+void ShaderProgram::Uniform1v(const char *name, int count, const float *vals)
 {
-	glProgramUniformMatrix3fv(m_program, getUniLoc(var), count, transpose, vals);
+	glUniform1fv(getUniLoc(name), count, vals);
 }
 //--------------------------------------------------------------------
-void ShaderProgram::Uniform4iv(const char *var, int count, int *vals)
+void ShaderProgram::Uniform2v(const char *name, int count, const float *vals)
 {
-	glProgramUniform4iv(m_program, getUniLoc(var), count, vals);
+	glUniform2fv(getUniLoc(name), count, vals);
 }
 //--------------------------------------------------------------------
-void ShaderProgram::Uniform4fv(const char *var, int count, const float *vals)
+void ShaderProgram::Uniform3v(const char *name, int count, const float *vals)
 {
-	glProgramUniform4fv(m_program, getUniLoc(var), count, vals);
+	glUniform3fv(getUniLoc(name), count, vals);
 }
 //--------------------------------------------------------------------
-void ShaderProgram::Uniform4f(const char *var, float v1, float v2, float v3, float v4)
+void ShaderProgram::Uniform4v(const char *name, int count, const float *vals)
 {
-	glProgramUniform4f(m_program, getUniLoc(var), v1, v2, v3, v4);
-}
-//--------------------------------------------------------------------
-void ShaderProgram::UniformVec4(const char *var, const glm::vec4 &v)
-{
-	Uniform4f(var, v.x, v.y, v.z, v.w);
-}
-//--------------------------------------------------------------------
-void ShaderProgram::UniformMatrix4fv(const char *var, int count, const GLfloat *vals, bool transpose)
-{
-	glProgramUniformMatrix4fv(m_program, getUniLoc(var), count, transpose, vals);
+	glUniform4fv(getUniLoc(name), count, vals);
 }
 //--------------------------------------------------------------------
 void ShaderProgram::init(const std::vector<std::shared_ptr<Shader>> &shaders)
