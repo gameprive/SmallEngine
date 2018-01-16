@@ -2,6 +2,7 @@
 // PVS-Studio Static Code Analyzer for C, C++ and C#: http://www.viva64.com
 #include "stdafx.h"
 #include "Texture2D.h"
+#include "OldImage.h"
 #include "Image.h"
 #include "System/RenderDevice.h"
 

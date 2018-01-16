@@ -23,7 +23,7 @@ Shader::Shader(ShaderType type, const std::string &data, ShaderSourceType source
 
 	if ( sourceType == ShaderSourceType::File )
 	{
-		FileData fData(data);
+		FileReader fData(data);
 		if ( fData.isLoaded )
 		{
 			const GLchar *shaderSource[] = { reinterpret_cast<const GLchar*>(fData.data.data()) };

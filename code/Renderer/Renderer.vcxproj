@@ -84,11 +84,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Resource\DDSLoader.h" />
+    <ClInclude Include="Resource\Image.h" />
     <ClInclude Include="Resource\RasterizerState.h" />
     <ClInclude Include="Resource\DepthStencilState.h" />
     <ClInclude Include="Resource\Buffer.h" />
     <ClInclude Include="Resource\ConstantBuffer.h" />
-    <ClInclude Include="Resource\Image.h" />
+    <ClInclude Include="Resource\OldImage.h" />
     <ClInclude Include="Resource\IndexBuffer.h" />
     <ClInclude Include="Resource\BlendState.h" />
     <ClInclude Include="Resource\RenderTarget2D.h" />
@@ -103,14 +104,16 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="System\RenderSystem.h" />
     <ClInclude Include="System\RenderDevice.h" />
+    <ClInclude Include="TextureBase.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Resource\DDSLoader.cpp" />
+    <ClCompile Include="Resource\Image.cpp" />
     <ClCompile Include="Resource\RasterizerState.cpp" />
     <ClCompile Include="Resource\DepthStencilState.cpp" />
     <ClCompile Include="Resource\Buffer.cpp" />
     <ClCompile Include="Resource\ConstantBuffer.cpp" />
-    <ClCompile Include="Resource\Image.cpp" />
+    <ClCompile Include="Resource\OldImage.cpp" />
     <ClCompile Include="Resource\IndexBuffer.cpp" />
     <ClCompile Include="Resource\BlendState.cpp" />
     <ClCompile Include="Resource\RenderTarget2D.cpp" />

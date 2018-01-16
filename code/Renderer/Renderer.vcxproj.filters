@@ -26,17 +26,8 @@
     <ClInclude Include="Resource\ShaderProgram.h">
       <Filter>Renderer\Resource\Shaders</Filter>
     </ClInclude>
-    <ClInclude Include="Resource\Image.h">
-      <Filter>Renderer\Resource</Filter>
-    </ClInclude>
     <ClInclude Include="Resource\SamplerState.h">
       <Filter>Renderer\Resource\State</Filter>
-    </ClInclude>
-    <ClInclude Include="Resource\Texture.h">
-      <Filter>Renderer\Resource\Textures</Filter>
-    </ClInclude>
-    <ClInclude Include="Resource\Texture2D.h">
-      <Filter>Renderer\Resource\Textures</Filter>
     </ClInclude>
     <ClInclude Include="System\RenderDevice.h">
       <Filter>Renderer\System</Filter>
@@ -50,14 +41,29 @@
     <ClInclude Include="Resource\RasterizerState.h">
       <Filter>Renderer\Resource\State</Filter>
     </ClInclude>
-    <ClInclude Include="Resource\RenderTarget2D.h">
-      <Filter>Renderer\Resource\Textures</Filter>
-    </ClInclude>
     <ClInclude Include="System\RenderSystem.h">
       <Filter>Renderer\System</Filter>
     </ClInclude>
+    <ClInclude Include="Resource\Texture2D.h">
+      <Filter>Renderer\Resource\Textures\old</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource\RenderTarget2D.h">
+      <Filter>Renderer\Resource\Textures\old</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource\Texture.h">
+      <Filter>Renderer\Resource\Textures\old</Filter>
+    </ClInclude>
     <ClInclude Include="Resource\DDSLoader.h">
-      <Filter>Renderer\Resource</Filter>
+      <Filter>Renderer\Resource\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureBase.h">
+      <Filter>Renderer\Resource\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource\OldImage.h">
+      <Filter>Renderer\Resource\Textures\old</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource\Image.h">
+      <Filter>Renderer\Resource\Textures</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -86,17 +92,8 @@
     <ClCompile Include="Resource\ShaderProgram.cpp">
       <Filter>Renderer\Resource\Shaders</Filter>
     </ClCompile>
-    <ClCompile Include="Resource\Image.cpp">
-      <Filter>Renderer\Resource</Filter>
-    </ClCompile>
     <ClCompile Include="Resource\SamplerState.cpp">
       <Filter>Renderer\Resource\State</Filter>
-    </ClCompile>
-    <ClCompile Include="Resource\Texture.cpp">
-      <Filter>Renderer\Resource\Textures</Filter>
-    </ClCompile>
-    <ClCompile Include="Resource\Texture2D.cpp">
-      <Filter>Renderer\Resource\Textures</Filter>
     </ClCompile>
     <ClCompile Include="System\RenderDevice.cpp">
       <Filter>Renderer\System</Filter>
@@ -110,14 +107,26 @@
     <ClCompile Include="Resource\RasterizerState.cpp">
       <Filter>Renderer\Resource\State</Filter>
     </ClCompile>
-    <ClCompile Include="Resource\RenderTarget2D.cpp">
-      <Filter>Renderer\Resource\Textures</Filter>
-    </ClCompile>
     <ClCompile Include="System\RenderSystem.cpp">
       <Filter>Renderer\System</Filter>
     </ClCompile>
+    <ClCompile Include="Resource\RenderTarget2D.cpp">
+      <Filter>Renderer\Resource\Textures\old</Filter>
+    </ClCompile>
+    <ClCompile Include="Resource\Texture.cpp">
+      <Filter>Renderer\Resource\Textures\old</Filter>
+    </ClCompile>
+    <ClCompile Include="Resource\Texture2D.cpp">
+      <Filter>Renderer\Resource\Textures\old</Filter>
+    </ClCompile>
     <ClCompile Include="Resource\DDSLoader.cpp">
-      <Filter>Renderer\Resource</Filter>
+      <Filter>Renderer\Resource\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Resource\OldImage.cpp">
+      <Filter>Renderer\Resource\Textures\old</Filter>
+    </ClCompile>
+    <ClCompile Include="Resource\Image.cpp">
+      <Filter>Renderer\Resource\Textures</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -141,6 +150,9 @@
     </Filter>
     <Filter Include="Renderer\System">
       <UniqueIdentifier>{1cc497b3-352e-4ce6-80a7-2952bc616065}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\Resource\Textures\old">
+      <UniqueIdentifier>{c16d01cc-892b-4d18-9f05-c0bbe5083150}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -20,7 +20,7 @@ int main()
 	config.window.height = 768;
 
 	Engine engine;
-	engine.Start<TestAnim>(config);
+	engine.Start<Test>(config);
 	return 0;
 }
 //--------------------------------------------------------------------

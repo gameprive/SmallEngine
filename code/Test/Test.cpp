@@ -103,7 +103,8 @@ bool Test::Init()
 	shaders = std::make_shared<ShaderProgram>("data/shaders/test.vert", "data/shaders/test.frag");
 
 	sampler = std::make_shared<SamplerState>(SamplerDescription::CreateAnisotropicClamp());
-	tex = std::make_shared<Texture2D>("data/textures/grass.png");
+	//tex = std::make_shared<Texture2D>("data/textures/grass.png");
+	tex = std::make_shared<Texture2D>("test_dxt1.dds");
 
 	rt = std::make_shared<RenderTarget2D>(100, 100, 1, DataFormat::RGBA8, DepthFormat::Depth24Stencil8, 0);
 

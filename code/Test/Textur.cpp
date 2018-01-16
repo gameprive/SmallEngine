@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Textur.h"
 #include <iostream>
-#include "Renderer/Resource/Image.h"
+#include "Renderer/Resource/OldImage.h"
 
 GLuint loadDDS(const char* image_path, int *w, int *h)
 {

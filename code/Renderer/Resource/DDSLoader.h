@@ -18,5 +18,5 @@ namespace DDSLoader
 	\param outOpaque Stores info about alpha channel.
 	\return Load result.
 	*/
-	LoadResult Load(const std::vector<uint8_t> &fileContents, int cubeMapFace, int &outWidth, int &outHeight, bool& outOpaque);
+	LoadResult Load(const std::vector<uint8_t> &fileContents, int cubeMapFace, int &outWidth, int &outHeight, bool &outOpaque);
 }
