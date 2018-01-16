@@ -36,45 +36,17 @@ void VertexBoneData::addBoneData(uint32_t bone_id, float weight)
 }
 
 
-void Mesh::Draw(std::shared_ptr<ShaderProgram> shaders)
+void Mesh::Draw()
 {
-	int diffuse_nr = 1;
-	int specular_nr = 1;
-
 	for ( int i = 0; i < textures.size(); i++ )
 	{
-		glActiveTexture(GL_TEXTURE0 + i);
-
-		std::string number;
-		std::string name = textures[i].type;
-		if ( name == "texture_diffuse" )
-		{
-			number = std::to_string(diffuse_nr++);
-		}
-		else if ( name == "texture_specular" )
-		{
-			number = std::to_string(specular_nr++);
-		}
-
-		glBindTexture(GL_TEXTURE_2D, textures[i].id);
-		//glUniform1i(glGetUniformLocation(shaders, ("material." + name + number).c_str()), i);
-		shaders->Uniform1(("material." + name + number).c_str(), i);
-
-		//cout << "added in shader : " << ("material." + name + number).c_str() << endl;
+		textures[i].sam->Bind(i);
+		textures[i].tex->Bind(i);
 	}
 
-	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	//glLineWidth(2);
-	//Draw
 	glBindVertexArray(VAO);
 	glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
 	glBindVertexArray(0);
-
-	for ( int i = 0; i < textures.size(); i++ )
-	{
-		glActiveTexture(GL_TEXTURE0 + i);
-		glBindTexture(GL_TEXTURE_2D, 0);
-	}
 }
 
 void Mesh::SetupMesh()

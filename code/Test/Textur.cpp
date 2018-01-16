@@ -3,27 +3,6 @@
 #include <iostream>
 #include "Renderer/Resource/Image.h"
 
-GLuint loadImageToTexture(const char* image_path)
-{
-	Image img;
-	if ( !img.Init(image_path) ) return 0;
-	uint32_t m_pixelWidth = img.GetWidth();
-	uint32_t m_pixelHeight = img.GetHeight();
-
-	GLuint textureID;
-	glGenTextures(1, &textureID); // создать текстуру
-	glBindTexture(GL_TEXTURE_2D, textureID);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, m_pixelWidth, m_pixelHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, img.GetData().data());
-	glGenerateMipmap(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, 0);
-
-	return textureID;
-}
-
 GLuint loadDDS(const char* image_path, int *w, int *h)
 {
 	// for use this method better way :

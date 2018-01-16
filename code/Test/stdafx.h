@@ -40,5 +40,6 @@
 #include "Renderer/Resource/DDSLoader.h"
 #include "Renderer/Resource/VertexFormat.h"
 #include "Renderer/Resource/ShaderProgram.h"
+#include "Renderer/Resource/SamplerState.h"
 
 #include "Application/Engine.h"

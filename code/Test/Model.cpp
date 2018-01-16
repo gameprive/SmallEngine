@@ -28,7 +28,7 @@ void Model::draw(std::shared_ptr<ShaderProgram> shaders)
 
 	for ( int i = 0; i < meshes.size(); i++ )
 	{
-		meshes[i].Draw(shaders);
+		meshes[i].Draw();
 	}
 }
 
@@ -280,7 +280,10 @@ std::vector<Texture> Model::LoadMaterialTexture(aiMaterial* mat, aiTextureType t
 		//cout << filename << endl;
 
 		Texture texture;
-		texture.id = loadImageToTexture(filename.c_str()); // return prepaired openGL texture
+
+		texture.tex = std::make_shared<Texture2D>(filename);
+		texture.sam = std::make_shared<SamplerState>(SamplerDescription::CreateLinearWrap());
+		//texture.id = loadImageToTexture(filename.c_str()); // return prepaired openGL texture
 		texture.type = type_name;
 		texture.path = ai_str;
 		textures.push_back(texture);

@@ -13,7 +13,10 @@ struct Vertex
 
 struct Texture
 {
-	GLuint id;
+	std::shared_ptr<Texture2D> tex;
+	std::shared_ptr<SamplerState> sam;
+
+	//GLuint id;
 	std::string type;
 	aiString path;
 };
@@ -47,7 +50,7 @@ public:
 	~Mesh();
 
 	// Render mesh
-	void Draw(std::shared_ptr<ShaderProgram> shaders);
+	void Draw();
 
 private:
 	//Mesh data
