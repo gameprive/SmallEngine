@@ -53,17 +53,23 @@
     <ClInclude Include="Resource\Texture.h">
       <Filter>Renderer\Resource\Textures\old</Filter>
     </ClInclude>
-    <ClInclude Include="Resource\DDSLoader.h">
-      <Filter>Renderer\Resource\Textures</Filter>
-    </ClInclude>
     <ClInclude Include="TextureBase.h">
       <Filter>Renderer\Resource\Textures</Filter>
     </ClInclude>
     <ClInclude Include="Resource\OldImage.h">
       <Filter>Renderer\Resource\Textures\old</Filter>
     </ClInclude>
+    <ClInclude Include="Resource\DDSLoader.h">
+      <Filter>Renderer\Resource\Textures\old</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource\Image2.h">
+      <Filter>Renderer\Resource\Textures\old</Filter>
+    </ClInclude>
     <ClInclude Include="Resource\Image.h">
-      <Filter>Renderer\Resource\Textures</Filter>
+      <Filter>Renderer\Resource\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource\DDSImage.h">
+      <Filter>Renderer\Resource\Image</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -119,14 +125,20 @@
     <ClCompile Include="Resource\Texture2D.cpp">
       <Filter>Renderer\Resource\Textures\old</Filter>
     </ClCompile>
-    <ClCompile Include="Resource\DDSLoader.cpp">
-      <Filter>Renderer\Resource\Textures</Filter>
-    </ClCompile>
     <ClCompile Include="Resource\OldImage.cpp">
       <Filter>Renderer\Resource\Textures\old</Filter>
     </ClCompile>
+    <ClCompile Include="Resource\DDSLoader.cpp">
+      <Filter>Renderer\Resource\Textures\old</Filter>
+    </ClCompile>
+    <ClCompile Include="Resource\Image2.cpp">
+      <Filter>Renderer\Resource\Textures\old</Filter>
+    </ClCompile>
     <ClCompile Include="Resource\Image.cpp">
-      <Filter>Renderer\Resource\Textures</Filter>
+      <Filter>Renderer\Resource\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="Resource\DDSImage.cpp">
+      <Filter>Renderer\Resource\Image</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -153,6 +165,9 @@
     </Filter>
     <Filter Include="Renderer\Resource\Textures\old">
       <UniqueIdentifier>{c16d01cc-892b-4d18-9f05-c0bbe5083150}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\Resource\Image">
+      <UniqueIdentifier>{d5cb15de-08fc-4407-bd0f-dd757765bd02}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

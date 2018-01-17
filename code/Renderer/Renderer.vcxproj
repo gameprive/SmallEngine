@@ -84,6 +84,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Resource\DDSLoader.h" />
+    <ClInclude Include="Resource\DDSImage.h" />
+    <ClInclude Include="Resource\Image2.h" />
     <ClInclude Include="Resource\Image.h" />
     <ClInclude Include="Resource\RasterizerState.h" />
     <ClInclude Include="Resource\DepthStencilState.h" />
@@ -108,6 +110,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Resource\DDSLoader.cpp" />
+    <ClCompile Include="Resource\DDSImage.cpp" />
+    <ClCompile Include="Resource\Image2.cpp" />
     <ClCompile Include="Resource\Image.cpp" />
     <ClCompile Include="Resource\RasterizerState.cpp" />
     <ClCompile Include="Resource\DepthStencilState.cpp" />

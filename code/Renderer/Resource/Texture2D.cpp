@@ -3,6 +3,7 @@
 #include "stdafx.h"
 #include "Texture2D.h"
 #include "OldImage.h"
+#include "Image2.h"
 #include "Image.h"
 #include "System/RenderDevice.h"
 
@@ -63,7 +64,7 @@ Texture2D::Texture2D(const std::string &filename, bool mipMap, DataFormat format
 	if ( !img.Init(filename) ) return;
 	m_pixelWidth = img.GetWidth();
 	m_pixelHeight = img.GetHeight();
-	
+		
 	init();
 	
 	SetData(img.GetData().data());

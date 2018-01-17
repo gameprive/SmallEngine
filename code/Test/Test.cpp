@@ -103,8 +103,8 @@ bool Test::Init()
 	shaders = std::make_shared<ShaderProgram>("data/shaders/test.vert", "data/shaders/test.frag");
 
 	sampler = std::make_shared<SamplerState>(SamplerDescription::CreateAnisotropicClamp());
-	//tex = std::make_shared<Texture2D>("data/textures/grass.png");
-	tex = std::make_shared<Texture2D>("test_dxt1.dds");
+	tex = std::make_shared<Texture2D>("data/textures/grass.png");
+	//tex = std::make_shared<Texture2D>("test_dxt1.dds");
 
 	rt = std::make_shared<RenderTarget2D>(100, 100, 1, DataFormat::RGBA8, DepthFormat::Depth24Stencil8, 0);
 
@@ -120,7 +120,7 @@ void Test::Update(float dt)
 void Test::Render()
 {
 	{
-		RenderSystem::Get().SetRenderTarget2D(rt);
+		//RenderSystem::Get().SetRenderTarget2D(rt);
 		RenderSystem::Get().Clear(glm::vec4(1.0f));
 
 		shaders->Bind();
@@ -133,19 +133,19 @@ void Test::Render()
 		glDrawArrays(GL_TRIANGLES, 0, 12 * 3);
 	}
 		
-	{
-		RenderSystem::Get().SetRenderTarget2D(nullptr);
-		RenderSystem::Get().Clear(glm::vec4(0.5f));
+	//{
+	//	RenderSystem::Get().SetRenderTarget2D(nullptr);
+	//	RenderSystem::Get().Clear(glm::vec4(0.5f));
 
-		shaders->Bind();
-		shaders->UniformMatrix4("MVP", 1, glm::value_ptr(MVP));
+	//	shaders->Bind();
+	//	shaders->UniformMatrix4("MVP", 1, glm::value_ptr(MVP));
 
-		sampler->Bind(0);
-		rt->BindTexture(0);
-		format->Bind();
+	//	sampler->Bind(0);
+	//	rt->BindTexture(0);
+	//	format->Bind();
 
-		glDrawArrays(GL_TRIANGLES, 0, 12 * 3);
-	}
+	//	glDrawArrays(GL_TRIANGLES, 0, 12 * 3);
+	//}
 }
 //--------------------------------------------------------------------
 void Test::Close()
