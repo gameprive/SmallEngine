@@ -60,7 +60,7 @@ Texture2D::Texture2D(const std::string &filename, bool mipMap, DataFormat format
 	: m_levelCount(mipMap ? ComputeMipmapLevelCount(m_pixelWidth, m_pixelHeight) : 1)
 	, m_format(format)
 {
-	Image img;
+	OldImage img;
 	if ( !img.Init(filename) ) return;
 	m_pixelWidth = img.GetWidth();
 	m_pixelHeight = img.GetHeight();

@@ -35,6 +35,9 @@
     <ClInclude Include="Base\CompilationOptions.h">
       <Filter>Core\Base</Filter>
     </ClInclude>
+    <ClInclude Include="Window\Input.h">
+      <Filter>Core\Window</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
@@ -52,6 +55,9 @@
     </ClCompile>
     <ClCompile Include="IO\FileSystem.cpp">
       <Filter>Core\IO</Filter>
+    </ClCompile>
+    <ClCompile Include="Window\Input.cpp">
+      <Filter>Core\Window</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

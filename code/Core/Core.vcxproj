@@ -94,6 +94,7 @@
     <ClInclude Include="Template\Noncopyable.h" />
     <ClInclude Include="Template\Singleton.h" />
     <ClInclude Include="Utilities\Timer.h" />
+    <ClInclude Include="Window\Input.h" />
     <ClInclude Include="Window\Window.h" />
   </ItemGroup>
   <ItemGroup>
@@ -104,6 +105,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Utilities\Timer.cpp" />
+    <ClCompile Include="Window\Input.cpp" />
     <ClCompile Include="Window\Window.cpp" />
     <ClCompile Include="Window\WindowCallback.cpp" />
   </ItemGroup>

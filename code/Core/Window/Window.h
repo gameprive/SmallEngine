@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "Core/Template/Singleton.h"
-
+error
 typedef struct GLFWwindow GLFWwindow;	// ==> <glfw3.h>
 
 struct WindowConfig
