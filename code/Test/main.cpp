@@ -4,6 +4,9 @@
 #include "Test.h"
 #include "TestAnim.h"
 
+для звука 
+http://sol.gfxile.net/soloud/
+
 //--------------------------------------------------------------------
 int main()
 {
